@@ -1,0 +1,2 @@
+# ignore all .pk (ppo agents) we push them with git large files (lfs)
+*.pk
