@@ -1,0 +1,123 @@
+2022-04-26 14:51:55,964 INFO    MainThread:18947 [wandb_setup.py:_flush():75] Loading settings from /home/lechapelier/.config/wandb/settings
+2022-04-26 14:51:55,964 INFO    MainThread:18947 [wandb_setup.py:_flush():75] Loading settings from /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/settings
+2022-04-26 14:51:55,964 INFO    MainThread:18947 [wandb_setup.py:_flush():75] Loading settings from environment variables: {}
+2022-04-26 14:51:55,964 WARNING MainThread:18947 [wandb_setup.py:_flush():75] Could not find program at -m moral.moral_train
+2022-04-26 14:51:55,964 INFO    MainThread:18947 [wandb_setup.py:_flush():75] Inferring run settings from compute environment: {'program_relpath': None, 'program': '-m moral.moral_train'}
+2022-04-26 14:51:55,965 INFO    MainThread:18947 [wandb_init.py:_log_setup():438] Logging user logs to /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220426_145155-33yj1k8f/logs/debug.log
+2022-04-26 14:51:55,965 INFO    MainThread:18947 [wandb_init.py:_log_setup():439] Logging internal logs to /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220426_145155-33yj1k8f/logs/debug-internal.log
+2022-04-26 14:51:55,965 INFO    MainThread:18947 [wandb_init.py:init():472] calling init triggers
+2022-04-26 14:51:55,965 INFO    MainThread:18947 [wandb_init.py:init():475] wandb.init called with sweep_config: {}
+config: {'env_id': 'randomized_v3', 'ratio': [0, 1, 1], 'env_steps': 8000000.0, 'batchsize_ppo': 12, 'n_queries': 50, 'preference_noise': 0, 'n_workers': 12, 'lr_ppo': 0.0003, 'entropy_reg': 0.25, 'gamma': 0.999, 'epsilon': 0.1, 'ppo_epochs': 5}
+2022-04-26 14:51:55,965 INFO    MainThread:18947 [wandb_init.py:init():525] starting backend
+2022-04-26 14:51:55,965 INFO    MainThread:18947 [backend.py:_multiprocessing_setup():99] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2022-04-26 14:51:55,973 INFO    MainThread:18947 [backend.py:ensure_launched():219] starting backend process...
+2022-04-26 14:51:55,978 INFO    MainThread:18947 [backend.py:ensure_launched():224] started backend process with pid: 18971
+2022-04-26 14:51:55,980 INFO    MainThread:18947 [wandb_init.py:init():534] backend started and connected
+2022-04-26 14:51:55,983 INFO    MainThread:18947 [wandb_init.py:init():598] updated telemetry
+2022-04-26 14:51:56,023 INFO    MainThread:18947 [wandb_init.py:init():629] communicating run to backend with 30 second timeout
+2022-04-26 14:51:58,597 INFO    MainThread:18947 [wandb_run.py:_on_init():1922] communicating current version
+2022-04-26 14:51:58,610 INFO    MainThread:18947 [wandb_run.py:_on_init():1926] got version response 
+2022-04-26 14:51:58,610 INFO    MainThread:18947 [wandb_init.py:init():660] starting run threads in backend
+2022-04-26 14:51:58,726 INFO    MainThread:18947 [wandb_run.py:_console_start():1896] atexit reg
+2022-04-26 14:51:58,755 INFO    MainThread:18947 [wandb_run.py:_redirect():1769] redirect: SettingsConsole.REDIRECT
+2022-04-26 14:51:58,756 INFO    MainThread:18947 [wandb_run.py:_redirect():1774] Redirecting console.
+2022-04-26 14:51:58,759 INFO    MainThread:18947 [wandb_run.py:_redirect():1830] Redirects installed.
+2022-04-26 14:51:58,759 INFO    MainThread:18947 [wandb_init.py:init():685] run started, returning control to user process
+2022-04-26 14:52:59,226 INFO    MainThread:18947 [wandb_run.py:_atexit_cleanup():1865] got exitcode: 1
+2022-04-26 14:52:59,227 INFO    MainThread:18947 [wandb_run.py:_restore():1837] restore
+2022-04-26 14:53:01,348 INFO    MainThread:18947 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 719
+  total_bytes: 719
+}
+
+2022-04-26 14:53:01,684 INFO    MainThread:18947 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 4
+}
+pusher_stats {
+  uploaded_bytes: 719
+  total_bytes: 7740
+}
+
+2022-04-26 14:53:01,787 INFO    MainThread:18947 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 719
+  total_bytes: 8550
+}
+
+2022-04-26 14:53:01,895 INFO    MainThread:18947 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 719
+  total_bytes: 8550
+}
+
+2022-04-26 14:53:01,998 INFO    MainThread:18947 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 8550
+  total_bytes: 8550
+}
+
+2022-04-26 14:53:02,100 INFO    MainThread:18947 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 8550
+  total_bytes: 8550
+}
+
+2022-04-26 14:53:02,202 INFO    MainThread:18947 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 8550
+  total_bytes: 8550
+}
+
+2022-04-26 14:53:02,305 INFO    MainThread:18947 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 8550
+  total_bytes: 8550
+}
+
+2022-04-26 14:53:02,408 INFO    MainThread:18947 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 8550
+  total_bytes: 8550
+}
+
+2022-04-26 14:53:02,883 INFO    MainThread:18947 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 8550
+  total_bytes: 8550
+}
+
+2022-04-26 14:53:03,307 INFO    MainThread:18947 [wandb_run.py:_on_finish():1995] got exit ret: done: true
+exit_result {
+}
+file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 8550
+  total_bytes: 8550
+}
+local_info {
+}
+
+2022-04-26 14:53:04,698 INFO    MainThread:18947 [wandb_run.py:_footer_history_summary_info():3087] rendering history
+2022-04-26 14:53:04,699 INFO    MainThread:18947 [wandb_run.py:_footer_history_summary_info():3116] rendering summary
+2022-04-26 14:53:04,704 INFO    MainThread:18947 [wandb_run.py:_footer_sync_info():3044] logging synced files
