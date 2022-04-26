@@ -1,0 +1,22 @@
+# SETTINGS MORL
+# it has to be : len(ppo_files) = len(discriminator_files) = len(ratio)-1
+
+data_path: "saved_models/"
+ratio: [0, 1, 1]
+
+
+
+# more robust because discriminator and ppo can't have different weghts and must correspond to env
+nb_experts: 2
+experts_weights: ["_[0,1,0,1]", "_[0,0,1,1]"]
+ppo_filenames: "ppo_airl_"
+discriminator_filenames: "discriminator_"
+env: "v3"
+env_rad: "randomized_"
+data_ext: ".pt"
+
+
+# Simpler but less robust
+# ppo_files: ["ppo_airl_v3_[0,1,0,1]", "ppo_airl_v3_[0,0,1,1]"]
+# discriminator_files: ["discriminator_v3_[0,1,0,1]", "discriminator_v3_[0,0,1,1]"]
+# env: 'randomized_v3'

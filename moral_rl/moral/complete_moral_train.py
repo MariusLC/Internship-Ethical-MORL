@@ -7,16 +7,31 @@ import wandb
 import argparse
 
 
+# folder to load config file
+CONFIG_PATH = "moral/"
+CONFIG_FILENAME = "config_MORAL.yaml"
+
+# Function to load yaml configuration file
+def load_config(config_name):
+    with open(os.path.join(CONFIG_PATH, config_name)) as file:
+        config = yaml.safe_load(file)
+
+    return config
+
 # Use GPU if available
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
+
+
 if __name__ == '__main__':
 
+    config_yaml = load_config(CONFIG_FILENAME)
+
     # Fetch ratio args
-    parser = argparse.ArgumentParser(description='Preference Lambda.')
-    parser.add_argument('--lambd', nargs='+', type=int, required=True)
-    parser.add_argument('--env', type=int)
-    args = parser.parse_args()
+    # parser = argparse.ArgumentParser(description='Preference Lambda.')
+    # parser.add_argument('--lambd', nargs='+', type=int, required=True)
+    # parser.add_argument('--env', type=int)
+    # args = parser.parse_args()
 
     if args.lambd == None:
         raise NotImplementedError

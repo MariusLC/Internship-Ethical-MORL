@@ -1,15 +1,34 @@
-from tqdm import tqdm
 from moral.ppo import PPO, TrajectoryDataset, update_policy
-import torch
 from moral.airl import *
-from active_learning import *
+from moral.active_learning import *
+from moral.preference_giver import *
+from envs.gym_wrapper import *
+from utils.evaluate_ppo import evaluate_ppo
+
+
+from tqdm import tqdm
+import torch
 import numpy as np
 import matplotlib.pyplot as plt
-from envs.gym_wrapper import *
-from preference_giver import *
-from utils.evaluate_ppo import evaluate_ppo
 import wandb
 import argparse
+import yaml
+import os
+
+
+
+# folder to load config file
+CONFIG_PATH = "moral/"
+
+# Function to load yaml configuration file
+def load_config(config_name):
+    with open(os.path.join(CONFIG_PATH, config_name)) as file:
+        config = yaml.safe_load(file)
+
+    return config
+
+
+
 
 # Use GPU if available
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
@@ -17,16 +36,19 @@ device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 if __name__ == '__main__':
 
-    # Fetch ratio args for automatic preferences
-    parser = argparse.ArgumentParser(description='Preference Ratio.')
-    parser.add_argument('--ratio', nargs='+', type=int)
-    parser.add_argument('--env', type=int)
-    args = parser.parse_args()
+    config_yaml = load_config("config.yaml")
+    nb_experts = config_yaml["nb_experts"]
+
+    # # Fetch ratio args for automatic preferences
+    # parser = argparse.ArgumentParser(description='Preference Ratio.')
+    # parser.add_argument('--ratio', nargs='+', type=int)
+    # parser.add_argument('--env', type=int)
+    # args = parser.parse_args()
 
     # Config
     wandb.init(project='MORAL', config={
-        'env_id': 'randomized_v3',
-        'ratio': args.ratio,
+        'env_id': config_yaml["env_rad"]+config_yaml["env"],
+        'ratio': config_yaml["ratio"],
         'env_steps': 8e6,
         'batchsize_ppo': 12,
         'n_queries': 50,
@@ -58,23 +80,51 @@ if __name__ == '__main__':
     ppo = PPO(state_shape=state_shape, in_channels=in_channels, n_actions=n_actions).to(device)
     optimizer = torch.optim.Adam(ppo.parameters(), lr=config.lr_ppo)
 
-    # Expert 0
-    discriminator_0 = Discriminator(state_shape=state_shape, in_channels=in_channels).to(device)
-    discriminator_0.load_state_dict(torch.load('../saved_models/discriminator_v3_[0,1,0,1].pt'))
-    ppo_0 = PPO(state_shape=state_shape, in_channels=in_channels, n_actions=n_actions).to(device)
-    ppo_0.load_state_dict(torch.load('../saved_models/ppo_airl_v3_[0,1,0,1].pt'))
-    utop_0 = discriminator_0.estimate_utopia(ppo_0, config)
-    print(f'Reward Normalization 0: {utop_0}')
-    discriminator_0.set_eval()
 
-    # Expert 1
-    discriminator_1 = Discriminator(state_shape=state_shape).to(device)
-    discriminator_1.load_state_dict(torch.load('../saved_models/discriminator_v3_[0,0,1,1].pt'))
-    ppo_1 = PPO(state_shape=state_shape, in_channels=in_channels, n_actions=n_actions).to(device)
-    ppo_1.load_state_dict(torch.load('../saved_models/ppo_airl_v3_[0,0,1,1].pt'))
-    utop_1 = discriminator_1.estimate_utopia(ppo_1, config)
-    print(f'Reward Normalization 1: {utop_1}')
-    discriminator_1.set_eval()
+
+
+
+    # Expert i
+    discriminator_list = []
+    ppo_list = []
+    utop_list = []
+    for expert_weights in config_yaml["experts_weights"]:
+        discriminator_list.append(Discriminator(state_shape=state_shape, in_channels=in_channels).to(device))
+        d = config_yaml["data_path"]+config_yaml["discriminator_filenames"]+config_yaml["env"]+expert_weights+config_yaml["data_ext"]
+        #print("discriminator loaded = "+d)
+        discriminator_list[-1].load_state_dict(torch.load(d, map_location=torch.device('cpu')))
+        ppo_list.append(PPO(state_shape=state_shape, in_channels=in_channels, n_actions=n_actions).to(device))
+        p = config_yaml["data_path"]+config_yaml["ppo_filenames"]+config_yaml["env"]+expert_weights+config_yaml["data_ext"]
+        #print("ppo loaded = "+p)
+        ppo_list[-1].load_state_dict(torch.load(p, map_location=torch.device('cpu')))
+        utop_list.append(discriminator_list[-1].estimate_utopia(ppo_list[-1], config))
+        print(f'Reward Normalization 0: {utop_list[-1]}')
+        discriminator_list[-1].set_eval()
+
+    # # Expert 0
+    # discriminator_0 = Discriminator(state_shape=state_shape, in_channels=in_channels).to(device)
+    # discriminator_0.load_state_dict(torch.load('../saved_models/discriminator_v3_[0,1,0,1].pt'))
+    # ppo_0 = PPO(state_shape=state_shape, in_channels=in_channels, n_actions=n_actions).to(device)
+    # ppo_0.load_state_dict(torch.load('../saved_models/ppo_airl_v3_[0,1,0,1].pt'))
+    # utop_0 = discriminator_0.estimate_utopia(ppo_0, config)
+    # print(f'Reward Normalization 0: {utop_0}')
+    # discriminator_0.set_eval()
+
+    # # Expert 1
+    # discriminator_1 = Discriminator(state_shape=state_shape).to(device)
+    # discriminator_1.load_state_dict(torch.load('../saved_models/discriminator_v3_[0,0,1,1].pt'))
+    # ppo_1 = PPO(state_shape=state_shape, in_channels=in_channels, n_actions=n_actions).to(device)
+    # ppo_1.load_state_dict(torch.load('../saved_models/ppo_airl_v3_[0,0,1,1].pt'))
+    # utop_1 = discriminator_1.estimate_utopia(ppo_1, config)
+    # print(f'Reward Normalization 1: {utop_1}')
+    # discriminator_1.set_eval()
+
+
+
+
+
+
+
 
 
     dataset = TrajectoryDataset(batch_size=config.batchsize_ppo, n_workers=config.n_workers)
@@ -143,12 +193,30 @@ if __name__ == '__main__':
         # Fetch AIRL rewards
         airl_state = torch.tensor(states).to(device).float()
         airl_next_state = torch.tensor(next_states).to(device).float()
-        airl_rewards_0 = discriminator_0.forward(airl_state, airl_next_state, config.gamma).squeeze(1)
-        airl_rewards_1 = discriminator_1.forward(airl_state, airl_next_state, config.gamma).squeeze(1)
-        airl_rewards_0 = airl_rewards_0.detach().cpu().numpy() * [0 if i else 1 for i in done]
-        airl_rewards_1 = airl_rewards_1.detach().cpu().numpy() * [0 if i else 1 for i in done]
-        vectorized_rewards = [[r[0], airl_rewards_0[i], airl_rewards_1[i]] for i, r in enumerate(rewards)]
+
+
+
+
+
+        airl_rewards_list = []
+        for i in range(nb_experts):
+            airl_rewards_list.append(discriminator_list[i].forward(airl_state, airl_next_state, config.gamma).squeeze(1))
+        for i in range(nb_experts):
+            airl_rewards_list[i] = airl_rewards_list[i].detach().cpu().numpy() * [0 if i else 1 for i in done]
+
+        # airl_rewards_0 = discriminator_0.forward(airl_state, airl_next_state, config.gamma).squeeze(1)
+        # airl_rewards_1 = discriminator_1.forward(airl_state, airl_next_state, config.gamma).squeeze(1)
+        # airl_rewards_0 = airl_rewards_0.detach().cpu().numpy() * [0 if i else 1 for i in done]
+        # airl_rewards_1 = airl_rewards_1.detach().cpu().numpy() * [0 if i else 1 for i in done]
+        # vectorized_rewards = [[r[0], airl_rewards_0[i], airl_rewards_1[i]] for i, r in enumerate(rewards)]
+        # scalarized_rewards = [np.dot(w_posterior_mean, r[0:3]) for r in vectorized_rewards]
+
+        vectorized_rewards = [ [r[0]] + [airl_rewards_list[j][i] for j in range(nb_experts)] for i, r in enumerate(rewards)]
         scalarized_rewards = [np.dot(w_posterior_mean, r[0:3]) for r in vectorized_rewards]
+
+
+
+
 
         # v2-Environment
         #vectorized_rewards = [[r[0], airl_rewards_0[i]] for i, r in enumerate(rewards)]
