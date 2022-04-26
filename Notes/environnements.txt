@@ -1,0 +1,10 @@
+notes sur les environnements:
+
+ils ont créé leurs 2 environnements avec un module pycolab qui permet de recréer un environnement Gym (avec le fichier gym_wrapper). Ils utilisent un module appelé ascii_art (https://github.com/deepmind/pycolab/blob/master/pycolab/ascii_art.py)
+
+
+sprites = dico des éléments personnages (typiquement le joueur)
+
+drapes = dico des autres éléments (typiquement les objets ou pnj)
+
+chaque sprite ou drape doit avoir sa propre class avec une fonction d'updates (si la frame est 0 on instancie le rendeur de la classe) et d'initialisation.

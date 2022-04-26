@@ -1,0 +1,29 @@
+{
+    "os": "Linux-5.10.0-13-amd64-x86_64-with-glibc2.31",
+    "python": "3.9.2",
+    "heartbeatAt": "2022-04-11T11:22:56.162609",
+    "startedAt": "2022-04-11T11:22:54.917056",
+    "docker": null,
+    "gpu": "GeForce GTX 560",
+    "gpu_count": 1,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [
+        "--ratio",
+        "3",
+        "2",
+        "5"
+    ],
+    "state": "running",
+    "program": "/home/lechapelier/Documents/Stage M2/moral_rl/moral/moral_train.py",
+    "codePath": "moral/moral_train.py",
+    "git": {
+        "remote": "https://github.com/mlpeschl/moral_rl.git",
+        "commit": "12b62fabb9f9f13a2b52fed1d8cd726f53041872"
+    },
+    "email": null,
+    "root": "/home/lechapelier/Documents/Stage M2/moral_rl",
+    "host": "fosterthepeople",
+    "username": "lechapelier",
+    "executable": "/usr/bin/python3"
+}

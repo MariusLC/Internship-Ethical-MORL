@@ -1,0 +1,28 @@
+
+Initializing and Normalizing Rewards...
+[W NNPACK.cpp:51] Could not initialize NNPACK! Reason: Unsupported hardware.
+Reward Normalization 0: -112.2203087956817
+  0%|                                                | 30/666666 [00:00<3:33:39, 52.00it/s]
+  0%|                                                | 72/666666 [00:01<3:25:20, 54.11it/s]/home/lechapelier/Documents/Stage M2/moral_rl/moral/ppo.py:49: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at  ../torch/csrc/utils/tensor_new.cpp:210.)
+  trajectory_states = torch.tensor(tau['states']).float().to(device)
+
+
+
+
+
+
+
+
+
+
+
+
+  0%|                                              | 739/666666 [01:42<25:37:46,  7.22it/s]
+Traceback (most recent call last):
+  File "/home/lechapelier/Documents/Stage M2/moral_rl/moral/moral_train_2.py", line 171, in <module>
+    update_policy(ppo, dataset, optimizer, config.gamma, config.epsilon, config.ppo_epochs,
+  File "/home/lechapelier/Documents/Stage M2/moral_rl/moral/ppo.py", line 125, in update_policy
+    action_log_probabilities, critic_values, action_entropy = ppo.evaluate_trajectory(tau)
+  File "/home/lechapelier/Documents/Stage M2/moral_rl/moral/ppo.py", line 49, in evaluate_trajectory
+    trajectory_states = torch.tensor(tau['states']).float().to(device)
+KeyboardInterrupt
