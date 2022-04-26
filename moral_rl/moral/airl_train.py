@@ -35,7 +35,7 @@ if __name__ == '__main__':
 
     # Load demonstrations
     #expert_trajectories = pickle.load(open('demonstrations/ppo_demos_v3_[0,1,0,1].pk', 'rb'))
-    exp_traj_file_name = 'demonstrations/ppo_demos_v'+str(args.env)+"_["
+    exp_traj_file_name = 'demonstrations/ppo_v'+str(args.env)+"_["
     for i in range(len(args.lambd)):
         exp_traj_file_name += str(args.lambd[i])+','
     exp_traj_file_name = exp_traj_file_name[:-1]

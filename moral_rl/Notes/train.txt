@@ -1,22 +1,9 @@
 notes sur les fichiers train :
 
 
-
-sur le readME : 
-
-There are four training scripts for
-
-    manually training a PPO agent on custom rewards (ppo_train.py),
-    training AIRL on a single expert dataset (airl_train.py),
-    active MORL with custom/automatic preferences (moral_train.py) and
-    training DRLHP with custom/automatic preferences (drlhp_train.py).
-
-When using automatic preferences, a desired ratio can be passed as an argument. For example,
-
-python moral_train.py --ratio a b c
-
-will run MORAL using a (real-valued) ratio of a:b:c among the three explicit objectives in Delivery.
-
+!!!!! QUESTION SUR LE MODELE
+Dans le fichier moral_train.py, ona accès directement aux politiques des agents ppo (les experts cachés de l'étpae d'AIRL) et non à leur démonstrations. Ils utilisent notamment leurs politiques pour calculer "l'utopie" (ligne 100). Il faut que je me renseigne sur ce que ce calcul fait et à quoi il correspond dans le modèle... On ne devrait pas avoir accès directement aux agents PPO !!
+!!!!!!!!!!!!
 
 
 Le fichier moral_train.py lance manuellement l'experience delivery avec les expert définis en dur, car ils import des fichiers précis des agents ppo précédement entrainés. 
@@ -36,15 +23,6 @@ Le fichier moral_train.py lance manuellement l'experience delivery avec les expe
  !!!!!!!!!!!!!!!!!!!!!!!!!!
  
  
- 
- 
- 
- README : 
-
-
-ppo_train.py
-apprendre des agents ppo avec des poids fixés manuelement : python3 -m moral.ppo_train --lambd 0 0 1 1 		| avec 0 0 1 1 les poids correspondant respectivement aux livraisons, humains sauvés, tuiles nettoyées et vases cassés.
-
 
 
 

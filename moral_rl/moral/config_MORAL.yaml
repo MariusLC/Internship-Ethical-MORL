@@ -1,12 +1,20 @@
 # SETTINGS MORL
 # it has to be : len(ppo_files) = len(discriminator_files) = len(ratio)-1
 
-data_path: "saved_models/"
-env: "v3"
+
+# Truc qui sont pas ammenés à changer
+model_path: "saved_models/"
+demo_path: "demonstrations/"
+model_ext: ".pt"
+demo_ext: ".pk"
 env_rad: "randomized_"
 ppo_filenames: "ppo_airl_"
 discriminator_filenames: "discriminator_"
-data_ext: ".pt"
+
+
+# Editable parameters
+env: "v3"
 nb_experts: 2
 experts_weights: ["_[0,1,0,1]", "_[0,0,1,1]"]
 ratio: [0, 1, 1]
+nbdemos: 1000

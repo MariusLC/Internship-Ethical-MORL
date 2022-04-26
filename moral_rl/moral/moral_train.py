@@ -199,10 +199,10 @@ if __name__ == '__main__':
 
 
         airl_rewards_list = []
-        for i in range(nb_experts):
-            airl_rewards_list.append(discriminator_list[i].forward(airl_state, airl_next_state, config.gamma).squeeze(1))
-        for i in range(nb_experts):
-            airl_rewards_list[i] = airl_rewards_list[i].detach().cpu().numpy() * [0 if i else 1 for i in done]
+        for j in range(nb_experts):
+            airl_rewards_list.append(discriminator_list[j].forward(airl_state, airl_next_state, config.gamma).squeeze(1))
+        for j in range(nb_experts):
+            airl_rewards_list[i] = airl_rewards_list[j].detach().cpu().numpy() * [0 if i else 1 for i in done]
 
         # airl_rewards_0 = discriminator_0.forward(airl_state, airl_next_state, config.gamma).squeeze(1)
         # airl_rewards_1 = discriminator_1.forward(airl_state, airl_next_state, config.gamma).squeeze(1)

@@ -57,7 +57,7 @@ if __name__ == '__main__':
 
     # Load Pretrained PPO
     ppo = PPO(state_shape=state_shape, n_actions=n_actions, in_channels=in_channels).to(device)
-    ppo.load_state_dict(torch.load('saved_models/ppo_v3_'+str(args.lambd)+'.pt', map_location=torch.device('cpu')))
+    ppo.load_state_dict(torch.load('saved_models/ppo_v'+args.env+'_'+str(args.lambd)+'.pt', map_location=torch.device('cpu')))
 
 
     for t in tqdm(range((max_steps-1)*n_demos)):
@@ -76,4 +76,4 @@ if __name__ == '__main__':
         states = next_states.copy()
         states_tensor = torch.tensor(states).float().to(device)
 
-    pickle.dump(dataset, open('demonstrations/ppo_demos_v3_'+str(args.lambd)+'.pk', 'wb'))
+    pickle.dump(dataset, open('demonstrations/ppo_v3_'+str(args.lambd)+'.pk', 'wb'))
