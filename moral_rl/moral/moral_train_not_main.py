@@ -34,7 +34,8 @@ def moral_train_n_experts(ratio, nb_experts, env, env_rad, lambd_list, ppo_filen
     wandb.init(project='MORAL', config={
         'env_id': env_id,
         'ratio': ratio,
-        'env_steps': 8e6,
+        #'env_steps': 8e6,
+        'env_steps': 100,
         'batchsize_ppo': 12,
         'n_queries': 50,
         'preference_noise': 0,

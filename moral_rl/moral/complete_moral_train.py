@@ -9,6 +9,8 @@ import torch
 from tqdm import tqdm
 import wandb
 import argparse
+import os
+import yaml
 
 
 # folder to load config file
@@ -34,6 +36,8 @@ if __name__ == '__main__':
     #PARAMS CONFIG
     nb_experts = config_yaml["nb_experts"]
     ratio = config_yaml["ratio"]
+    lambd_list = config_yaml["experts_weights"]
+    nb_demos = config_yaml["nb_demos"]
 
     # PATHS & NAMES
     model_path = config_yaml["model_path"]
@@ -44,7 +48,7 @@ if __name__ == '__main__':
     env_rad = config_yaml["env_rad"]
     ppo_filenames = config_yaml["ppo_filenames"]
     discriminator_filenames = config_yaml["discriminator_filenames"]
-    lambd_list = config_yaml["experts_weights"]
+    lambd_str_list = ["_"+str(w) for w in config_yaml["experts_weights"]]
     
 
 
@@ -53,14 +57,14 @@ if __name__ == '__main__':
 
 
     # TRAINING PPO AGENTS
-    ppo_train_n_experts(nb_experts, env, env_rad, lambd_list, ppo_filenames, model_path, model_ext):
+    ppo_train_n_experts(nb_experts, env, env_rad, lambd_list, lambd_str_list, ppo_filenames, model_path, model_ext)
 
     # GENERATING DEMONSTRATIONS FROM EXPERTS
-    generate_demos_n_experts(nb_experts, nb_demos, env, env_rad, lambd_list, ppo_filenames, demo_path, model_path, model_ext, demo_ext):
+    generate_demos_n_experts(nb_experts, nb_demos, env, env_rad, lambd_str_list, ppo_filenames, demo_path, model_path, model_ext, demo_ext)
 
     # ESTIMATING EXPERTS REWARD FUNCTIONS THROUGH AIRL BASED ON THEIR DEMONSTRATIONS
-    airl_train_n_experts(nb_experts, env, env_rad, lambd_list, ppo_filenames, discriminator_filenames, demo_path, model_path, model_ext, demo_ext):
+    airl_train_n_experts(nb_experts, env, env_rad, lambd_str_list, ppo_filenames, discriminator_filenames, demo_path, model_path, model_ext, demo_ext)
 
     # ESTIMATING MORL EXPERT'S WEIGTHS THROUGH MORAL
-    moral_train_n_experts(ratio, nb_experts, env, env_rad, lambd_list, ppo_filenames, discriminator_filenames, model_path, model_ext):
+    moral_train_n_experts(ratio, nb_experts, env, env_rad, lambd_str_list, ppo_filenames, discriminator_filenames, model_path, model_ext)
     # we shouldn't give acces to ppo_filename but demos instead ...

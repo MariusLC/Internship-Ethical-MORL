@@ -19,7 +19,7 @@ def airl_train_n_experts(nb_experts, env, env_rad, lambd_list, ppo_filenames, di
     for i in range(nb_experts):
         demos_filename = demo_path+ppo_filenames+env+lambd_list[i]+demo_ext
         discrim_filename = model_path+discriminator_filenames+env+lambd_list[i]+model_ext
-        ppo_train_1_expert(env_rad+env, demos_filename, discrim_filename)
+        airl_train_1_expert(env_rad+env, demos_filename, discrim_filename)
 
 
 
@@ -31,7 +31,8 @@ def airl_train_1_expert(env_id, demos_filename, discrim_filename):
     # Init WandB & Parameters
     wandb.init(project='AIRL', config={
         'env_id': env_id,
-        'env_steps': 6e6,
+        #'env_steps': 6e6,
+        'env_steps': 10,
         'batchsize_discriminator': 512,
         'batchsize_ppo': 12,
         'n_workers': 12,

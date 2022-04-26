@@ -14,11 +14,17 @@ def generate_demos_n_experts(nb_experts, nb_demos, env, env_rad, lambd_list, ppo
     for i in range(nb_experts):
         demos_filename = demo_path+ppo_filenames+env+lambd_list[i]+demo_ext
         ppo_filename = model_path+ppo_filenames+env+lambd_list[i]+model_ext
-        ppo_train_1_expert(nb_demos, env_rad+env, demos_filename, ppo_filename)
+        generate_demos_1_expert(nb_demos, env_rad+env, demos_filename, ppo_filename)
 
 
 
 def generate_demos_1_expert(nb_demos, env_id, demos_filename, ppo_filename):
+
+    max_steps = 0
+    if env_id == 'randomized_v2':
+        max_steps = max_steps_v2
+    else :
+        max_steps = max_steps_v3
 
     # Initialize Environment
     env = GymWrapper(env_id)

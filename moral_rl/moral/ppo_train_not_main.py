@@ -11,9 +11,9 @@ import argparse
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 
-def ppo_train_n_experts(nb_experts, env, env_rad, lambd_list, ppo_filenames, model_path, model_ext):
+def ppo_train_n_experts(nb_experts, env, env_rad, lambd_list, lambd_str_list, ppo_filenames, model_path, model_ext):
     for i in range(nb_experts):
-        filename = model_path+ppo_filenames+env+lambd_list[i]+model_ext
+        filename = model_path+ppo_filenames+env+lambd_str_list[i]+model_ext
         ppo_train_1_expert(env_rad+env, lambd_list[i], filename)
 
 

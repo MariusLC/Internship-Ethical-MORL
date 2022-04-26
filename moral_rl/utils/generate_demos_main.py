@@ -76,4 +76,4 @@ if __name__ == '__main__':
         states = next_states.copy()
         states_tensor = torch.tensor(states).float().to(device)
 
-    pickle.dump(dataset, open('demonstrations/ppo_v3_'+str(args.lambd)+'.pk', 'wb'))
+    pickle.dump(dataset, open('demonstrations/ppo_v'+args.env+'_'+str(args.lambd)+'.pk', 'wb'))

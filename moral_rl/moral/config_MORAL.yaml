@@ -8,13 +8,14 @@ demo_path: "demonstrations/"
 model_ext: ".pt"
 demo_ext: ".pk"
 env_rad: "randomized_"
-ppo_filenames: "ppo_airl_"
+ppo_filenames: "ppo_"
 discriminator_filenames: "discriminator_"
 
 
 # Editable parameters
 env: "v3"
 nb_experts: 2
-experts_weights: ["_[0,1,0,1]", "_[0,0,1,1]"]
+experts_weights: [[1,1,0,1], [0,1,1,1]]
 ratio: [0, 1, 1]
-nbdemos: 1000
+#nb_demos: 1000
+nb_demos: 100

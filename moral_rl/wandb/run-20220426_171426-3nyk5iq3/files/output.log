@@ -1,0 +1,17 @@
+  0%|                                                                                                                                                             | 0/83 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/complete_moral_train.py", line 58, in <module>
+    ppo_train_n_experts(nb_experts, env, env_rad, lambd_list, ppo_filenames, model_path, model_ext)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/ppo_train_not_main.py", line 17, in ppo_train_n_experts
+    ppo_train_1_expert(env_rad+env, lambd_list[i], filename)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/ppo_train_not_main.py", line 58, in ppo_train_1_expert
+    scalarized_rewards = [sum([config.lambd[i] * r[i] for i in range(len(r))]) for r in rewards]
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/ppo_train_not_main.py", line 58, in <listcomp>
+    scalarized_rewards = [sum([config.lambd[i] * r[i] for i in range(len(r))]) for r in rewards]
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/ppo_train_not_main.py", line 58, in <listcomp>
+    scalarized_rewards = [sum([config.lambd[i] * r[i] for i in range(len(r))]) for r in rewards]
+TypeError: can't multiply sequence by non-int of type 'numpy.float64'
