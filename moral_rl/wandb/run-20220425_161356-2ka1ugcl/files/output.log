@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/lechapelier/Documents/Stage M2/moral_rl/moral/airl_train.py", line 60, in <module>
+    vec_env = SubprocVecEnv([make_env(config.env_id, i) for i in range(config.n_workers)])
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 111, in __init__
+    observation_space, action_space = self.remotes[0].recv()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt

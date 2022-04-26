@@ -1,0 +1,11 @@
+ 86%|███████████████████████████████████▉      | 71/83 [00:01<00:00, 74.49it/s]/home/lechapelier/Documents/Stage M2/moral_rl/moral/ppo.py:49: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at  ../torch/csrc/utils/tensor_new.cpp:210.)
+  trajectory_states = torch.tensor(tau['states']).float().to(device)
+100%|██████████████████████████████████████████| 83/83 [00:11<00:00,  7.46it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/lechapelier/Documents/Stage M2/moral_rl/moral/ppo_train.py", line 85, in <module>
+    vec_env.close()
+AttributeError: 'VecEnv' object has no attribute 'close'

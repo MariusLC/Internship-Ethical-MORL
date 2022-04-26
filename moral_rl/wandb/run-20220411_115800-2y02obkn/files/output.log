@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/lechapelier/Documents/Stage M2/moral_rl/moral/moral_train.py", line 45, in <module>
+    vec_env = VecEnv(config.env_id, config.n_workers)
+  File "/home/lechapelier/Documents/Stage M2/moral_rl/envs/gym_wrapper.py", line 86, in __init__
+    self.env_list = [make_env(env_id, i, (int(str(time.time()).replace('.', '')[-8:]) + i))() for i in range(n_envs)]
+  File "/home/lechapelier/Documents/Stage M2/moral_rl/envs/gym_wrapper.py", line 86, in <listcomp>
+    self.env_list = [make_env(env_id, i, (int(str(time.time()).replace('.', '')[-8:]) + i))() for i in range(n_envs)]
+  File "/home/lechapelier/Documents/Stage M2/moral_rl/envs/gym_wrapper.py", line 77, in _init
+    env = GymWrapper(env_id)
+  File "/home/lechapelier/Documents/Stage M2/moral_rl/envs/gym_wrapper.py", line 44, in __init__
+    self.reset()
+  File "/home/lechapelier/Documents/Stage M2/moral_rl/envs/gym_wrapper.py", line 57, in reset
+    self.game = envs.randomized_v3.make_game()
+NameError: name 'envs' is not defined

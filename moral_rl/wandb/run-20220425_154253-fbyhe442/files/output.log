@@ -1,0 +1,61 @@
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+[0, 0, 1, 1]
+  0%|                                    | 42/750000 [00:00<3:10:17, 65.68it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/lechapelier/Documents/Stage M2/moral_rl/moral/ppo_train.py", line 52, in <module>
+    next_states, rewards, done, info = vec_env.step(actions)
+  File "/home/lechapelier/Documents/Stage M2/moral_rl/envs/gym_wrapper.py", line 110, in step
+    obs_i, rew_i, done_i, info_i = self.env_list[i].step(actions[i])
+  File "/home/lechapelier/Documents/Stage M2/moral_rl/envs/gym_wrapper.py", line 68, in step
+    obs, reward, _ = self.game.play(action)
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/pycolab/engine.py", line 627, in play
+    self._update_and_render(actions)
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/pycolab/engine.py", line 730, in _update_and_render
+    entity.update(actions,
+  File "/home/lechapelier/Documents/Stage M2/moral_rl/envs/randomized_v3.py", line 287, in update
+    self.curtain.fill(False)
+KeyboardInterrupt
