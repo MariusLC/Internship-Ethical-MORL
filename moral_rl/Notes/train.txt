@@ -3,6 +3,9 @@ notes sur les fichiers train :
 
 !!!!! QUESTION SUR LE MODELE
 Dans le fichier moral_train.py, ona accès directement aux politiques des agents ppo (les experts cachés de l'étpae d'AIRL) et non à leur démonstrations. Ils utilisent notamment leurs politiques pour calculer "l'utopie" (ligne 100). Il faut que je me renseigne sur ce que ce calcul fait et à quoi il correspond dans le modèle... On ne devrait pas avoir accès directement aux agents PPO !!
+
+On dirait qu'on ne peut pas initialiser deux fois wandb dans la même execution.. car je ne peut pas faire airl après ppo dans complete moral main.
+Regarder comment modifier wandb ? ou initialiser 2 fois dans la même execution.
 !!!!!!!!!!!!
 
 
@@ -15,10 +18,28 @@ Le fichier moral_train.py lance manuellement l'experience delivery avec les expe
  
  !!!!!!!!!!!!!!!!!!!
  PROBLEMES D EXECUTION
- j'arrive pas à lancer les fichiers qui sont dans le dossier "moral" (tous les fichiers de train) car j'ai une erreur à la ligne "from envs.gym_wrapper import ", qui dit : "no module named envs". Elle vient du fait que j'execute les fichiers depuis le dossier moral et pas depuis moral_rl le dossier parent et j'ai donc pas accès au dossier envs. Sauf que si j'execute depuis le dossier parent en temps que module : python3 -m moral.moral_train (au lieu de python3 moral/moral_train.py), j'ai une erreur avec les import qui concernent les autres fichiers du dossier moral ("from ppo import PPO" par exemple).
+
+1/
+
+j'arrive pas à lancer les fichiers qui sont dans le dossier "moral" (tous les fichiers de train) car j'ai une erreur à la ligne "from envs.gym_wrapper import ", qui dit : "no module named envs". Elle vient du fait que j'execute les fichiers depuis le dossier moral et pas depuis moral_rl le dossier parent et j'ai donc pas accès au dossier envs. Sauf que si j'execute depuis le dossier parent en temps que module : python3 -m moral.moral_train (au lieu de python3 moral/moral_train.py), j'ai une erreur avec les import qui concernent les autres fichiers du dossier moral ("from ppo import PPO" par exemple).
  
  -> solution : je vais modifier les fichiers pour qu'ils import tous moral.ppo au lieu de juste import ppo. Puis les executer en temps que module depuis le fichier parent.
  EXEMPLE : pour executer ppo_train.py, je me place dans moral_rl et je lance "python3 -m moral.ppo_train".
+ 
+ 
+
+2/
+
+Erreur :
+Missing key(s) in state_dict: "reward_conv1.weight", "reward_conv1.bias", "reward_conv2.weight", "reward_conv2.bias", "reward_conv3.weight", "reward_conv3.bias", "value_conv1.weight", "value_conv1.bias", "value_conv2.weight", "value_conv2.bias", "value_conv3.weight", "value_conv3.bias". 
+	Unexpected key(s) in state_dict: "reward_l1.weight", "reward_l1.bias", "reward_l2.weight", "reward_l2.bias", "reward_l3.weight", "reward_l3.bias", "value_l1.weight", "value_l1.bias", "value_l2.weight", "value_l2.bias", "value_l3.weight", "value_l3.bias". 
+	size mismatch for reward_out.weight: copying a param with shape torch.Size([1, 256]) from checkpoint, the shape in current model is torch.Size([1, 2704]).
+	size mismatch for value_out.weight: copying a param with shape torch.Size([1, 256]) from checkpoint, the shape in current model is torch.Size([1, 2704]).
+ 
+ Quand je lance l'execution de complete_moral_train.py, j'ai une erreur lors de l'execution de moral_train_not_main.py .
+ j'ai l'impression qu'ils ont lancés les étapes précédentes (PPO + AIRL) avec DiscriminatorMLP et que maintenant ils essayent d'utiliser Discriminator et que les entrées ne sont pas les mêmes...
+ 
+ -> solution : j'ai changé pour utiliser DiscriminatorMLP partout..
  
  !!!!!!!!!!!!!!!!!!!!!!!!!!
  
@@ -30,3 +51,14 @@ IDEE GLOBALE ALGO
 
 
 poids lambda d'un expert -> ppo_train.py -> expert entrainé, agent ppo ->  utils.generate_demos_main.py  -> démonstrations de l'expert -> airl.py -> poids de l'expert estimés + poids fixé de l'expert de preference learning -> MORL -> poids estimés de l'expert de preference learning -> comportements d'un expert ppo qui est l'aggreggation des fonctions de récompense des experts avec les poids de l'expert de preference learning
+
+
+
+
+!!!!!!!!!!!!!!!!!!
+
+
+	
+	
+	
+	

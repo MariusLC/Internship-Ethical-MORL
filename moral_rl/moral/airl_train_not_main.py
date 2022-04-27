@@ -29,18 +29,21 @@ def airl_train_1_expert(env_id, demos_filename, discrim_filename):
     expert_trajectories = pickle.load(open(demos_filename, 'rb'))
 
     # Init WandB & Parameters
-    wandb.init(project='AIRL', config={
-        'env_id': env_id,
-        #'env_steps': 6e6,
-        'env_steps': 10,
-        'batchsize_discriminator': 512,
-        'batchsize_ppo': 12,
-        'n_workers': 12,
-        'entropy_reg': 0,
-        'gamma': 0.999,
-        'epsilon': 0.1,
-        'ppo_epochs': 5
-    })
+    wandb.init(
+        project='AIRL',
+        config={
+            'env_id': env_id,
+            #'env_steps': 6e6,
+            'env_steps': 10,
+            'batchsize_discriminator': 512,
+            'batchsize_ppo': 12,
+            'n_workers': 12,
+            'entropy_reg': 0,
+            'gamma': 0.999,
+            'epsilon': 0.1,
+            'ppo_epochs': 5
+            }, 
+        reinit=True)
     config = wandb.config
 
     # Create Environment
@@ -90,6 +93,11 @@ def airl_train_1_expert(env_id, demos_filename, discrim_filename):
                 wandb.log({'Obj_' + str(i): objective_logs[:, i].mean()})
             objective_logs = []
 
+
+            ####### TEST IF wandb is the one initilized in ppo_train_not_main or the one in this file
+            print(config.lambd)
+            #######################
+
             # Update Models
             update_policy(ppo, dataset, optimizer, config.gamma, config.epsilon, config.ppo_epochs,
                           entropy_reg=config.entropy_reg)
@@ -113,4 +121,4 @@ def airl_train_1_expert(env_id, demos_filename, discrim_filename):
         states_tensor = torch.tensor(states).float().to(device)
 
     #vec_env.close()
-    torch.save(discriminator.state_dict(), model_filename)
+    torch.save(discriminator.state_dict(), discrim_filename)

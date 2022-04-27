@@ -26,26 +26,28 @@ def moral_train_n_experts(ratio, nb_experts, env, env_rad, lambd_list, ppo_filen
     list_discrim_filenames = []
     for i in range(nb_experts):
         list_ppo_filenames.append(model_path+ppo_filenames+env+lambd_list[i]+model_ext)
-        list_discrim_filename.append(model_path+discriminator_filenames+env+lambd_list[i]+model_ext)
+        list_discrim_filenames.append(model_path+discriminator_filenames+env+lambd_list[i]+model_ext)
         
 
 
     # Config
-    wandb.init(project='MORAL', config={
-        'env_id': env_id,
-        'ratio': ratio,
-        #'env_steps': 8e6,
-        'env_steps': 100,
-        'batchsize_ppo': 12,
-        'n_queries': 50,
-        'preference_noise': 0,
-        'n_workers': 12,
-        'lr_ppo': 3e-4,
-        'entropy_reg': 0.25,
-        'gamma': 0.999,
-        'epsilon': 0.1,
-        'ppo_epochs': 5
-    })
+    wandb.init(
+        project='MORAL',
+        config={
+            'env_id': env_rad+env,
+            'ratio': ratio,
+            #'env_steps': 8e6,
+            'env_steps': 100,
+            'batchsize_ppo': 12,
+            'n_queries': 50,
+            'preference_noise': 0,
+            'n_workers': 12,
+            'lr_ppo': 3e-4,
+            'entropy_reg': 0.25,
+            'gamma': 0.999,
+            'epsilon': 0.1,
+            'ppo_epochs': 5},
+        reinit=True)
     config = wandb.config
     env_steps = int(config.env_steps/config.n_workers)
     query_freq = int(env_steps/(config.n_queries+2))
@@ -73,13 +75,21 @@ def moral_train_n_experts(ratio, nb_experts, env, env_rad, lambd_list, ppo_filen
     ppo_list = []
     utop_list = []
     for i in range(nb_experts):
-        discriminator_list.append(Discriminator(state_shape=state_shape, in_channels=in_channels).to(device))
-        discriminator_list[-1].load_state_dict(torch.load(list_discriminator_filenames[i], map_location=torch.device('cpu')))
+        ### Code de base
+        #discriminator_list.append(Discriminator(state_shape=state_shape, in_channels=in_channels).to(device))
+        ### Changement :
+        discriminator_list.append(DiscriminatorMLP(state_shape=state_shape, in_channels=in_channels).to(device))
+        print(list_discrim_filenames[i])
+        print(vec_env.observation_space.shape)
+        print(state_shape)
+        print(state_shape[0])
+        print( 16*(state_shape[0]-3)*(state_shape[1]-3))
+        discriminator_list[i].load_state_dict(torch.load(list_discrim_filenames[i], map_location=torch.device('cpu')))
         ppo_list.append(PPO(state_shape=state_shape, in_channels=in_channels, n_actions=n_actions).to(device))
-        ppo_list[-1].load_state_dict(torch.load(list_ppo_filenames[i], map_location=torch.device('cpu')))
-        utop_list.append(discriminator_list[-1].estimate_utopia(ppo_list[-1], config))
-        print(f'Reward Normalization 0: {utop_list[-1]}')
-        discriminator_list[-1].set_eval()
+        ppo_list[i].load_state_dict(torch.load(list_ppo_filenames[i], map_location=torch.device('cpu')))
+        utop_list.append(discriminator_list[i].estimate_utopia(ppo_list[i], config))
+        print(f'Reward Normalization 0: {utop_list[i]}')
+        discriminator_list[i].set_eval()
 
 
 

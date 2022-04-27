@@ -1,0 +1,308 @@
+2022-04-27 14:59:24,532 INFO    MainThread:19774 [internal.py:wandb_internal():92] W&B internal server running at pid: 19774, started at: 2022-04-27 14:59:24.531407
+2022-04-27 14:59:24,535 INFO    WriterThread:19774 [datastore.py:open_for_write():77] open: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/run-3qq8c1un.wandb
+2022-04-27 14:59:24,538 DEBUG   SenderThread:19774 [sender.py:send():235] send: header
+2022-04-27 14:59:24,538 DEBUG   SenderThread:19774 [sender.py:send():235] send: run
+2022-04-27 14:59:24,785 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: check_version
+2022-04-27 14:59:24,788 INFO    SenderThread:19774 [dir_watcher.py:__init__():169] watching files in: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files
+2022-04-27 14:59:24,789 INFO    SenderThread:19774 [sender.py:_start_run_threads():812] run started: 3qq8c1un with start time 1651064362
+2022-04-27 14:59:24,789 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:24,791 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:24,791 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: check_version
+2022-04-27 14:59:24,843 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: run_start
+2022-04-27 14:59:24,849 DEBUG   HandlerThread:19774 [meta.py:__init__():37] meta init
+2022-04-27 14:59:24,849 DEBUG   HandlerThread:19774 [meta.py:__init__():51] meta init done
+2022-04-27 14:59:24,849 DEBUG   HandlerThread:19774 [meta.py:probe():211] probe
+2022-04-27 14:59:24,858 DEBUG   HandlerThread:19774 [meta.py:_setup_git():201] setup git
+2022-04-27 14:59:24,902 DEBUG   HandlerThread:19774 [meta.py:_setup_git():208] setup git done
+2022-04-27 14:59:24,902 DEBUG   HandlerThread:19774 [meta.py:_save_pip():55] save pip
+2022-04-27 14:59:24,905 DEBUG   HandlerThread:19774 [meta.py:_save_pip():69] save pip done
+2022-04-27 14:59:24,905 DEBUG   HandlerThread:19774 [meta.py:probe():249] probe done
+2022-04-27 14:59:24,919 DEBUG   SenderThread:19774 [sender.py:send():235] send: files
+2022-04-27 14:59:24,920 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-metadata.json with policy now
+2022-04-27 14:59:24,932 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: stop_status
+2022-04-27 14:59:24,932 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: stop_status
+2022-04-27 14:59:25,075 DEBUG   SenderThread:19774 [sender.py:send():235] send: telemetry
+2022-04-27 14:59:25,472 INFO    Thread-11 :19774 [upload_job.py:push():137] Uploaded file /tmp/tmpkhow07_qwandb/msaey56m-wandb-metadata.json
+2022-04-27 14:59:25,791 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_created():217] file/dir created: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/output.log
+2022-04-27 14:59:25,791 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_created():217] file/dir created: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/wandb-summary.json
+2022-04-27 14:59:25,791 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_created():217] file/dir created: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/requirements.txt
+2022-04-27 14:59:25,792 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_created():217] file/dir created: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/wandb-metadata.json
+2022-04-27 14:59:27,791 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/output.log
+2022-04-27 14:59:35,875 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:35,877 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:35,877 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:35,878 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:35,878 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:35,880 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:35,882 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:35,883 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:35,883 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:35,884 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:35,884 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:35,885 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:35,885 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:35,885 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:35,886 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:35,886 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:35,886 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:35,887 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:35,888 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:35,888 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:35,889 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:35,900 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:35,901 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:35,901 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:35,903 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:35,903 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:35,903 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:35,905 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:35,905 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:35,905 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:35,906 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:35,907 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:35,907 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:35,908 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:35,908 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:35,908 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:35,910 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:35,910 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:35,910 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:35,912 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:35,912 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:35,912 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:35,914 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:35,914 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:35,914 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:35,916 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:35,916 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:35,916 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:35,918 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:35,918 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:35,918 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:35,920 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:35,920 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:35,921 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:35,922 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:35,923 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:35,923 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:35,924 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:35,925 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:35,925 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:35,926 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:35,926 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:35,927 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:35,928 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:36,013 DEBUG   SenderThread:19774 [sender.py:send():235] send: telemetry
+2022-04-27 14:59:36,800 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/wandb-summary.json
+2022-04-27 14:59:37,800 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/output.log
+2022-04-27 14:59:39,803 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/output.log
+2022-04-27 14:59:40,076 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: stop_status
+2022-04-27 14:59:40,076 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: stop_status
+2022-04-27 14:59:46,606 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:46,607 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:46,607 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:46,608 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:46,608 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:46,610 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:46,612 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:46,612 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:46,613 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:46,614 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:46,614 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:46,615 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:46,615 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:46,615 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:46,616 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:46,616 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:46,616 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:46,617 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:46,618 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:46,618 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:46,618 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 14:59:46,620 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:46,620 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:46,620 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:46,622 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:46,622 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:46,622 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:46,623 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:46,623 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:46,624 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:46,625 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:46,626 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:46,626 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:46,648 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:46,648 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:46,648 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:46,650 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:46,650 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:46,650 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:46,652 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:46,652 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:46,652 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:46,654 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:46,654 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:46,655 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:46,657 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:46,657 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:46,657 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:46,659 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:46,659 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:46,659 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:46,661 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:46,661 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:46,661 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:46,663 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:46,663 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:46,663 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:46,664 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:46,665 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:46,665 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:46,675 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:46,675 DEBUG   SenderThread:19774 [sender.py:send():235] send: history
+2022-04-27 14:59:46,675 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 14:59:46,677 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 14:59:46,808 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/wandb-summary.json
+2022-04-27 14:59:49,811 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/output.log
+2022-04-27 14:59:51,813 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/output.log
+2022-04-27 14:59:52,919 DEBUG   SenderThread:19774 [sender.py:send():235] send: stats
+2022-04-27 14:59:53,814 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/output.log
+2022-04-27 14:59:55,214 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: stop_status
+2022-04-27 14:59:55,215 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: stop_status
+2022-04-27 14:59:55,816 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/output.log
+2022-04-27 14:59:55,817 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/config.yaml
+2022-04-27 14:59:57,818 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/output.log
+2022-04-27 14:59:59,820 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/output.log
+2022-04-27 15:00:01,822 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/output.log
+2022-04-27 15:00:03,823 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/output.log
+2022-04-27 15:00:05,825 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/output.log
+2022-04-27 15:00:07,827 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/output.log
+2022-04-27 15:00:09,829 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/output.log
+2022-04-27 15:00:10,351 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: stop_status
+2022-04-27 15:00:10,351 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: stop_status
+2022-04-27 15:00:11,831 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/output.log
+2022-04-27 15:00:13,832 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/output.log
+2022-04-27 15:00:14,890 DEBUG   SenderThread:19774 [sender.py:send():235] send: telemetry
+2022-04-27 15:00:14,891 DEBUG   SenderThread:19774 [sender.py:send():235] send: telemetry
+2022-04-27 15:00:15,836 INFO    Thread-7  :19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/output.log
+2022-04-27 15:00:17,226 DEBUG   SenderThread:19774 [sender.py:send():235] send: exit
+2022-04-27 15:00:17,226 INFO    SenderThread:19774 [sender.py:send_exit():371] handling exit code: 0
+2022-04-27 15:00:17,227 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-27 15:00:17,227 INFO    SenderThread:19774 [sender.py:send_exit():373] handling runtime: 52
+2022-04-27 15:00:17,232 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 15:00:17,232 INFO    SenderThread:19774 [sender.py:send_exit():379] send defer
+2022-04-27 15:00:17,233 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: poll_exit
+2022-04-27 15:00:17,234 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: defer
+2022-04-27 15:00:17,234 INFO    HandlerThread:19774 [handler.py:handle_request_defer():164] handle defer: 0
+2022-04-27 15:00:17,235 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: defer
+2022-04-27 15:00:17,235 INFO    SenderThread:19774 [sender.py:send_request_defer():388] handle sender defer: 0
+2022-04-27 15:00:17,235 INFO    SenderThread:19774 [sender.py:transition_state():392] send defer: 1
+2022-04-27 15:00:17,236 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: defer
+2022-04-27 15:00:17,236 INFO    HandlerThread:19774 [handler.py:handle_request_defer():164] handle defer: 1
+2022-04-27 15:00:17,269 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: defer
+2022-04-27 15:00:17,269 INFO    SenderThread:19774 [sender.py:send_request_defer():388] handle sender defer: 1
+2022-04-27 15:00:17,269 INFO    SenderThread:19774 [sender.py:transition_state():392] send defer: 2
+2022-04-27 15:00:17,270 DEBUG   SenderThread:19774 [sender.py:send():235] send: stats
+2022-04-27 15:00:17,271 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: defer
+2022-04-27 15:00:17,271 INFO    HandlerThread:19774 [handler.py:handle_request_defer():164] handle defer: 2
+2022-04-27 15:00:17,271 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: defer
+2022-04-27 15:00:17,271 INFO    SenderThread:19774 [sender.py:send_request_defer():388] handle sender defer: 2
+2022-04-27 15:00:17,272 INFO    SenderThread:19774 [sender.py:transition_state():392] send defer: 3
+2022-04-27 15:00:17,272 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: defer
+2022-04-27 15:00:17,272 INFO    HandlerThread:19774 [handler.py:handle_request_defer():164] handle defer: 3
+2022-04-27 15:00:17,273 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: defer
+2022-04-27 15:00:17,273 INFO    SenderThread:19774 [sender.py:send_request_defer():388] handle sender defer: 3
+2022-04-27 15:00:17,273 INFO    SenderThread:19774 [sender.py:transition_state():392] send defer: 4
+2022-04-27 15:00:17,273 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: defer
+2022-04-27 15:00:17,274 INFO    HandlerThread:19774 [handler.py:handle_request_defer():164] handle defer: 4
+2022-04-27 15:00:17,274 DEBUG   SenderThread:19774 [sender.py:send():235] send: summary
+2022-04-27 15:00:17,277 INFO    SenderThread:19774 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-27 15:00:17,277 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: defer
+2022-04-27 15:00:17,277 INFO    SenderThread:19774 [sender.py:send_request_defer():388] handle sender defer: 4
+2022-04-27 15:00:17,277 INFO    SenderThread:19774 [sender.py:transition_state():392] send defer: 5
+2022-04-27 15:00:17,278 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: defer
+2022-04-27 15:00:17,278 INFO    HandlerThread:19774 [handler.py:handle_request_defer():164] handle defer: 5
+2022-04-27 15:00:17,278 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: defer
+2022-04-27 15:00:17,279 INFO    SenderThread:19774 [sender.py:send_request_defer():388] handle sender defer: 5
+2022-04-27 15:00:17,336 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-27 15:00:17,493 INFO    SenderThread:19774 [sender.py:transition_state():392] send defer: 6
+2022-04-27 15:00:17,493 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: poll_exit
+2022-04-27 15:00:17,494 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: defer
+2022-04-27 15:00:17,494 INFO    HandlerThread:19774 [handler.py:handle_request_defer():164] handle defer: 6
+2022-04-27 15:00:17,495 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: defer
+2022-04-27 15:00:17,495 INFO    SenderThread:19774 [sender.py:send_request_defer():388] handle sender defer: 6
+2022-04-27 15:00:17,495 INFO    SenderThread:19774 [dir_watcher.py:finish():283] shutting down directory watcher
+2022-04-27 15:00:17,597 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-27 15:00:17,838 INFO    SenderThread:19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/output.log
+2022-04-27 15:00:17,839 INFO    SenderThread:19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/config.yaml
+2022-04-27 15:00:17,839 INFO    SenderThread:19774 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/wandb-summary.json
+2022-04-27 15:00:17,840 INFO    SenderThread:19774 [dir_watcher.py:finish():313] scan: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files
+2022-04-27 15:00:17,841 INFO    SenderThread:19774 [dir_watcher.py:finish():327] scan save: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/output.log output.log
+2022-04-27 15:00:17,841 INFO    SenderThread:19774 [dir_watcher.py:finish():327] scan save: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/wandb-metadata.json wandb-metadata.json
+2022-04-27 15:00:17,842 INFO    SenderThread:19774 [dir_watcher.py:finish():327] scan save: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/requirements.txt requirements.txt
+2022-04-27 15:00:17,849 INFO    SenderThread:19774 [dir_watcher.py:finish():327] scan save: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/wandb-summary.json wandb-summary.json
+2022-04-27 15:00:17,850 INFO    SenderThread:19774 [dir_watcher.py:finish():327] scan save: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/config.yaml config.yaml
+2022-04-27 15:00:17,864 INFO    SenderThread:19774 [sender.py:transition_state():392] send defer: 7
+2022-04-27 15:00:17,864 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: poll_exit
+2022-04-27 15:00:17,868 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: defer
+2022-04-27 15:00:17,868 INFO    HandlerThread:19774 [handler.py:handle_request_defer():164] handle defer: 7
+2022-04-27 15:00:17,872 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: defer
+2022-04-27 15:00:17,873 INFO    SenderThread:19774 [sender.py:send_request_defer():388] handle sender defer: 7
+2022-04-27 15:00:17,873 INFO    SenderThread:19774 [file_pusher.py:finish():145] shutting down file pusher
+2022-04-27 15:00:17,969 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-27 15:00:17,970 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: poll_exit
+2022-04-27 15:00:18,072 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-27 15:00:18,073 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: poll_exit
+2022-04-27 15:00:18,175 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-27 15:00:18,176 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: poll_exit
+2022-04-27 15:00:18,278 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-27 15:00:18,279 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: poll_exit
+2022-04-27 15:00:18,381 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-27 15:00:18,382 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: poll_exit
+2022-04-27 15:00:18,463 INFO    Thread-14 :19774 [upload_job.py:push():137] Uploaded file /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/wandb-summary.json
+2022-04-27 15:00:18,477 INFO    Thread-15 :19774 [upload_job.py:push():137] Uploaded file /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/config.yaml
+2022-04-27 15:00:18,484 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-27 15:00:18,484 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: poll_exit
+2022-04-27 15:00:18,586 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-27 15:00:18,586 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: poll_exit
+2022-04-27 15:00:18,690 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-27 15:00:18,690 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: poll_exit
+2022-04-27 15:00:18,767 INFO    Thread-13 :19774 [upload_job.py:push():137] Uploaded file /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/requirements.txt
+2022-04-27 15:00:18,792 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-27 15:00:18,793 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: poll_exit
+2022-04-27 15:00:18,845 INFO    Thread-12 :19774 [upload_job.py:push():137] Uploaded file /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/files/output.log
+2022-04-27 15:00:18,895 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-27 15:00:18,895 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: poll_exit
+2022-04-27 15:00:18,997 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-27 15:00:18,998 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: poll_exit
+2022-04-27 15:00:19,046 INFO    Thread-6  :19774 [sender.py:transition_state():392] send defer: 8
+2022-04-27 15:00:19,047 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: defer
+2022-04-27 15:00:19,047 INFO    HandlerThread:19774 [handler.py:handle_request_defer():164] handle defer: 8
+2022-04-27 15:00:19,047 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: defer
+2022-04-27 15:00:19,048 INFO    SenderThread:19774 [sender.py:send_request_defer():388] handle sender defer: 8
+2022-04-27 15:00:19,101 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-27 15:00:19,482 INFO    SenderThread:19774 [sender.py:transition_state():392] send defer: 9
+2022-04-27 15:00:19,482 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: poll_exit
+2022-04-27 15:00:19,484 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: defer
+2022-04-27 15:00:19,484 INFO    HandlerThread:19774 [handler.py:handle_request_defer():164] handle defer: 9
+2022-04-27 15:00:19,484 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: defer
+2022-04-27 15:00:19,485 INFO    SenderThread:19774 [sender.py:send_request_defer():388] handle sender defer: 9
+2022-04-27 15:00:19,485 INFO    SenderThread:19774 [sender.py:transition_state():392] send defer: 10
+2022-04-27 15:00:19,486 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: defer
+2022-04-27 15:00:19,487 INFO    HandlerThread:19774 [handler.py:handle_request_defer():164] handle defer: 10
+2022-04-27 15:00:19,487 DEBUG   SenderThread:19774 [sender.py:send():235] send: final
+2022-04-27 15:00:19,488 DEBUG   SenderThread:19774 [sender.py:send():235] send: footer
+2022-04-27 15:00:19,488 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: defer
+2022-04-27 15:00:19,488 INFO    SenderThread:19774 [sender.py:send_request_defer():388] handle sender defer: 10
+2022-04-27 15:00:19,585 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: poll_exit
+2022-04-27 15:00:19,586 DEBUG   SenderThread:19774 [sender.py:send_request():249] send_request: poll_exit
+2022-04-27 15:00:19,586 INFO    SenderThread:19774 [file_pusher.py:join():150] waiting for file pusher
+2022-04-27 15:00:19,992 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: sampled_history
+2022-04-27 15:00:19,994 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: get_summary
+2022-04-27 15:00:19,996 DEBUG   HandlerThread:19774 [handler.py:handle_request():141] handle_request: shutdown
+2022-04-27 15:00:19,996 INFO    HandlerThread:19774 [handler.py:finish():790] shutting down handler
+2022-04-27 15:00:20,487 INFO    WriterThread:19774 [datastore.py:close():281] close: /home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/wandb/run-20220427_145922-3qq8c1un/run-3qq8c1un.wandb
+2022-04-27 15:00:20,890 INFO    SenderThread:19774 [sender.py:finish():1107] shutting down sender
+2022-04-27 15:00:20,890 INFO    SenderThread:19774 [file_pusher.py:finish():145] shutting down file pusher
+2022-04-27 15:00:20,890 INFO    SenderThread:19774 [file_pusher.py:join():150] waiting for file pusher
+2022-04-27 15:00:20,893 INFO    MainThread:19774 [internal.py:handle_exit():82] Internal process exited

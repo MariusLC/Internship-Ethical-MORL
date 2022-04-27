@@ -1,0 +1,25 @@
+0it [00:00, ?it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/complete_moral_train.py", line 66, in <module>
+    airl_train_n_experts(nb_experts, env, env_rad, lambd_str_list, ppo_filenames, discriminator_filenames, demo_path, model_path, model_ext, demo_ext)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/airl_train_not_main.py", line 22, in airl_train_n_experts
+    airl_train_1_expert(env_rad+env, demos_filename, discrim_filename)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/airl_train_not_main.py", line 124, in airl_train_1_expert
+    torch.save(discriminator.state_dict(), model_filename)
+NameError: name 'model_filename' is not defined
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/complete_moral_train.py", line 66, in <module>
+    airl_train_n_experts(nb_experts, env, env_rad, lambd_str_list, ppo_filenames, discriminator_filenames, demo_path, model_path, model_ext, demo_ext)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/airl_train_not_main.py", line 22, in airl_train_n_experts
+    airl_train_1_expert(env_rad+env, demos_filename, discrim_filename)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/airl_train_not_main.py", line 124, in airl_train_1_expert
+    torch.save(discriminator.state_dict(), model_filename)
+NameError: name 'model_filename' is not defined

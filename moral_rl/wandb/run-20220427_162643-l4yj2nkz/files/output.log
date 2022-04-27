@@ -1,0 +1,54 @@
+Initializing and Normalizing Rewards...
+saved_models/discriminator_v3_[1, 1, 0, 1].pt
+(16, 16, 6)
+(16, 16)
+16
+2704
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/complete_moral_train.py", line 69, in <module>
+    moral_train_n_experts(ratio, nb_experts, env, env_rad, lambd_str_list, ppo_filenames, discriminator_filenames, model_path, model_ext)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/moral_train_not_main.py", line 90, in moral_train_n_experts
+    utop_list.append(discriminator_list[i].estimate_utopia(ppo_list[i], config))
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'DiscriminatorMLP' object has no attribute 'estimate_utopia'
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/complete_moral_train.py", line 69, in <module>
+    moral_train_n_experts(ratio, nb_experts, env, env_rad, lambd_str_list, ppo_filenames, discriminator_filenames, model_path, model_ext)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/moral_train_not_main.py", line 90, in moral_train_n_experts
+    utop_list.append(discriminator_list[i].estimate_utopia(ppo_list[i], config))
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'DiscriminatorMLP' object has no attribute 'estimate_utopia'
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/complete_moral_train.py", line 69, in <module>
+    moral_train_n_experts(ratio, nb_experts, env, env_rad, lambd_str_list, ppo_filenames, discriminator_filenames, model_path, model_ext)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/moral_train_not_main.py", line 90, in moral_train_n_experts
+    utop_list.append(discriminator_list[i].estimate_utopia(ppo_list[i], config))
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'DiscriminatorMLP' object has no attribute 'estimate_utopia'
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/complete_moral_train.py", line 69, in <module>
+    moral_train_n_experts(ratio, nb_experts, env, env_rad, lambd_str_list, ppo_filenames, discriminator_filenames, model_path, model_ext)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/moral_train_not_main.py", line 90, in moral_train_n_experts
+    utop_list.append(discriminator_list[i].estimate_utopia(ppo_list[i], config))
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1185, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'DiscriminatorMLP' object has no attribute 'estimate_utopia'

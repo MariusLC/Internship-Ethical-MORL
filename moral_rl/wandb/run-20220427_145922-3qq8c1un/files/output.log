@@ -1,0 +1,20 @@
+ 86%|██████████████████████████████████████████████▏       | 71/83 [00:01<00:00, 73.88it/s]/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/ppo.py:49: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at  ../torch/csrc/utils/tensor_new.cpp:210.)
+  trajectory_states = torch.tensor(tau['states']).float().to(device)
+100%|██████████████████████████████████████████████████████| 83/83 [00:10<00:00,  7.57it/s]
+
+100%|██████████████████████████████████████████████████████| 83/83 [00:10<00:00,  7.78it/s]
+  0%|                                                             | 0/7400 [00:00<?, ?it/s][W NNPACK.cpp:51] Could not initialize NNPACK! Reason: Unsupported hardware.
+
+
+
+
+
+
+100%|█████████████████████████████████████████████████| 7400/7400 [00:13<00:00, 555.20it/s]
+
+
+
+
+
+
+100%|█████████████████████████████████████████████████| 7400/7400 [00:13<00:00, 557.19it/s]
