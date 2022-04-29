@@ -8,3 +8,16 @@ sprites = dico des éléments personnages (typiquement le joueur)
 drapes = dico des autres éléments (typiquement les objets ou pnj)
 
 chaque sprite ou drape doit avoir sa propre class avec une fonction d'updates (si la frame est 0 on instancie le rendeur de la classe) et d'initialisation.
+
+
+
+
+
+
+wandb                      0.12.14
+tqdm                       4.57.0
+numpy                      1.19.5
+scipy                      1.6.0
+pycolab                    1.2
+
+gym                        0.21.0
