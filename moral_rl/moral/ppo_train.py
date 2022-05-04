@@ -66,6 +66,7 @@ if __name__ == '__main__':
     for t in tqdm(range(int(config.env_steps / config.n_workers))):
         actions, log_probs = ppo.act(states_tensor)
         next_states, rewards, done, info = vec_env.step(actions)
+        # print("len r = ",len(rewards[0]))
         scalarized_rewards = [sum([config.lambd[i] * r[i] for i in range(len(r))]) for r in rewards]
 
         train_ready = dataset.write_tuple(states, actions, scalarized_rewards, done, log_probs, rewards)
@@ -73,6 +74,7 @@ if __name__ == '__main__':
         if train_ready:
             update_policy(ppo, dataset, optimizer, config.gamma, config.epsilon, config.ppo_epochs,
                           entropy_reg=config.entropy_reg)
+            print("\n\n  UPDATe  ")
             objective_logs = dataset.log_objectives()
             for i in range(objective_logs.shape[1]):
                 wandb.log({'Obj_' + str(i): objective_logs[:, i].mean()})
@@ -85,4 +87,4 @@ if __name__ == '__main__':
         states_tensor = torch.tensor(states).float().to(device)
 
     #vec_env.close()
-    torch.save(ppo.state_dict(), 'saved_models/ppo_v'+args.env+'_' + str(config.lambd) + '.pt')
+    torch.save(ppo.state_dict(), 'saved_models/TEST_ppo_v'+str(args.env)+'_' + str(config.lambd) + '.pt')

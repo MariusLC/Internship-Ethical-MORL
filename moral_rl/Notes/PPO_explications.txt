@@ -1,0 +1,120 @@
+PPO :
+
+#########
+PRESENTATION ALGO PAR OPENAI
+
+On veut faire une descente de gradient sur la fonction de reward du RL en prenant le plus grand step possible à chaque update, sans que le step soit trop grand et change trop la nouvelle politique vis-à-vis de l'ancienne (cela peut provoquer beaucoup de bruit (insensitivness) au cours de l'appentissage).
+
+La méthode utilisée par OpenAI est de cliper le changement de probabilité d'une paire état-action entre la nouvelle et l'ancienne politique selon un hyperparamètre epsilon. C'est à dire que la nouvelle probabilité peut être plus petite (plus grande) d'un maximum de epsilon (espilon souvent égal à 0.1 ou 0.2).
+-> c'est pas vraiment cliper le changement car il se fait par descente de gradient, c'est plutôt cliper les valeurs de la loss fonction pour que sa dérivée (gradient) ne parte pas trop n'importe comment
+
+
+#########
+RAPIDE EXPLICATION
+On compute un certain nombre de step dans l'environnements (ex: 8000), on collecte les trajectoires (states, actions, values, rewards etc..) qui correspondent à ces steps. Puis on update la politique un certain nombre de fois en calculant et computant le gradient (early stopping si kl divergence trop élevée) (c'est comme dans la vidéo sur yt, on marche vite dans une direction approximée en prenant plusieurs pas, c'est pas opti mais bcp plus rapide)
+
+
+
+##################################################################################
+EXPLICATION UPDATE POLITIQUE/DESCENTE DE GRADIENT :
+on construit deux fonctions de loss une pour la politique (theta, actor) de l'agent, et une pour la value function (phi, critic), on les additionne pour faire une fonction de loss unique. On compute backward() sur cette fonction de loss, ce qui va calculer le gradient de chaque weight et bias du réseau de neurone pour la fonction de loss. On va ensuite update les weight et bias en appliquant un step de descente de gradient avec la fonction optimizer.step() (l'optimizer est adam).
+https://spinningup.openai.com/en/latest/algorithms/ppo.html
+
+##################################################################################
+
+
+
+########
+architecture du nn du PPO utilisé dans l'article :
+
+Actor layers : output size = n_actions donc l'output est bien une action dans un état donnée
+Critic layers : output size = 1 donc l'output est bien la valeure estimée de récompense dans l'état courant
+
+
+
+###############
+EXPLICATION FONCTIONS ET FONCTIONNEMENT DE L'UPDATE DE LA POLITIQUE DE LEUR PPO :
+
+
+fonctions :
+
+act = tire une action au hasard selon les probabilités de choisir les actions définies par la politique actuelle de l'agent ppo.
+
+write_tuple = Sert à construire les trajectoires. Appelée après avoir fait un step dans l'environnement, elle stocke toutes les infos (action, état, reward, observations etc) dans un buffer jusqu'à qu'un état final soit atteint. Elle stocke alors une trajectoire complète et reset son buffer.
+
+gclip = fonction qui clip le changement de proba d'une paire état-action entre la nouvelle et l'ancienne politique.
+
+likelihood_ratios = le ratio pi(theta)/pi(theta_k) sauf qu'on a pris l'exp du log : exp(log(pi(theta))/log(pi(theta_k)))
+-> le likelihood ratio entre la politique à l'époch 0 et celle à l'époque k courante. (la log probabilité de la politique actuelle de prendre telle action vs la log proba de la politique de l'epoch 0 de prendre telle action)
+
+clipped_loss = la fonction exact décrite dans https://spinningup.openai.com/en/latest/algorithms/ppo.html, sauf qu'on a pris le likelihood_ratios plutot que le ration simple.
+
+reward_togo = l'accumulation des rewards discountés par gamma le long d'une trajectoire
+
+returns = l'array qui correspond aux rewards_togo pour chaque état (la cellule 0 correspond à la value de l'état de départ etc).
+
+advantages = Q_function(s, a) - V_function(s), autrement dit, c'est "l'avantage" de prendre telle action dans tel état par rapprort aux autre actions possibles, et ce le long de la trajectoire. Si l'action est positive par rapport aux autres actions, l'avantage sera positif, sinon il sera négatif. 
+advantages = soustraction des valeure de récompense prédites pour une trajectoire (critic_values) aux valeures réellement collectées (returns)
+
+batch_loss = loss de la politique (l'équation 1 dans l'algo de : https://spinningup.openai.com/en/latest/algorithms/ppo.html
+value_loss = loss de la value function (l'équation 2 dans l'algo de : https://spinningup.openai.com/en/latest/algorithms/ppo.html
+
+-> Pourquoi calculer une overall loss et faire une backprop sur le nn pour cette overall loss ? plutot qu'avoir deux nn avec un pour l'acteur et l'autre pour le critic ? Avec cette backprop sur l'overall loss, à la fois l'actor et critic vont être maj avec les loss des deux pas indépendamment ?
+
+
+update_policy = appelée pour modifier la politique lorsque l'on a collecté suffisamment de trajectoires. La fonction calcule le reward discounted (reward_togo & returns) perçu lors de toutes les trajectoires, ainsi que le reward prédit par la value function (critic_value). Calcule ensuite l'advantage (reward perçu - reward prédit, Q - V), puis la vraissemblance (likelihood) des probabilités des actions le long de la trajectoire. Ces valeurs vont premettre de calculer les loss functions de la politique (theta, Q function) et de la value function (phi, V function) (les 2 équation de l'algo ppo de : https://spinningup.openai.com/en/latest/algorithms/ppo.html). On fait ces étapes pour toutes les trajectoires, puis on calcule la loss global (overall loss) qui nous permet de calculer et appliquer nos gradient avec la backprop des fonctions de loss (zero_grad & backward & step dans pytorch).
+
+def update_policy(ppo, dataset, optimizer, gamma, epsilon, n_epochs, entropy_reg):
+    for epoch in range(n_epochs):
+        batch_loss = 0
+        value_loss = 0
+        for i, tau in enumerate(dataset.trajectories):
+            reward_togo = 0
+            returns = []
+            normalized_reward = np.array(tau['rewards'])
+            normalized_reward = (normalized_reward - normalized_reward.mean())/(normalized_reward.std()+1e-5)
+            for r in normalized_reward[::-1]:
+                # Compute rewards-to-go and advantage estimates
+                reward_togo = r + gamma * reward_togo
+                returns.insert(0, reward_togo)
+            action_log_probabilities, critic_values, action_entropy = ppo.evaluate_trajectory(tau)
+            advantages = torch.tensor(returns).to(device) - critic_values.detach().to(device)
+            likelihood_ratios = torch.exp(action_log_probabilities - torch.tensor(tau['log_probs']).detach().to(device))
+            clipped_losses = -torch.min(likelihood_ratios * advantages, g_clip(epsilon, advantages))
+            batch_loss += torch.mean(clipped_losses) - entropy_reg * action_entropy
+            value_loss += torch.mean((torch.tensor(returns).to(device) - critic_values) ** 2)
+        overall_loss = (batch_loss + value_loss) / dataset.batch_size
+        optimizer.zero_grad()
+        overall_loss.backward()
+        optimizer.step()
+        
+        
+        
+
+
+
+###############################
+EXPLICATIONS TECHNIQUES PYTORCH
+
+
+Pytorch : https://pytorch.org/tutorials/
+
+nn.Flatten : transforme un tenseur multi-dimensionnel en un tenseur mono-dimensionnel. 
+nn.Linear : transformation linéaire à partir des inputs et des poids et biais du réseau de neurones.
+nn.Relu : transformation non-linéaire entre inputs et outputs.
+nn.Softmax : le dernier layer du nn retourne des nombres réels en output, et Softmax transforme ces réels en proba de prediction de chacune des classes (en classification) c'est à dire des nombres entre 0 et 1 qui se sommes à 1.
+
+COMPRENDRE L'AUTOMATISATION DU CALCUL DE GRADIENT (torch.autograd)
+https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html#sphx-glr-beginner-blitz-autograd-tutorial-py
+
+COMPRENDRE LES NN EN PYTORCH : BACKPROP, LOSS FUNCTION, UPDATE WIEGHTS
+https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html#sphx-glr-beginner-blitz-neural-networks-tutorial-py
+
+CODE SOURCE PPO OPENAI : 
+https://spinningup.openai.com/en/latest/_modules/spinup/algos/pytorch/ppo/ppo.html
+
+COMPRENDRE PYTORCH BACKWARD ET LA BACKPROP AVEC UNE FONCTION DE LOSS
+https://stackoverflow.com/questions/43451125/pytorch-what-are-the-gradient-arguments
+
+EXPLICATIONS THEORIQUES NN/BACKPROP/GRADIENTS 
+https://www.youtube.com/watch?v=IHZwWFHWa-w&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&index=2

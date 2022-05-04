@@ -29,6 +29,7 @@ class PPO(nn.Module):
     def forward(self, x):
         x = x.view(-1, self.in_channels, self.state_shape[0], self.state_shape[1])
         x = self.relu(self.l1(x))
+        # print("x = ", x.shape)
         x = self.relu(self.l2(x))
         x_actor = self.relu(self.actor_l3(x))
         x_actor = x_actor.view(x_actor.shape[0], -1)
@@ -85,6 +86,8 @@ class TrajectoryDataset:
                 self.trajectories.append(self.buffer[i].copy())
                 self.reset_buffer(i)
 
+        # print("nb traj = ",len(self.trajectories))
+        # print("batch_size = ",self.batch_size)
         if len(self.trajectories) >= self.batch_size:
             return True
         else:
@@ -113,6 +116,7 @@ def update_policy(ppo, dataset, optimizer, gamma, epsilon, n_epochs, entropy_reg
     for epoch in range(n_epochs):
         batch_loss = 0
         value_loss = 0
+        print("epoch = ",epoch)
         for i, tau in enumerate(dataset.trajectories):
             reward_togo = 0
             returns = []
@@ -125,10 +129,20 @@ def update_policy(ppo, dataset, optimizer, gamma, epsilon, n_epochs, entropy_reg
             action_log_probabilities, critic_values, action_entropy = ppo.evaluate_trajectory(tau)
             advantages = torch.tensor(returns).to(device) - critic_values.detach().to(device)
             likelihood_ratios = torch.exp(action_log_probabilities - torch.tensor(tau['log_probs']).detach().to(device))
+            print("likelihood_ratios = ", likelihood_ratios)
             clipped_losses = -torch.min(likelihood_ratios * advantages, g_clip(epsilon, advantages))
             batch_loss += torch.mean(clipped_losses) - entropy_reg * action_entropy
+
+            #batch_loss += torch.mean(-torch.min(likelihood_ratios * advantages, g_clip(epsilon, advantages))) - entropy_reg * action_entropy
+
             value_loss += torch.mean((torch.tensor(returns).to(device) - critic_values) ** 2)
         overall_loss = (batch_loss + value_loss) / dataset.batch_size
+        print("overall_loss = ",overall_loss)
         optimizer.zero_grad()
+        # print(ppo.state_dict().keys())
+        # print(ppo.state_dict())
+        print(overall_loss)
+        print(overall_loss[grad_fn])
         overall_loss.backward()
+        # print(ppo.state_dict().keys())
         optimizer.step()

@@ -40,6 +40,8 @@ Missing key(s) in state_dict: "reward_conv1.weight", "reward_conv1.bias", "rewar
  j'ai l'impression qu'ils ont lancés les étapes précédentes (PPO + AIRL) avec DiscriminatorMLP et que maintenant ils essayent d'utiliser Discriminator et que les entrées ne sont pas les mêmes...
  
  -> solution : j'ai changé pour utiliser DiscriminatorMLP partout..
+
+ -> autre problème : Dans moral_train on appelle la fonction estimate_utopia de la classe Discriminator, cette fonction n'est pas présente dans DIscriminatorMLP. j'ai donc changer pour Discriminator partout au lieu de discriminatorMLP.
  
  !!!!!!!!!!!!!!!!!!!!!!!!!!
  

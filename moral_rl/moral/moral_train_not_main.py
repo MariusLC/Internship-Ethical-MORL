@@ -39,7 +39,8 @@ def moral_train_n_experts(ratio, nb_experts, env, env_rad, lambd_list, ppo_filen
             #'env_steps': 8e6,
             'env_steps': 100,
             'batchsize_ppo': 12,
-            'n_queries': 50,
+            #'n_queries': 50,
+            'n_queries': 2,
             'preference_noise': 0,
             'n_workers': 12,
             'lr_ppo': 3e-4,
@@ -50,7 +51,8 @@ def moral_train_n_experts(ratio, nb_experts, env, env_rad, lambd_list, ppo_filen
         reinit=True)
     config = wandb.config
     env_steps = int(config.env_steps/config.n_workers)
-    query_freq = int(env_steps/(config.n_queries+2))
+    #query_freq = int(env_steps/(config.n_queries+2))
+    query_freq = 99
 
     # Create Environment
     vec_env = VecEnv(config.env_id, config.n_workers)
@@ -78,12 +80,12 @@ def moral_train_n_experts(ratio, nb_experts, env, env_rad, lambd_list, ppo_filen
         ### Code de base
         #discriminator_list.append(Discriminator(state_shape=state_shape, in_channels=in_channels).to(device))
         ### Changement :
-        discriminator_list.append(DiscriminatorMLP(state_shape=state_shape, in_channels=in_channels).to(device))
-        print(list_discrim_filenames[i])
-        print(vec_env.observation_space.shape)
-        print(state_shape)
-        print(state_shape[0])
-        print( 16*(state_shape[0]-3)*(state_shape[1]-3))
+        discriminator_list.append(Discriminator(state_shape=state_shape, in_channels=in_channels).to(device))
+        # print(list_discrim_filenames[i])
+        # print(vec_env.observation_space.shape)
+        # print(state_shape)
+        # print(state_shape[0])
+        # print( 16*(state_shape[0]-3)*(state_shape[1]-3))
         discriminator_list[i].load_state_dict(torch.load(list_discrim_filenames[i], map_location=torch.device('cpu')))
         ppo_list.append(PPO(state_shape=state_shape, in_channels=in_channels, n_actions=n_actions).to(device))
         ppo_list[i].load_state_dict(torch.load(list_ppo_filenames[i], map_location=torch.device('cpu')))
@@ -109,12 +111,16 @@ def moral_train_n_experts(ratio, nb_experts, env, env_rad, lambd_list, ppo_filen
     preference_giver = PreferenceGiverv3(ratio=config.ratio)
 
     for t in tqdm(range(env_steps)):
+        print("T = ",t)
+        print("query_freq = ", query_freq)
 
         # Query User
         if t % query_freq == 0 and t > 0:
             best_delta = volume_buffer.best_delta
 
             # Using ground truth returns for preference elicitation
+            res = volume_buffer.best_returns
+            print(res)
             ret_a, ret_b = volume_buffer.best_returns
             print(f'Found trajectory pair: {(ret_a, ret_b)}')
             print(f'Corresponding best delta: {best_delta}')
@@ -196,6 +202,7 @@ def moral_train_n_experts(ratio, nb_experts, env, env_rad, lambd_list, ppo_filen
         volume_buffer.log_statistics(rewards)
         # Add experience to PPO dataset
         train_ready = dataset.write_tuple(states, actions, scalarized_rewards, done, log_probs)
+        print("train_ready = ",train_ready)
 
         if train_ready:
             # Log Objectives
@@ -211,6 +218,7 @@ def moral_train_n_experts(ratio, nb_experts, env, env_rad, lambd_list, ppo_filen
                 wandb.log({'Returns': ret})
 
             # Sample two random trajectories & compare expected volume removal with best pair
+            print("compare_delta")
             if volume_buffer.auto_pref:
                 new_returns_a, new_returns_b, logs_a, logs_b = volume_buffer.sample_return_pair()
                 volume_buffer.compare_delta(w_posterior, new_returns_a, new_returns_b, logs_a, logs_b, random=False)

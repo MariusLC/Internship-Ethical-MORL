@@ -59,7 +59,7 @@ def airl_train_1_expert(env_id, demos_filename, discrim_filename):
 
     # Initialize Models
     ppo = PPO(state_shape=state_shape, n_actions=n_actions, in_channels=in_channels).to(device)
-    discriminator = DiscriminatorMLP(state_shape=state_shape, in_channels=in_channels).to(device)
+    discriminator = Discriminator(state_shape=state_shape, in_channels=in_channels).to(device)
     optimizer = torch.optim.Adam(ppo.parameters(), lr=5e-4)
     optimizer_discriminator = torch.optim.Adam(discriminator.parameters(), lr=5e-5)
     dataset = TrajectoryDataset(batch_size=config.batchsize_ppo, n_workers=config.n_workers)

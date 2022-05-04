@@ -1,4 +1,5 @@
-import envs.randomized_v3 
+import envs.randomized_v1
+import envs.randomized_v2 
 import envs.randomized_v3
 from pycolab import rendering
 from typing import Callable
@@ -27,11 +28,11 @@ class GymWrapper(gym.Env):
             self.width = 16
             self.height = 16
             self.num_actions = 9
-        elif env_id == 'delivery_v2':
-            self.layers = ('#', 'P', 'F', 'C', 'S', 'V')
-            self.width = 16
-            self.height = 16
-            self.num_actions = 9
+        elif env_id == 'randomized_v1':
+            self.layers = ('P','G')
+            self.width = 2
+            self.height = 2
+            self.num_actions = 5
 
         self.game = None
         self.np_random = None
@@ -60,6 +61,8 @@ class GymWrapper(gym.Env):
             self.game = envs.randomized_v2.make_game()
         elif self.env_id == 'randomized_v3':
             self.game = envs.randomized_v3.make_game()
+        elif self.env_id == 'randomized_v1':
+            self.game = envs.randomized_v1.make_game()
 
         obs, _, _ = self.game.its_showtime()
         return self._obs_to_np_array(obs)
