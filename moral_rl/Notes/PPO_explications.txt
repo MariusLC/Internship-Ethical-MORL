@@ -118,3 +118,8 @@ https://stackoverflow.com/questions/43451125/pytorch-what-are-the-gradient-argum
 
 EXPLICATIONS THEORIQUES NN/BACKPROP/GRADIENTS 
 https://www.youtube.com/watch?v=IHZwWFHWa-w&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&index=2
+
+
+######################################
+QUESTION :
+Pour une fonction de coût (MSE entre les valeurs cibles et valeurs obtenues par ex), c'est logique qu'une descente de graident avec sa dérivée nous ammène à minimiser la différence avec la valeur cible mais dans le cadre d'une fonction de loss compliquée comme celle de l'article, qu'est ce qui prouve qu'on converge vers une valeur optimale (pour les poids de notre nn, ou pour les sorties de la politique correspondante) ?

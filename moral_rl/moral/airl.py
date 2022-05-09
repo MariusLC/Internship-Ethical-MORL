@@ -114,6 +114,7 @@ class Discriminator(nn.Module):
     def set_eval(self):
         self.eval = True
 
+    # approx of the reward function
     def g(self, state, latent=None):
         state = state.view(-1, self.in_channels, self.state_shape[0], self.state_shape[1])
 
@@ -134,6 +135,7 @@ class Discriminator(nn.Module):
 
         return x
 
+    # approx of the value function
     def h(self, state, latent=None):
         state = state.view(-1, self.in_channels, self.state_shape[0], self.state_shape[1])
 
@@ -159,6 +161,8 @@ class Discriminator(nn.Module):
         value_state = self.h(state, latent)
         value_next_state = self.h(next_state, latent)
 
+        # f function in the Fu2018 paper : f = Q(s,a) - V(s) = (g(s)+gamma*h(s')) - h(s)
+        # advantage = how much an action is a good or bad decision in a certain state 
         advantage = reward + gamma*value_next_state - value_state
 
         if self.eval:
@@ -283,15 +287,38 @@ def update_discriminator(discriminator, optimizer, gamma, expert_trajectories, p
     if len(latents) > 0:
         advantages = discriminator.forward(states, next_states, gamma, latents)
     else:
-        advantages = discriminator.forward(states, next_states, gamma)
+        advantages = discriminator.forward(states, next_states, gamma) 
     # Cat advantages and log_probs to (batch_size, 2)
     class_predictions = torch.cat([torch.log(action_probabilities).unsqueeze(1), advantages], dim=1)
+    # print("class_predictions = ", class_predictions.shape)
+    # print("action_probabilities = ", torch.log(action_probabilities).unsqueeze(1).shape)
+    # print("advantages = ", advantages.shape)
+    print("class_predictions = ", class_predictions[0])
     # Compute Loss function
     loss = criterion(class_predictions, labels)
     # Compute Accuracies
     label_predictions = torch.argmax(class_predictions, dim=1)
+    # print("labels == 0 = ", labels == 0)
+    # print("label_predictions = ", label_predictions)
+    # print("label_predictions[labels == 0] = ", label_predictions[labels == 0])
     predicted_fake = (label_predictions[labels == 0] == 0).float()
     predicted_expert = (label_predictions[labels == 1] == 1).float()
+    print("predicted_fake = ", predicted_fake)
+    print("predicted_expert = ", predicted_expert)
+    print("pourcentage bonne prédiction data générées : ", torch.mean(predicted_fake).item())
+    print("pourcentage bonne prédiction data expertes : ", torch.mean(predicted_expert).item())
+
+    # predicted_fake = tensor de la prediction du discriminant parmi les data issues du générateur. 
+    # 1 si il a prédit que c'était générée par le générateur, 0 si il a prédit que c'était issu de l'expert
+
+    # predicted_expert = tensor de la prediction du discriminant parmi les data issuse de l'expert. 
+    # 0 si il a prédit que c'était générée par le générateur, 1 si il a prédit que c'était issu de l'expert
+
+    # labels = 0 si data générée, 1 si data experte
+    # label_predictions = 0 si data prédite comme générée, 1 si data prédite comme experte
+
+    # POURQUOI ? pourquoi est ce que si advantage du discriminator > log(action_proba) du générateur alors c'est "prédit" comme expert ? et inversement ?
+    # quel est le lien mathématique entre l'advantage du discriminant et la log proba de choisir une action chez le générateur ?
 
     # print(loss.item())
     optimizer.zero_grad()
