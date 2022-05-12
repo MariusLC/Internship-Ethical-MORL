@@ -21,20 +21,15 @@ import os
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 
-def moral_train_n_experts(ratio, nb_experts, env, env_rad, lambd_list, ppo_filenames, discriminator_filenames, model_path, model_ext):
-    list_ppo_filenames = []
-    list_discrim_filenames = []
-    for i in range(nb_experts):
-        list_ppo_filenames.append(model_path+ppo_filenames+env+lambd_list[i]+model_ext)
-        list_discrim_filenames.append(model_path+discriminator_filenames+env+lambd_list[i]+model_ext)
-        
+def moral_train_n_experts(ratio, env, generators_filenames, discriminators_filenames, moral_filename):
 
+    nb_experts = len(generators_filenames)
 
     # Config
     wandb.init(
         project='MORAL',
         config={
-            'env_id': env_rad+env,
+            'env_id': env,
             'ratio': ratio,
             #'env_steps': 8e6,
             'env_steps': 100,
@@ -74,27 +69,16 @@ def moral_train_n_experts(ratio, nb_experts, env, env_rad, lambd_list, ppo_filen
 
     # Expert i
     discriminator_list = []
-    ppo_list = []
+    generator_list = []
     utop_list = []
     for i in range(nb_experts):
-        ### Code de base
-        #discriminator_list.append(Discriminator(state_shape=state_shape, in_channels=in_channels).to(device))
-        ### Changement :
         discriminator_list.append(Discriminator(state_shape=state_shape, in_channels=in_channels).to(device))
-        # print(list_discrim_filenames[i])
-        # print(vec_env.observation_space.shape)
-        # print(state_shape)
-        # print(state_shape[0])
-        # print( 16*(state_shape[0]-3)*(state_shape[1]-3))
-        discriminator_list[i].load_state_dict(torch.load(list_discrim_filenames[i], map_location=torch.device('cpu')))
-        ppo_list.append(PPO(state_shape=state_shape, in_channels=in_channels, n_actions=n_actions).to(device))
-        ppo_list[i].load_state_dict(torch.load(list_ppo_filenames[i], map_location=torch.device('cpu')))
-        utop_list.append(discriminator_list[i].estimate_utopia(ppo_list[i], config))
+        discriminator_list[i].load_state_dict(torch.load(discriminators_filenames[i], map_location=torch.device('cpu')))
+        generator_list.append(PPO(state_shape=state_shape, in_channels=in_channels, n_actions=n_actions).to(device))
+        generator_list[i].load_state_dict(torch.load(generators_filenames[i], map_location=torch.device('cpu')))
+        utop_list.append(discriminator_list[i].estimate_utopia(generator_list[i], config))
         print(f'Reward Normalization 0: {utop_list[i]}')
         discriminator_list[i].set_eval()
-
-
-
 
 
     dataset = TrajectoryDataset(batch_size=config.batchsize_ppo, n_workers=config.n_workers)
@@ -232,3 +216,6 @@ def moral_train_n_experts(ratio, nb_experts, env, env_rad, lambd_list, ppo_filen
         # Prepare state input for next time step
         states = next_states.copy()
         states_tensor = torch.tensor(states).float().to(device)
+
+    #vec_env.close()
+    torch.save(ppo.state_dict(), moral_filename)

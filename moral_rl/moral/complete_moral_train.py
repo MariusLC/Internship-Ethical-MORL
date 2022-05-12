@@ -40,31 +40,51 @@ if __name__ == '__main__':
     nb_demos = config_yaml["nb_demos"]
 
     # PATHS & NAMES
-    model_path = config_yaml["model_path"]
+    data_path = config_yaml["data_path"]
+    expe_path = config_yaml["expe_path"]
     demo_path = config_yaml["demo_path"]
+    disc_path = config_yaml["disc_path"]
+    gene_path = config_yaml["gene_path"]
+    moral_path = config_yaml["moral_path"]
     model_ext = config_yaml["model_ext"]
     demo_ext = config_yaml["demo_ext"]
-    env = config_yaml["env"]
     env_rad = config_yaml["env_rad"]
-    ppo_filenames = config_yaml["ppo_filenames"]
-    discriminator_filenames = config_yaml["discriminator_filenames"]
-    lambd_str_list = ["_"+str(w) for w in config_yaml["experts_weights"]]
-    
+    env = config_yaml["env"]
+    model_name = config_yaml["model_name"]
 
+    # OLD
+    # model_path = config_yaml["model_path"]
+    # demo_path = config_yaml["demo_path"]
+    # model_ext = config_yaml["model_ext"]
+    # demo_ext = config_yaml["demo_ext"]
+    # env = config_yaml["env"]
+    # env_rad = config_yaml["env_rad"]
+    # ppo_filenames = config_yaml["ppo_filenames"]
+    # discriminator_filenames = config_yaml["discriminator_filenames"]
+    # generator_filenames = config_yaml["generator_filenames"]
 
+    # lambd_str_list = ["_"+str(w) for w in config_yaml["experts_weights"]]
 
-
+    experts_filenames = []
+    demos_filenames = []
+    generators_filenames = []
+    discriminators_filenames = []
+    moral_filename = data_path+moral_path+model_name+env+"_"+str(lambd_list)+model_ext
+    for i in range(nb_experts):
+        experts_filenames.append(data_path+expe_path+model_name+env+"_"+str(lambd_list[i])+model_ext)
+        demos_filenames.append(data_path+demo_path+model_name+env+"_"+str(lambd_list[i])+demo_ext)
+        generators_filenames.append(data_path+gene_path+model_name+env+"_"+str(lambd_list[i])+model_ext)
+        discriminators_filenames.append(data_path+disc_path+model_name+env+"_"+str(lambd_list[i])+model_ext)
 
 
     # TRAINING PPO AGENTS
-    ppo_train_n_experts(nb_experts, env, env_rad, lambd_list, lambd_str_list, ppo_filenames, model_path, model_ext)
+    ppo_train_n_experts(env_rad+env, lambd_list, experts_filenames)
 
     # GENERATING DEMONSTRATIONS FROM EXPERTS
-    generate_demos_n_experts(nb_experts, nb_demos, env, env_rad, lambd_str_list, ppo_filenames, demo_path, model_path, model_ext, demo_ext)
+    generate_demos_n_experts(nb_demos, env_rad+env, experts_filenames, demos_filenames)
 
     # ESTIMATING EXPERTS REWARD FUNCTIONS THROUGH AIRL BASED ON THEIR DEMONSTRATIONS
-    airl_train_n_experts(nb_experts, env, env_rad, lambd_str_list, ppo_filenames, discriminator_filenames, demo_path, model_path, model_ext, demo_ext)
+    airl_train_n_experts(env_rad+env, demos_filenames, generators_filenames, discriminators_filenames)
 
     # ESTIMATING MORL EXPERT'S WEIGTHS THROUGH MORAL
-    moral_train_n_experts(ratio, nb_experts, env, env_rad, lambd_str_list, ppo_filenames, discriminator_filenames, model_path, model_ext)
-    # we shouldn't give acces to ppo_filename but demos instead ...
+    moral_train_n_experts(ratio, env_rad+env, generators_filenames, discriminators_filenames, moral_filename)

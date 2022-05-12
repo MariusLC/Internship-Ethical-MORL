@@ -10,15 +10,23 @@ import argparse
 # Use GPU if available
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
-def generate_demos_n_experts(nb_experts, nb_demos, env, env_rad, lambd_list, ppo_filenames, demo_path, model_path, model_ext, demo_ext):
-    for i in range(nb_experts):
-        demos_filename = demo_path+ppo_filenames+env+lambd_list[i]+demo_ext
-        ppo_filename = model_path+ppo_filenames+env+lambd_list[i]+model_ext
-        generate_demos_1_expert(nb_demos, env_rad+env, demos_filename, ppo_filename)
+
+# OLD
+# def generate_demos_n_experts(nb_experts, nb_demos, env, env_rad, lambd_list, ppo_filenames, demo_path, model_path, model_ext, demo_ext):
+#     for i in range(nb_experts):
+#         demos_filename = demo_path+ppo_filenames+env+lambd_list[i]+demo_ext
+#         ppo_filename = model_path+ppo_filenames+env+lambd_list[i]+model_ext
+#         generate_demos_1_expert(nb_demos, env_rad+env, demos_filename, ppo_filename)
+
+
+# NEW
+def generate_demos_n_experts(nb_demos, env, experts_filenames, demos_filenames):
+    for i in range(len(experts_filenames)):
+        generate_demos_1_expert(nb_demos, env, experts_filenames[i], demos_filenames[i],)
 
 
 
-def generate_demos_1_expert(nb_demos, env_id, demos_filename, ppo_filename):
+def generate_demos_1_expert(nb_demos, env_id, expert_filename, demos_filename):
 
     max_steps = 0
     if env_id == 'randomized_v2':
@@ -42,7 +50,7 @@ def generate_demos_1_expert(nb_demos, env_id, demos_filename, ppo_filename):
 
     # Load Pretrained PPO
     ppo = PPO(state_shape=state_shape, n_actions=n_actions, in_channels=in_channels).to(device)
-    ppo.load_state_dict(torch.load(ppo_filename, map_location=torch.device('cpu')))
+    ppo.load_state_dict(torch.load(expert_filename, map_location=torch.device('cpu')))
 
 
     for t in tqdm(range((max_steps-1)*nb_demos)):

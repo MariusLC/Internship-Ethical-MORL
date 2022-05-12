@@ -2,20 +2,36 @@
 # it has to be : len(ppo_files) = len(discriminator_files) = len(ratio)-1
 
 
+# # Truc qui sont pas ammenés à changer
+# OLD
+# model_path: "saved_models/"
+# demo_path: "demonstrations/"
+# model_ext: ".pt"
+# demo_ext: ".pk"
+# env_rad: "randomized_"
+# ppo_filenames: "ppo_"
+# discriminator_filenames: "discriminator_"
+# generator_filenames: "generator_"
+
 # Truc qui sont pas ammenés à changer
-model_path: "saved_models/"
+# NEW
+data_path: "generated_data/"
+expe_path: "experts/"
 demo_path: "demonstrations/"
+disc_path: "discriminators/"
+gene_path: "generators/"
+moral_path: "moral_agents/"
 model_ext: ".pt"
 demo_ext: ".pk"
 env_rad: "randomized_"
-ppo_filenames: "ppo_"
-discriminator_filenames: "discriminator_"
+model_name: "ppo_"
+
 
 
 # Editable parameters
 env: "v3"
 nb_experts: 2
-experts_weights: [[1,1,0,1], [0,1,1,1]]
-ratio: [0, 1, 1]
+experts_weights: [[0,1,0,0], [0,0,1,0]]
+ratio: [1, 1, 1]
 #nb_demos: 1000
 nb_demos: 100

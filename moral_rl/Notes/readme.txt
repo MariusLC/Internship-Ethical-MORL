@@ -43,8 +43,8 @@ Utilité : estimer les poids de l'expert en preference learning à partir des qu
 NEW ARCHITECTURE
 
 moral.complete_moral_train.py
-python3 -m moral.moral_train --lambd 0 0 1 1 --env 3
-Paramètres : 
+python3 -m moral.complete_moral_train
+Paramètres : Aucun, tout est dans le fichier de configuration : config_MORAL.yaml
 Utilité : lance tout le processus MORAL en appelant successivement les fichiers ..._train_not_main.py
 
 

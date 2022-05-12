@@ -126,4 +126,8 @@ if __name__ == '__main__':
         states_tensor = torch.tensor(states).float().to(device)
 
     #vec_env.close()
+    # SAVE THE DISCRIMINATOR FOR THE MORAL STEP
     torch.save(discriminator.state_dict(), 'saved_models/discriminator_v'+args.env+'_'+str(config.lambd)+'.pt')
+
+    # SAVE THE GENERATOR FOR THE MORAL STEP ?
+    torch.save(ppo.state_dict(), 'saved_models/generator_v'+args.env+'_'+str(config.lambd)+'.pt')

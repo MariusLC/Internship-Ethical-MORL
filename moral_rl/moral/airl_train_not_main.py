@@ -14,16 +14,21 @@ import argparse
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 
+# OLD
+# def airl_train_n_experts(nb_experts, env, env_rad, lambd_list, ppo_filenames, discriminator_filenames, demo_path, model_path, model_ext, demo_ext):
+#     for i in range(nb_experts):
+#         demos_filename = demo_path+ppo_filenames+env+lambd_list[i]+demo_ext
+#         discrim_filename = model_path+discriminator_filenames+env+lambd_list[i]+model_ext
+#         airl_train_1_expert(env_rad+env, demos_filename, discrim_filename)
 
-def airl_train_n_experts(nb_experts, env, env_rad, lambd_list, ppo_filenames, discriminator_filenames, demo_path, model_path, model_ext, demo_ext):
-    for i in range(nb_experts):
-        demos_filename = demo_path+ppo_filenames+env+lambd_list[i]+demo_ext
-        discrim_filename = model_path+discriminator_filenames+env+lambd_list[i]+model_ext
-        airl_train_1_expert(env_rad+env, demos_filename, discrim_filename)
+# NEW
+def airl_train_n_experts(env, demos_filename, generators_filenames, discriminators_filenames):
+    for i in range(len(generators_filenames)):
+        airl_train_1_expert(env, demos_filename[i], generators_filenames[i], discriminators_filenames[i])
 
 
 
-def airl_train_1_expert(env_id, demos_filename, discrim_filename):
+def airl_train_1_expert(env_id, demos_filename, generator_filename, discriminator_filename):
 
     # Load demonstrations
     expert_trajectories = pickle.load(open(demos_filename, 'rb'))
@@ -121,4 +126,9 @@ def airl_train_1_expert(env_id, demos_filename, discrim_filename):
         states_tensor = torch.tensor(states).float().to(device)
 
     #vec_env.close()
-    torch.save(discriminator.state_dict(), discrim_filename)
+    # SAVE THE DISCRIMINATOR FOR THE MORAL STEP
+    torch.save(discriminator.state_dict(), discriminator_filename)
+
+    # SAVE THE GENERATOR FOR THE MORAL STEP ?
+    torch.save(ppo.state_dict(), generator_filename)
+    

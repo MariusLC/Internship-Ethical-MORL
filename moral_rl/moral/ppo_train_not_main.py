@@ -10,11 +10,16 @@ import argparse
 # Use GPU if available
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
+# OLD
+# def ppo_train_n_experts(nb_experts, env, env_rad, lambd_list, lambd_str_list, ppo_filenames, model_path, model_ext):
+#     for i in range(nb_experts):
+#         filename = model_path+ppo_filenames+env+lambd_str_list[i]+model_ext
+#         ppo_train_1_expert(env_rad+env, lambd_list[i], filename)
 
-def ppo_train_n_experts(nb_experts, env, env_rad, lambd_list, lambd_str_list, ppo_filenames, model_path, model_ext):
-    for i in range(nb_experts):
-        filename = model_path+ppo_filenames+env+lambd_str_list[i]+model_ext
-        ppo_train_1_expert(env_rad+env, lambd_list[i], filename)
+# NEW
+def ppo_train_n_experts(env, lambd_list, experts_filenames):
+    for i in range(len(lambd_list)):
+        ppo_train_1_expert(env, lambd_list[i], experts_filenames[i])
 
 
 
