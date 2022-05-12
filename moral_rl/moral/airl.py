@@ -165,6 +165,9 @@ class Discriminator(nn.Module):
         # advantage = how much an action is a good or bad decision in a certain state 
         advantage = reward + gamma*value_next_state - value_state
 
+        # pourquoi diviser en fonction du point d'utopie si eval = true ?
+        # plus le point d'utopie est proche de 0, plus la valeur si dessous est grande ..
+        # (et donc plus l'action qui amène de state à  nexte_state est plébicitée)
         if self.eval:
             return advantage/np.abs(self.utopia_point)
         else:
@@ -226,6 +229,8 @@ class Discriminator(nn.Module):
             states = next_states.copy()
             states_tensor = torch.tensor(states).float().to(device)
 
+        # l'utopia point est simplement la moyenne des rewards estimés des trajectoires finies sur steps pas de temps,
+        # en se référant à l'imitation policy pour le choix des actions
         self.utopia_point = sum(estimated_returns)/len(estimated_returns)
 
         return self.utopia_point
