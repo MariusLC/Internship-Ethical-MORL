@@ -1,0 +1,29 @@
+
+Initializing and Normalizing Rewards...
+Reward Normalization 0: -0.47416233460341267
+Reward Normalization 0: -0.4840587280248184
+T =  0
+query_freq =  99
+train_ready =  False
+T =  1
+query_freq =  99
+train_ready =  False
+T =  2
+query_freq =  99
+train_ready =  False
+T =  3
+query_freq =  99
+train_ready =  False
+T =  4
+query_freq =  99
+train_ready =  False
+T =  5
+query_freq =  99
+train_ready =  False
+T =  6
+query_freq =  99
+train_ready =  False
+T =  7
+query_freq =  99
+train_ready =  False
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 41.96it/s]

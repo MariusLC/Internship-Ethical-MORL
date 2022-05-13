@@ -38,6 +38,7 @@ if __name__ == '__main__':
     ratio = config_yaml["ratio"]
     lambd_list = config_yaml["experts_weights"]
     nb_demos = config_yaml["nb_demos"]
+    geneORexpert = config_yaml["geneORexpert"]
 
     # PATHS & NAMES
     data_path = config_yaml["data_path"]
@@ -87,4 +88,12 @@ if __name__ == '__main__':
     airl_train_n_experts(env_rad+env, demos_filenames, generators_filenames, discriminators_filenames)
 
     # ESTIMATING MORL EXPERT'S WEIGTHS THROUGH MORAL
-    moral_train_n_experts(ratio, env_rad+env, generators_filenames, discriminators_filenames, moral_filename)
+    # On the original code, utopia point in moral phase was calculated wrt the experts policies. 
+    # But it seems more logical if it was wtr generators from the airl process. 
+    # So we can choose by changing the parameter geneORexpert in the config file.
+    ppo_agent_filenames = experts_filenames
+    if geneORexpert == 0:
+        ppo_agent_filenames = generators_filenames
+    else :
+        ppo_agent_filenames = experts_filenames
+    moral_train_n_experts(ratio, env_rad+env, ppo_agent_filenames, discriminators_filenames, moral_filename)

@@ -35,3 +35,4 @@ experts_weights: [[0,1,0,0], [0,0,1,0]]
 ratio: [1, 1, 1]
 #nb_demos: 1000
 nb_demos: 100
+geneORexpert: 0 # 0 for generator and 1 for expert, using ppo agent to calculate utopia during the moral process
