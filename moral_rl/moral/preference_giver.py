@@ -55,6 +55,7 @@ class PreferenceGiverv3:
             ret_a_normalized.append(ret_a_copy[i]/ret_a_sum)
             ret_b_normalized.append(ret_b_copy[i]/ret_b_sum)
 
+        # scipy.stats.entropy(pk, qk=None, base=None, axis=0) = S = sum(pk * log(pk / qk), axis=axis)
         kl_a = st.entropy(ret_a_normalized, self.ratio_normalized)
         kl_b = st.entropy(ret_b_normalized, self.ratio_normalized)
 

@@ -87,7 +87,7 @@ class TrajectoryDataset:
                 self.reset_buffer(i)
 
         # print("nb traj = ",len(self.trajectories))
-        # print("batch_size = ",self.batch_size)
+        # print("batch_size = ", self.batch_size)
         if len(self.trajectories) >= self.batch_size:
             return True
         else:

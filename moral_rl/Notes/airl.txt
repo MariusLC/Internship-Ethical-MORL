@@ -20,3 +20,86 @@ update_discriminator : On récupère la buffer de probas de training_sampler, on
 
 -> reviser la cross entropy pour comprendre comment la loss est compute à partir des labels et des log porba et advantages du dicriminant et du générateur
 
+##################
+FICHIER MORAL_TRAIN_NOT_MAIN.PY
+
+# len(airl_rewards_list) = 2       <=> nb_experts
+# len(airl_rewards_list[0]) = 12   <=> nb_workers
+# airl_rewards_list = la liste des rewards estimés par le discriminator de chaque expert pour chacun des workers (ici 12 environnements différents).
+
+# r = les rewards perçus par le worker correspondant, pour l'action (actions) et l'état (states_tensor). (on enumere sur rewards donc r correspond bien à un seul worker)
+# r[0] = le reward correspondant à l'objectif delivery (delivery_id = 0) 
+
+# airl_rewards_list[j][i] = reward prédits pour l'expert j et le worker i. (donc dans l'experience 3, nb_experts = 2)
+# vectorized_rewards = serait donc la liste des reward pour chacun des workers, et pour chacun des objectifs.
+# len(vectorized_rewards) = 12  <=> nb_workers
+# len(vectorized_rewards) = 3   <=> nb_experts + len(r[0]) <=> 2 + 1 = 3 <=> correspond à l'objectif de delivery et ceux correspondant à chacun des experts (dans l'experience 3, 2 experts)
+
+VECTORIZED_REWARDS = liste des reward pour chacun des workers, et pour chacun des objectifs (correspond à l'objectif de delivery et ceux correspondant à chacun des experts (dans l'experience 3, 2 experts)).
+
+
+Vec_env = un vecteur de nb_workers environnements, à chaque pas de temps chaque worker prend unstep dans son environnement. On a donc nb_workers rewards pour chaque step etc.
+
+-> les rewards ne seraient pas simplement le vecteur (delivery, people saved, tiles cleaned, vase détruits) ? et pas la valeur que l'on apporte à chacun de ces objectifs ? Les 3 premières sont des +1 (si un delivery saved ou cleaned) et le 4ème est -1 (si un vase est cassé).
+
+
+rewards objective VS rewards observed :
+ - rewards objective = les rewards perçus lorsque l'agent fait un pas dans l'environnement. Par exemple : [1, 0, 0, -1] correspond aux rewards où l'agent à fait une livraison (delivery id = 0), et à cassé un vase (vase id = 3).
+ - rewards observed = correspond au vectorized_rewards expliqué plus haut. les rewards estimé pour chaque objectif (donc delivery + chaque expert).
+
+
+
+        
+
+
+
+######################################
+FICHIER active_learning.py
+
+class VolumeBuffer : sert à stocker les questions possibles testées et quand on en a tester suffisamment (buffer_size), on prend la meilleure (celle qui ampute le plus grand volume à l'espace des possibles ?).
+
+
+fonctions :
+def volume_removal(w_posterior, delta):
+	sert à calculer le volume qui va être supprimer avec la question posée. On calcule des sommes de log_likelihood des w_posterior en fonction du delta entre les deux trajectoires choisies et on retourne la préférence qui génère le minimum (celle qui est préférée ???)
+
+
+def sample_return_pair(self):
+ sert à trouver une question au hasard à poser, parmi les actions des trajectoires en mémoire. Les rewards stockés sont les vectorized_rewards expliqués au dessus. Et calcule de en fonction des poids estimés ou des poids réels (ground truth) selon le paramètre autopref)
+
+ On récupère les rewards estimés (observed_logs_returns) pour les trajectoires de chaque worker (soit nb_workers trajectoires), on somme les rewards d'une même trajectoire pour avoir un vecteur (delivery, people saved, tiles cleaned, vase détruits) par trajectoire. On prend deux trajectoires au hasard parmi les (12 ici) trajectoires, si auto_pref=True on va également retourner le log des rewards objective (expliqués plus haut) de ces 2 trajectoires pour les 3 premiers objectifs (delivery, saved, cleaned) mais pas le dernier (vase cassé). POURQUOI PAS LE DERNIER ?
+
+ Puis On appelle compare_delta..
+
+
+
+def compare_delta(self, w_posterior, new_returns_a, new_returns_b, logs_a=None, logs_b=None, random=False):
+
+	On calcule le delta de rewards (la différence entre leur vecteurs de reward) parmi les deux trajectories choisies au hasard parmi les nb_workers trajectoires (voir la fonctio sample_return_pair. 
+	on appelle la fonction volume_removal, pour calculer la "valeur" de la question potentielle entre les deux trajectoires.
+	On compare le volume de la question au volume max, s'il est supérieur, elle devient la question max. C'est-à-dire la question que l'on a le plus envie de poser car elle coupe le mieux l'espace de recherche.
+
+
+def volume_removal(w_posterior, delta):
+
+	Est censé calculer le "volume retiré" à l'espace de recherche des poids possibles pour l'agent expert du preference learning si l'on posait la question traj_1 > traj_b ? (On veut faire une dichotomie de l'espace de recherche, donc couper le plus grand volume à chaque question)
+	On calcule la somme des 1-log_likelihood pour chaque w dans w_posterior, dans le cas où la 1ère trajectoire est préférée (a) et celui où c'est la deuxième qui l'est (b). On calcule la moyenne de ces valeurs (/len(w_posterior)) et on retourne le minimum entre la moyenne des cas (a) et (b).
+
+
+
+###############################
+FICHIER preference_giver.py
+
+def query_pair(self, ret_a, ret_b):
+	Calcule l'entropy entre le ratio de l'expert du preference learning et les rewards normalisés des deux trajectories de la meilleure question à poser. Normalisés car ils sont divisés par leur somme (par ex [1, 2, 3] -> [1/6, 2/6, 3/6]).
+
+-> PROBLEME : ret_a correspond aux rewards des 3 premiers objectifs (donc pas des vases cassés) alors que le ratio de l'expert du preference learning correspond aux rewards de l'objectif delivery + des objectifs de chacun des experts de l'airl. 
+
+
+
+
+QUESTION SUBSISTANTES : 
+
+1/ POURQUOI COMPARER AUX VALEURS RÉELLES DES AGENTS DANS MORAL.PY ET NON PAS LES VALEURS ESTIMÉES PAR LE SYSTÈME ?
+
+2/ POURQUOI PRENDRE UNIQUEMENT LES 3 PREMIERS OBJECTIFS DANS LA FONCTION SAMPLE_RETURN_PAIR ?
