@@ -186,7 +186,7 @@ def moral_train_n_experts(ratio, env, env_steps_moral, generators_filenames, dis
         volume_buffer.log_statistics(rewards)
         # Add experience to PPO dataset
         train_ready = dataset.write_tuple(states, actions, scalarized_rewards, done, log_probs)
-        # print("train_ready = ",train_ready)
+        print("train_ready = ",train_ready)
 
         if train_ready:
             # Log Objectives
