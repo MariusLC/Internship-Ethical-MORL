@@ -298,7 +298,7 @@ def update_discriminator(discriminator, optimizer, gamma, expert_trajectories, p
     # print("class_predictions = ", class_predictions.shape)
     # print("action_probabilities = ", torch.log(action_probabilities).unsqueeze(1).shape)
     # print("advantages = ", advantages.shape)
-    print("class_predictions = ", class_predictions[0])
+    # print("class_predictions = ", class_predictions[0])
     # Compute Loss function
     loss = criterion(class_predictions, labels)
     # Compute Accuracies
@@ -308,10 +308,10 @@ def update_discriminator(discriminator, optimizer, gamma, expert_trajectories, p
     # print("label_predictions[labels == 0] = ", label_predictions[labels == 0])
     predicted_fake = (label_predictions[labels == 0] == 0).float()
     predicted_expert = (label_predictions[labels == 1] == 1).float()
-    print("predicted_fake = ", predicted_fake)
-    print("predicted_expert = ", predicted_expert)
-    print("pourcentage bonne prédiction data générées : ", torch.mean(predicted_fake).item())
-    print("pourcentage bonne prédiction data expertes : ", torch.mean(predicted_expert).item())
+    # print("predicted_fake = ", predicted_fake)
+    # print("predicted_expert = ", predicted_expert)
+    # print("pourcentage bonne prédiction data générées : ", torch.mean(predicted_fake).item())
+    # print("pourcentage bonne prédiction data expertes : ", torch.mean(predicted_expert).item())
 
     # predicted_fake = tensor de la prediction du discriminant parmi les data issues du générateur. 
     # 1 si il a prédit que c'était générée par le générateur, 0 si il a prédit que c'était issu de l'expert

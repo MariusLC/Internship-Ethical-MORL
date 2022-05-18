@@ -22,13 +22,13 @@ device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 #         airl_train_1_expert(env_rad+env, demos_filename, discrim_filename)
 
 # NEW
-def airl_train_n_experts(env, demos_filename, generators_filenames, discriminators_filenames):
+def airl_train_n_experts(env, env_steps_airl, demos_filename, generators_filenames, discriminators_filenames):
     for i in range(len(generators_filenames)):
-        airl_train_1_expert(env, demos_filename[i], generators_filenames[i], discriminators_filenames[i])
+        airl_train_1_expert(env, env_steps_airl, demos_filename[i], generators_filenames[i], discriminators_filenames[i])
 
 
 
-def airl_train_1_expert(env_id, demos_filename, generator_filename, discriminator_filename):
+def airl_train_1_expert(env_id, env_steps_airl, demos_filename, generator_filename, discriminator_filename):
 
     # Load demonstrations
     expert_trajectories = pickle.load(open(demos_filename, 'rb'))
@@ -39,7 +39,7 @@ def airl_train_1_expert(env_id, demos_filename, generator_filename, discriminato
         config={
             'env_id': env_id,
             #'env_steps': 6e6,
-            'env_steps': 10,
+            'env_steps': env_steps_airl,
             'batchsize_discriminator': 512,
             'batchsize_ppo': 12,
             'n_workers': 12,
@@ -100,7 +100,7 @@ def airl_train_1_expert(env_id, demos_filename, generator_filename, discriminato
 
 
             ####### TEST IF wandb is the one initilized in ppo_train_not_main or the one in this file
-            print(config.lambd)
+            # print(config.lambd)
             #######################
 
             # Update Models

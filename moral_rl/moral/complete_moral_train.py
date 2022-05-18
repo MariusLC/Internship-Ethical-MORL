@@ -37,8 +37,11 @@ if __name__ == '__main__':
     nb_experts = config_yaml["nb_experts"]
     ratio = config_yaml["ratio"]
     lambd_list = config_yaml["experts_weights"]
-    nb_demos = config_yaml["nb_demos"]
     geneORexpert = config_yaml["geneORexpert"]
+    nb_demos = config_yaml["nb_demos"]
+    env_steps_ppo =  config_yaml["env_steps_ppo"]
+    env_steps_airl = config_yaml["env_steps_airl"]
+    env_steps_moral = config_yaml["env_steps_moral"]
 
     # PATHS & NAMES
     data_path = config_yaml["data_path"]
@@ -79,13 +82,13 @@ if __name__ == '__main__':
 
 
     # TRAINING PPO AGENTS
-    ppo_train_n_experts(env_rad+env, lambd_list, experts_filenames)
+    ppo_train_n_experts(env_rad+env, env_steps_ppo, lambd_list, experts_filenames)
 
     # GENERATING DEMONSTRATIONS FROM EXPERTS
     generate_demos_n_experts(nb_demos, env_rad+env, experts_filenames, demos_filenames)
 
     # ESTIMATING EXPERTS REWARD FUNCTIONS THROUGH AIRL BASED ON THEIR DEMONSTRATIONS
-    airl_train_n_experts(env_rad+env, demos_filenames, generators_filenames, discriminators_filenames)
+    airl_train_n_experts(env_rad+env, env_steps_airl, demos_filenames, generators_filenames, discriminators_filenames)
 
     # ESTIMATING MORL EXPERT'S WEIGTHS THROUGH MORAL
     # On the original code, utopia point in moral phase was calculated wrt the experts policies. 
@@ -96,4 +99,4 @@ if __name__ == '__main__':
         ppo_agent_filenames = generators_filenames
     else :
         ppo_agent_filenames = experts_filenames
-    moral_train_n_experts(ratio, env_rad+env, ppo_agent_filenames, discriminators_filenames, moral_filename)
+    moral_train_n_experts(ratio, env_rad+env, env_steps_moral, ppo_agent_filenames, discriminators_filenames, moral_filename)

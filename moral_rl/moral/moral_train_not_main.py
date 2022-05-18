@@ -21,7 +21,7 @@ import os
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 
-def moral_train_n_experts(ratio, env, generators_filenames, discriminators_filenames, moral_filename):
+def moral_train_n_experts(ratio, env, env_steps_moral, generators_filenames, discriminators_filenames, moral_filename):
 
     nb_experts = len(generators_filenames)
 
@@ -32,7 +32,7 @@ def moral_train_n_experts(ratio, env, generators_filenames, discriminators_filen
             'env_id': env,
             'ratio': ratio,
             #'env_steps': 8e6,
-            'env_steps': 100,
+            'env_steps': env_steps_moral,
             'batchsize_ppo': 12,
             #'n_queries': 50,
             'n_queries': 2,
@@ -95,8 +95,8 @@ def moral_train_n_experts(ratio, env, generators_filenames, discriminators_filen
     preference_giver = PreferenceGiverv3(ratio=config.ratio)
 
     for t in tqdm(range(env_steps)):
-        print("T = ",t)
-        print("query_freq = ", query_freq)
+        # print("T = ",t)
+        # print("query_freq = ", query_freq)
 
         # Query User
         if t % query_freq == 0 and t > 0:
@@ -104,7 +104,7 @@ def moral_train_n_experts(ratio, env, generators_filenames, discriminators_filen
 
             # Using ground truth returns for preference elicitation
             res = volume_buffer.best_returns
-            print(res)
+            # print(res)
             ret_a, ret_b = volume_buffer.best_returns
             print(f'Found trajectory pair: {(ret_a, ret_b)}')
             print(f'Corresponding best delta: {best_delta}')
@@ -186,7 +186,7 @@ def moral_train_n_experts(ratio, env, generators_filenames, discriminators_filen
         volume_buffer.log_statistics(rewards)
         # Add experience to PPO dataset
         train_ready = dataset.write_tuple(states, actions, scalarized_rewards, done, log_probs)
-        print("train_ready = ",train_ready)
+        # print("train_ready = ",train_ready)
 
         if train_ready:
             # Log Objectives
@@ -202,7 +202,7 @@ def moral_train_n_experts(ratio, env, generators_filenames, discriminators_filen
                 wandb.log({'Returns': ret})
 
             # Sample two random trajectories & compare expected volume removal with best pair
-            print("compare_delta")
+            # print("compare_delta")
             if volume_buffer.auto_pref:
                 new_returns_a, new_returns_b, logs_a, logs_b = volume_buffer.sample_return_pair()
                 volume_buffer.compare_delta(w_posterior, new_returns_a, new_returns_b, logs_a, logs_b, random=False)

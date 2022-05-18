@@ -17,19 +17,19 @@ device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 #         ppo_train_1_expert(env_rad+env, lambd_list[i], filename)
 
 # NEW
-def ppo_train_n_experts(env, lambd_list, experts_filenames):
+def ppo_train_n_experts(env, env_steps_ppo, lambd_list, experts_filenames):
     for i in range(len(lambd_list)):
-        ppo_train_1_expert(env, lambd_list[i], experts_filenames[i])
+        ppo_train_1_expert(env, env_steps_ppo, lambd_list[i], experts_filenames[i])
 
 
 
-def ppo_train_1_expert(env, lambd, filename):
+def ppo_train_1_expert(env, env_steps_ppo, lambd, filename):
 
     # Init WandB & Parameters
     wandb.init(project='PPO', config={
         'env_id': env,
         #'env_steps': 9e6,
-        'env_steps': 1000,
+        'env_steps': env_steps_ppo,
         'batchsize_ppo': 12,
         'n_workers': 12,
         'lr_ppo': 3e-4,
