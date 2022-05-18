@@ -30,3 +30,8 @@ visualiser les fichiers de logs/errors :
 
 	cat OAR.[JOB_ID].stderr
 	cat OAR.[JOB_ID].stdout
+
+	ou 
+
+	nano OAR.[JOB_ID].stderr
+	-> nano permet également de modifier des fichiers à partir du terminal

@@ -103,11 +103,11 @@ class VolumeBuffer:
         self.objective_logs = []
 
     def log_statistics(self, statistics):
-        print("objective LOG : ", statistics)
+        # print("objective LOG : ", statistics)
         self.objective_logs.append(statistics)
 
     def log_rewards(self, rewards):
-        print("observed LOG : ", rewards)
+        # print("observed LOG : ", rewards)
         self.observed_logs.append(rewards)
 
     @staticmethod
@@ -120,9 +120,9 @@ class VolumeBuffer:
             expected_volume_a += (1 - PreferenceLearner.f_loglik(w, delta, 1))
             expected_volume_b += (1 - PreferenceLearner.f_loglik(w, delta, -1))
 
-        print("expected_volume_a : ", expected_volume_a)
-        print("expected_volume_b : ", expected_volume_b)
-        print("len(w_posterior) = ", len(w_posterior)) # == batch size des rollout ?
+        # print("expected_volume_a : ", expected_volume_a)
+        # print("expected_volume_b : ", expected_volume_b)
+        # print("len(w_posterior) = ", len(w_posterior)) # == batch size des rollout ?
         return min(expected_volume_a / len(w_posterior), expected_volume_b / len(w_posterior))
 
     def sample_return_pair(self):
@@ -137,26 +137,26 @@ class VolumeBuffer:
         # (vectorized_rewards[i] = liste des rewards pour l'objectif i, vectorized_rewards[i][j] = reward pour l'objectif i et l'expert j)
         # On fait ici la somme des vectorized_rewards pour tous les états mémorisé ?
         # On aurait donc une liste pour chaque objectif de sommes des rewards (effectifs, et d'experts) pour chaque état ?
-        print("len(self.observed_logs) = ", len(self.observed_logs))
-        print("len(self.observed_logs[0]) = ", len(self.observed_logs[0]))
-        print("len(self.observed_logs[0][0]) = ", len(self.observed_logs[0][0]))
+        # print("len(self.observed_logs) = ", len(self.observed_logs))
+        # print("len(self.observed_logs[0]) = ", len(self.observed_logs[0]))
+        # print("len(self.observed_logs[0][0]) = ", len(self.observed_logs[0][0]))
         observed_logs_returns = np.array(self.observed_logs).sum(axis=0)
-        print("len(observed_logs_returns) = ", len(observed_logs_returns))
+        # print("len(observed_logs_returns) = ", len(observed_logs_returns))
         # On choisit deux états parmi tous les états des trajec
         rand_idx = np.random.choice(np.arange(len(observed_logs_returns)), 2, replace=False)
-        print("rand_idx = ", rand_idx)
+        # print("rand_idx = ", rand_idx)
 
         # v2-Environment comparison
         #new_returns_a = observed_logs_returns[rand_idx[0]]
         #new_returns_b = observed_logs_returns[rand_idx[1]]
 
         # v3-Environment comparison (vase agnostic)
-        print("len(observed_logs_returns[rand_idx[0]]) = ", len(observed_logs_returns[rand_idx[0]]))
+        # print("len(observed_logs_returns[rand_idx[0]]) = ", len(observed_logs_returns[rand_idx[0]]))
         new_returns_a = observed_logs_returns[rand_idx[0], 0:3]
         new_returns_b = observed_logs_returns[rand_idx[1], 0:3]
-        print("observed_logs_returns = ", observed_logs_returns)
-        print("observed_logs_returns 0 = ", new_returns_a)
-        print("observed_logs_returns 1 = ", new_returns_b)
+        # print("observed_logs_returns = ", observed_logs_returns)
+        # print("observed_logs_returns 0 = ", new_returns_a)
+        # print("observed_logs_returns 1 = ", new_returns_b)
 
         # Reset observed logs
         self.observed_logs = []
@@ -172,9 +172,9 @@ class VolumeBuffer:
             # v3-Environment comparison (vase agnostic)
             logs_a = objective_logs_returns[rand_idx[0], 0:3]
             logs_b = objective_logs_returns[rand_idx[1], 0:3]
-            print("objective_logs_returns = ", objective_logs_returns)
-            print("logs_a = ", logs_a)
-            print("logs_b = ", logs_b)
+            # print("objective_logs_returns = ", objective_logs_returns)
+            # print("logs_a = ", logs_a)
+            # print("logs_b = ", logs_b)
 
             self.objective_logs = []
             return np.array(new_returns_a), np.array(new_returns_b), logs_a, logs_b
@@ -183,17 +183,17 @@ class VolumeBuffer:
 
     def compare_delta(self, w_posterior, new_returns_a, new_returns_b, logs_a=None, logs_b=None, random=False):
         delta = new_returns_a - new_returns_b
-        print("delta = ", delta)
+        # print("delta = ", delta)
         volume_delta = self.volume_removal(w_posterior, delta)
-        print("volume_delta = ", volume_delta)
-        print("best_volume = ", self.best_volume)
+        # print("volume_delta = ", volume_delta)
+        # print("best_volume = ", self.best_volume)
         if volume_delta > self.best_volume or random:
             self.best_volume = volume_delta
             self.best_delta = delta
             self.best_observed_returns = (new_returns_a, new_returns_b)
-            print("self.best_observed_returns ", self.best_observed_returns)
+            # print("self.best_observed_returns ", self.best_observed_returns)
             self.best_returns = (logs_a, logs_b)
-            print("self.best_returns ", self.best_returns)
+            # print("self.best_returns ", self.best_returns)
 
     def reset(self):
         self.best_volume = -np.inf

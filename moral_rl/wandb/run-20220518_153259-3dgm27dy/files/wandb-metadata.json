@@ -1,0 +1,23 @@
+{
+    "os": "Linux-5.10.0-14-amd64-x86_64-with-glibc2.31",
+    "python": "3.9.2",
+    "heartbeatAt": "2022-05-18T13:33:02.342202",
+    "startedAt": "2022-05-18T13:32:59.618992",
+    "docker": null,
+    "gpu": "GeForce GTX 560",
+    "gpu_count": 1,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "-m moral.moral_train",
+    "git": {
+        "remote": "https://github.com/MariusLC/Internship-Ethical-MORL.git",
+        "commit": "84a0bfc918a02f1af8c69e270873fe5b83ddf7fd"
+    },
+    "email": "marius.le_chapelier@etu.sorbonne-universite.fr",
+    "root": "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL",
+    "host": "fosterthepeople",
+    "username": "lechapelier",
+    "executable": "/usr/bin/python3"
+}
