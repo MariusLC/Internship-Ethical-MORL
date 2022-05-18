@@ -1,14 +1,14 @@
 # SETTINGS MORL
 # it has to be : len(ppo_files) = len(discriminator_files) = len(ratio)-1
 
-data_path: "saved_models/"
+data_path: "saved_models/Peschl_res/"
 ratio: [0, 1, 1]
 
 
 
 # more robust because discriminator and ppo can't have different weghts and must correspond to env
 nb_experts: 2
-experts_weights: ["_[0,1,0,1]", "_[0,0,1,1]"]
+experts_weights: ["_[0, 1, 0, 1]", "_[0, 0, 1, 1]"]
 ppo_filenames: "ppo_"
 discriminator_filenames: "discriminator_"
 env: "v3"
