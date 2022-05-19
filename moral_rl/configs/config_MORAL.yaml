@@ -1,0 +1,56 @@
+# SETTINGS MORL
+# it has to be : len(ppo_files) = len(discriminator_files) = len(ratio)-1
+
+
+# # Truc qui sont pas ammenés à changer
+# OLD
+# model_path: "saved_models/"
+# demo_path: "demonstrations/"
+# model_ext: ".pt"
+# demo_ext: ".pk"
+# env_rad: "randomized_"
+# ppo_filenames: "ppo_"
+# discriminator_filenames: "discriminator_"
+# generator_filenames: "generator_"
+
+# Truc qui sont pas ammenés à changer
+# NEW
+data_path: "generated_data/"
+expe_path: "experts/"
+demo_path: "demonstrations/"
+disc_path: "discriminators/"
+gene_path: "generators/"
+moral_path: "moral_agents/"
+model_ext: ".pt"
+demo_ext: ".pk"
+env_rad: "randomized_"
+model_name: "ppo_"
+
+
+
+# Editable parameters
+env: "v3"
+nb_experts: 2
+experts_weights: [[0,1,0,0], [0,0,1,0]]
+ratio: [1, 1, 1]
+geneORexpert: 0 # 0 for generator and 1 for expert, using ppo agent to calculate utopia during the moral process
+
+
+#######
+# Peschl Values #
+#######
+# nb_demos: 1000
+# env_steps_ppo: 9e6
+# env_steps_airl: 6e6
+# env_steps_moral: 8e6
+# n_queries: 50
+# query_freq: 153 846 # env_steps_moral/(n_queries+2)
+
+#######
+# Test Values #
+#######
+nb_demos: 100
+env_steps_ppo: 1000
+env_steps_airl: 10
+env_steps_moral: 100
+n_queries: 2

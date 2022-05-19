@@ -1,0 +1,56 @@
+execution sur 1 noeud, 1 coeur, 10h :
+
+ 8% 56016/666666 [9:57:32<9:39:11, 17.57it/s]
+
+
+
+
+
+
+execution evaluate_ppo_and_discrim :
+
+moyenne et variance des returns un agent expert [0, 1, 0, 1] 
+mean = [0.7692307692307693, 9.384615384615385, 0.6153846153846154, -0.6923076923076923]
+std =  [0.696568087549032, 1.002954216185023, 0.6249260311258431, 0.9101661204768638]
+moyenne et variance des returns des agents random 
+mean = [1.0, 1.0769230769230769, 0.9230769230769231, -0.6153846153846154]
+std  = [0.9607689228305228, 0.8284868934053083, 1.1409536133993328, 0.6249260311258431]
+
+pourcentage bonne prédiction data générées :  0.421875
+pourcentage bonne prédiction data expertes :  0.58203125
+Discriminator Loss  0.8716222643852234
+Fake Accuracy  0.421875
+Real Accuracy  0.58203125
+
+
+moyenne et variance des returns un agent expert [0, 0, 1, 1] 
+mean = [0.5384615384615384, 0.6153846153846154, 9.461538461538462, -0.3076923076923077]
+std =  [0.6343239424027171, 0.6249260311258431, 1.9060787220559796, 0.6056929133855239]
+moyenne et variance des returns des agents random 
+mean = [0.8461538461538461, 1.1538461538461537, 0.9230769230769231, -0.5384615384615384]
+std  = [1.0262818510866412, 0.76923
+
+pourcentage bonne prédiction data générées :  0.33984375
+pourcentage bonne prédiction data expertes :  0.6015625
+Discriminator Loss  0.9118531942367554
+Fake Accuracy  0.33984375
+Real Accuracy  0.6015625
+
+
+Conclusion : les agents experts ppo ont effectivement appris selon leurs objectifs (au moins le premier, à voir pour les vases ?)
+Par contre, le discriminant n'arrive pas à beaucoup mieux dicerner les trajectoires qui proviennent d'experts plutôt que d'agents randoms (42 vs 58 et 34 vs 60), il faut réapprendre les discriminants ?
+
+
+
+execution airl_train.py :
+
+Discriminator Loss  0.6864250302314758
+Fake Accuracy  0.00390625
+Real Accuracy  0.9921875
+mean discrim rew =  44.77892208099365
+Mean rewards per episode :  [1.0, 1.4615384615384615, 1.0769230769230769, -0.46153846153846156]
+Std rewards per episode :  [0.7844645405527362, 1.0088366960464616, 0.9970370305242863, 0.4985185152621431]
+  3%|█▏                                           | 13393/500000 [54:11<4:17:34, 31.49it/s]
+
+-> changement de proba du classifieur à partir de 13393 steps
+-> la moyenne des returns par trajectoire du générateur est toujours plutôt aléatoire (on ne dirais pas qu'il doit imiter un expert [0, 1, 0, 1])

@@ -91,11 +91,11 @@ if __name__ == '__main__':
     for expert_weights in config_yaml["experts_weights"]:
         discriminator_list.append(Discriminator(state_shape=state_shape, in_channels=in_channels).to(device))
         d = config_yaml["data_path"]+config_yaml["discriminator_filenames"]+config_yaml["env"]+expert_weights+config_yaml["data_ext"]
-        #print("discriminator loaded = "+d)
+        # print("discriminator loaded = "+d)
         discriminator_list[-1].load_state_dict(torch.load(d, map_location=torch.device('cpu')))
         ppo_list.append(PPO(state_shape=state_shape, in_channels=in_channels, n_actions=n_actions).to(device))
         p = config_yaml["data_path"]+config_yaml["ppo_filenames"]+config_yaml["env"]+expert_weights+config_yaml["data_ext"]
-        #print("ppo loaded = "+p)
+        # print("ppo loaded = "+p)
         ppo_list[-1].load_state_dict(torch.load(p, map_location=torch.device('cpu')))
         utop_list.append(discriminator_list[-1].estimate_utopia(ppo_list[-1], config))
         print(f'Reward Normalization 0: {utop_list[-1]}')

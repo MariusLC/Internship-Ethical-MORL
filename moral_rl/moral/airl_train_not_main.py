@@ -1,6 +1,7 @@
 from moral.ppo import PPO, TrajectoryDataset, update_policy
 from envs.gym_wrapper import *
 from moral.airl import *
+from utils.evaluate_ppo import *
 
 from tqdm import tqdm
 from stable_baselines3.common.vec_env import SubprocVecEnv
@@ -28,7 +29,7 @@ def airl_train_n_experts(env, env_steps_airl, demos_filename, generators_filenam
 
 
 
-def airl_train_1_expert(env_id, env_steps_airl, demos_filename, generator_filename, discriminator_filename):
+def airl_train_1_expert(env_id, env_steps_airl, demos_filename, generator_filename, discriminator_filename, prints=False):
 
     # Load demonstrations
     expert_trajectories = pickle.load(open(demos_filename, 'rb'))
@@ -112,6 +113,23 @@ def airl_train_1_expert(env_id, env_steps_airl, demos_filename, generator_filena
                                                               expert_trajectories=expert_trajectories,
                                                               policy_trajectories=dataset.trajectories.copy(), ppo=ppo,
                                                               batch_size=config.batchsize_discriminator)
+
+            if (prints):
+                print('Discriminator Loss ', d_loss)
+                print('Fake Accuracy ', fake_acc)
+                print('Real Accuracy ', real_acc)
+
+                print("mean discrim rew = ", sum(dataset.log_returns()))
+
+                mean_ppo, std_ppo = evaluate_ppo(ppo, config)
+                print("Mean returns per traj : ", mean_ppo)
+                print("Std returns per traj : ", std_ppo)
+
+                # mean_ppo, std_ppo, mean_discrim, std_discrim = evaluate_ppo_discrim(ppo, discriminator, config)
+                # print("Mean rewards per episode : ", mean_ppo)
+                # print("Std rewards per episode : ", std_ppo)
+                # print("Mean discrim eval per episode : ", mean_discrim)
+                # print("Std discrim eval per episode : ", std_discrim)
 
             # Log Loss Statsitics
             wandb.log({'Discriminator Loss': d_loss,

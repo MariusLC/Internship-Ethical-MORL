@@ -1,6 +1,7 @@
 from moral.ppo import PPO, TrajectoryDataset, update_policy
 from envs.gym_wrapper import *
 from moral.airl import *
+from moral.airl_train_not_main import *
 
 from tqdm import tqdm
 from stable_baselines3.common.vec_env import SubprocVecEnv
@@ -9,125 +10,56 @@ import numpy as np
 import pickle
 import wandb
 import argparse
+import os
+import yaml
+
+# folder to load config file
+CONFIG_PATH = "configs/"
+CONFIG_FILENAME = "config_AIRL.yaml"
+
+# Function to load yaml configuration file
+def load_config(config_name):
+    with open(os.path.join(CONFIG_PATH, config_name)) as file:
+        config = yaml.safe_load(file)
+
+    return config
 
 # Device Check
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 if __name__ == '__main__':
 
-    # Fetch ratio args
-    parser = argparse.ArgumentParser(description='Preference Lambda.')
-    parser.add_argument('--lambd', nargs='+', type=int, required=True)
-    parser.add_argument('--env', type=int)
-    args = parser.parse_args()
+    config_yaml = load_config(CONFIG_FILENAME)
 
-    if args.lambd == None:
-        raise NotImplementedError
+    #PARAMS CONFIG
+    nb_experts = config_yaml["nb_experts"]
+    lambd_list = config_yaml["experts_weights"]
 
-    if args.env == 2:
-        envi = 'randomized_v2'
-    if args.env == 3:
-        envi = 'randomized_v3'
-    else: # ( null ou env inconnu)
-        print("args.env = ",args.env,". Environnment missing or unknown, executing randomized_v3")
-        envi = 'randomized_v3'
-        args.env = 3
+    # PATHS & NAMES
+    vanilla = config_yaml["vanilla"]
+    data_path = config_yaml["data_path"]
+    model_name = config_yaml["model_name"]
+    env_rad = config_yaml["env_rad"]
+    env = config_yaml["env"]
+    disc_path = config_yaml["disc_path"]
+    expe_path = config_yaml["expe_path"]
+    gene_path = config_yaml["gene_path"]
+    demo_path = config_yaml["demo_path"]
+    model_ext = config_yaml["model_ext"]
+    demo_ext = config_yaml["demo_ext"]
+    env_steps = config_yaml["env_steps"]
 
-    # Load demonstrations
-    #expert_trajectories = pickle.load(open('demonstrations/ppo_demos_v3_[0,1,0,1].pk', 'rb'))
-    exp_traj_file_name = 'demonstrations/ppo_v'+str(args.env)+"_["
-    for i in range(len(args.lambd)):
-        exp_traj_file_name += str(args.lambd[i])+','
-    exp_traj_file_name = exp_traj_file_name[:-1]
-    exp_traj_file_name += '].pk'
-    expert_trajectories = pickle.load(open(exp_traj_file_name, 'rb'))
+    vanilla_path = ""
+    if vanilla:
+        vanilla_path += "Peschl/"
 
-    # Init WandB & Parameters
-    wandb.init(project='AIRL', config={
-        'env_id': envi,
-        'env_steps': 6e6,
-        'batchsize_discriminator': 512,
-        'batchsize_ppo': 12,
-        'n_workers': 12,
-        'entropy_reg': 0,
-        'gamma': 0.999,
-        'epsilon': 0.1,
-        'ppo_epochs': 5
-    })
-    config = wandb.config
+    envi = env_rad+env
 
-    # Create Environment
-    vec_env = SubprocVecEnv([make_env(config.env_id, i) for i in range(config.n_workers)])
-    states = vec_env.reset()
-    states_tensor = torch.tensor(states).float().to(device)
+    for i in range(nb_experts):
+        expert_filename = data_path+expe_path+vanilla_path+model_name+env+"_"+str(lambd_list[i])+model_ext
+        demos_filename = data_path+demo_path+vanilla_path+model_name+env+"_"+str(lambd_list[i])+demo_ext
+        generator_filename = data_path+gene_path+vanilla_path+model_name+env+"_"+str(lambd_list[i])+model_ext
+        discriminator_filename = data_path+disc_path+vanilla_path+model_name+env+"_"+str(lambd_list[i])+model_ext
+        airl_train_1_expert(envi, env_steps, demos_filename, generator_filename, discriminator_filename, prints=True)
 
-    # Fetch Shapes
-    n_actions = vec_env.action_space.n
-    obs_shape = vec_env.observation_space.shape
-    state_shape = obs_shape[:-1]
-    in_channels = obs_shape[-1]
 
-    # Initialize Models
-    ppo = PPO(state_shape=state_shape, n_actions=n_actions, in_channels=in_channels).to(device)
-    discriminator = DiscriminatorMLP(state_shape=state_shape, in_channels=in_channels).to(device)
-    optimizer = torch.optim.Adam(ppo.parameters(), lr=5e-4)
-    optimizer_discriminator = torch.optim.Adam(discriminator.parameters(), lr=5e-5)
-    dataset = TrajectoryDataset(batch_size=config.batchsize_ppo, n_workers=config.n_workers)
-
-    # Logging
-    objective_logs = []
-
-    for t in tqdm(range((int(config.env_steps/config.n_workers)))):
-
-        # Act
-        actions, log_probs = ppo.act(states_tensor)
-        next_states, rewards, done, info = vec_env.step(actions)
-
-        # Log Objectives
-        objective_logs.append(rewards)
-
-        # Calculate (vectorized) AIRL reward
-        airl_state = torch.tensor(states).to(device).float()
-        airl_next_state = torch.tensor(next_states).to(device).float()
-        airl_action_prob = torch.exp(torch.tensor(log_probs)).to(device).float()
-        airl_rewards = discriminator.predict_reward(airl_state, airl_next_state, config.gamma, airl_action_prob)
-        airl_rewards = list(airl_rewards.detach().cpu().numpy() * [0 if i else 1 for i in done])
-
-        # Save Trajectory
-        train_ready = dataset.write_tuple(states, actions, airl_rewards, done, log_probs)
-
-        if train_ready:
-            # Log Objectives
-            objective_logs = np.array(objective_logs).sum(axis=0)
-            for i in range(objective_logs.shape[1]):
-                wandb.log({'Obj_' + str(i): objective_logs[:, i].mean()})
-            objective_logs = []
-
-            # Update Models
-            update_policy(ppo, dataset, optimizer, config.gamma, config.epsilon, config.ppo_epochs,
-                          entropy_reg=config.entropy_reg)
-            d_loss, fake_acc, real_acc = update_discriminator(discriminator=discriminator,
-                                                              optimizer=optimizer_discriminator,
-                                                              gamma=config.gamma,
-                                                              expert_trajectories=expert_trajectories,
-                                                              policy_trajectories=dataset.trajectories.copy(), ppo=ppo,
-                                                              batch_size=config.batchsize_discriminator)
-
-            # Log Loss Statsitics
-            wandb.log({'Discriminator Loss': d_loss,
-                       'Fake Accuracy': fake_acc,
-                       'Real Accuracy': real_acc})
-            for ret in dataset.log_returns():
-                wandb.log({'Returns': ret})
-            dataset.reset_trajectories()
-
-        # Prepare state input for next time step
-        states = next_states.copy()
-        states_tensor = torch.tensor(states).float().to(device)
-
-    #vec_env.close()
-    # SAVE THE DISCRIMINATOR FOR THE MORAL STEP
-    torch.save(discriminator.state_dict(), 'saved_models/discriminator_v'+args.env+'_'+str(config.lambd)+'.pt')
-
-    # SAVE THE GENERATOR FOR THE MORAL STEP ?
-    torch.save(ppo.state_dict(), 'saved_models/generator_v'+args.env+'_'+str(config.lambd)+'.pt')
