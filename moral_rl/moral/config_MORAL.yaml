@@ -52,5 +52,5 @@ geneORexpert: 0 # 0 for generator and 1 for expert, using ppo agent to calculate
 nb_demos: 100
 env_steps_ppo: 1000
 env_steps_airl: 10
-env_steps_moral: 100
+env_steps_moral: 1000
 n_queries: 2
