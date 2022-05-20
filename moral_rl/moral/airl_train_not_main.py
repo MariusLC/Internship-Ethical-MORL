@@ -86,11 +86,14 @@ def airl_train_1_expert(env_id, env_steps_airl, demos_filename, generator_filena
         airl_state = torch.tensor(states).to(device).float()
         airl_next_state = torch.tensor(next_states).to(device).float()
         airl_action_prob = torch.exp(torch.tensor(log_probs)).to(device).float()
-        airl_rewards = discriminator.predict_reward(airl_state, airl_next_state, config.gamma, airl_action_prob)
+        # airl_rewards = discriminator.predict_reward_2(airl_state, airl_next_state, config.gamma, airl_action_prob)
+        airl_advantages, airl_rewards = discriminator.predict_reward_2(airl_state, airl_next_state, config.gamma, airl_action_prob)
         airl_rewards = list(airl_rewards.detach().cpu().numpy() * [0 if i else 1 for i in done])
+        airl_advantages = list(airl_advantages.detach().cpu().numpy() * [0 if i else 1 for i in done])
 
         # Save Trajectory
-        train_ready = dataset.write_tuple(states, actions, airl_rewards, done, log_probs)
+        # train_ready = dataset.write_tuple(states, actions, airl_rewards, done, log_probs)
+        train_ready = dataset.write_tuple_2(states, actions, airl_rewards, airl_advantages, done, log_probs)
 
         if train_ready:
             # Log Objectives
@@ -120,6 +123,7 @@ def airl_train_1_expert(env_id, env_steps_airl, demos_filename, generator_filena
                 print('Real Accuracy ', real_acc)
 
                 print("mean discrim rew = ", sum(dataset.log_returns()))
+                print("mean discrim adv = ", sum(dataset.log_advantages()))
 
                 mean_ppo, std_ppo = evaluate_ppo(ppo, config)
                 print("Mean returns per traj : ", mean_ppo)
@@ -143,10 +147,10 @@ def airl_train_1_expert(env_id, env_steps_airl, demos_filename, generator_filena
         states = next_states.copy()
         states_tensor = torch.tensor(states).float().to(device)
 
-    #vec_env.close()
-    # SAVE THE DISCRIMINATOR FOR THE MORAL STEP
-    torch.save(discriminator.state_dict(), discriminator_filename)
+        #vec_env.close()
+        # SAVE THE DISCRIMINATOR FOR THE MORAL STEP
+        torch.save(discriminator.state_dict(), discriminator_filename)
 
-    # SAVE THE GENERATOR FOR THE MORAL STEP ?
-    torch.save(ppo.state_dict(), generator_filename)
+        # SAVE THE GENERATOR FOR THE MORAL STEP ?
+        torch.save(ppo.state_dict(), generator_filename)
     

@@ -54,3 +54,9 @@ Std rewards per episode :  [0.7844645405527362, 1.0088366960464616, 0.9970370305
 
 -> changement de proba du classifieur à partir de 13393 steps
 -> la moyenne des returns par trajectoire du générateur est toujours plutôt aléatoire (on ne dirais pas qu'il doit imiter un expert [0, 1, 0, 1])
+
+
+
+
+new execution airl_train sur 10h cluster lip6
+OAR_JOB_ID=982420

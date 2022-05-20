@@ -1,0 +1,206 @@
+
+  0%|                                                | 69/500000 [00:01<2:23:43, 57.97it/s]/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/ppo.py:50: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at  ../torch/csrc/utils/tensor_new.cpp:210.)
+  trajectory_states = torch.tensor(tau['states']).float().to(device)
+Discriminator Loss  1.2026445865631104
+Fake Accuracy  0.0
+Real Accuracy  1.0
+mean discrim rew =  1917.912838459015
+[W NNPACK.cpp:51] Could not initialize NNPACK! Reason: Unsupported hardware.
+Mean returns per traj :  [0.9230769230769231, 0.38461538461538464, 0.9230769230769231, -0.6923076923076923]
+Std returns per traj :  [0.9166442529086912, 0.48650425541051995, 0.6153846153846154, 0.6056929133855239]
+
+  0%|                                               | 144/500000 [00:15<4:24:02, 31.55it/s]Process ForkServerProcess-12:
+Process ForkServerProcess-10:
+Process ForkServerProcess-11:
+Process ForkServerProcess-8:
+Process ForkServerProcess-9:
+Process ForkServerProcess-13:
+Process ForkServerProcess-3:
+Process ForkServerProcess-2:
+Process ForkServerProcess-5:
+Process ForkServerProcess-7:
+Process ForkServerProcess-6:
+Process ForkServerProcess-4:
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+KeyboardInterrupt
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+KeyboardInterrupt
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt
+KeyboardInterrupt
+KeyboardInterrupt
+KeyboardInterrupt
+KeyboardInterrupt
+  0%|                                              | 147/500000 [00:19<18:38:27,  7.45it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/airl_train.py", line 63, in <module>
+    airl_train_1_expert(envi, env_steps, demos_filename, generator_filename, discriminator_filename, prints=True)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/airl_train_not_main.py", line 108, in airl_train_1_expert
+    update_policy(ppo, dataset, optimizer, config.gamma, config.epsilon, config.ppo_epochs,
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/ppo.py", line 129, in update_policy
+    action_log_probabilities, critic_values, action_entropy = ppo.evaluate_trajectory(tau)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/ppo.py", line 50, in evaluate_trajectory
+    trajectory_states = torch.tensor(tau['states']).float().to(device)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt

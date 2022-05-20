@@ -60,6 +60,7 @@ if __name__ == '__main__':
         demos_filename = data_path+demo_path+vanilla_path+model_name+env+"_"+str(lambd_list[i])+demo_ext
         generator_filename = data_path+gene_path+vanilla_path+model_name+env+"_"+str(lambd_list[i])+model_ext
         discriminator_filename = data_path+disc_path+vanilla_path+model_name+env+"_"+str(lambd_list[i])+model_ext
+        print("demos_filename = ", demos_filename)
         airl_train_1_expert(envi, env_steps, demos_filename, generator_filename, discriminator_filename, prints=True)
 
 

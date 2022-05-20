@@ -1,0 +1,902 @@
+
+  0%|                                                | 71/500000 [00:01<2:14:02, 62.16it/s]/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/ppo.py:50: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at  ../torch/csrc/utils/tensor_new.cpp:210.)
+  trajectory_states = torch.tensor(tau['states']).float().to(device)
+Discriminator Loss  1.203656554222107
+Fake Accuracy  0.0
+Real Accuracy  1.0
+mean discrim rew =  1919.5319697856903
+[W NNPACK.cpp:51] Could not initialize NNPACK! Reason: Unsupported hardware.
+Mean returns per traj :  [1.0, 0.6153846153846154, 0.8461538461538461, -0.5384615384615384]
+Std returns per traj :  [0.9607689228305228, 0.737820234355803, 0.6617173282340483, 0.6343239424027171]
+
+  0%|                                               | 147/500000 [00:15<3:46:02, 36.86it/s]
+Discriminator Loss  1.2041773796081543
+Fake Accuracy  0.0
+Real Accuracy  1.0
+mean discrim rew =  1916.6398258209229
+Mean returns per traj :  [1.2307692307692308, 1.5384615384615385, 0.7692307692307693, -0.6923076923076923]
+
+
+  0%|                                               | 217/500000 [00:28<5:04:46, 27.33it/s]
+Discriminator Loss  1.1986428499221802
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|                                               | 217/500000 [00:39<5:04:46, 27.33it/s]
+Mean returns per traj :  [1.3076923076923077, 0.7692307692307693, 1.2307692307692308, -0.6153846153846154]
+
+
+  0%|                                               | 291/500000 [00:42<4:43:30, 29.38it/s]
+Discriminator Loss  1.198342204093933
+Fake Accuracy  0.0
+Real Accuracy  1.0
+mean discrim rew =  1908.3729977607727
+Mean returns per traj :  [0.9230769230769231, 1.3076923076923077, 0.7692307692307693, -0.8461538461538461]
+
+
+  0%|                                               | 366/500000 [00:57<4:08:58, 33.45it/s]
+Discriminator Loss  1.1976619958877563
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|                                               | 422/500000 [01:10<7:30:42, 18.47it/s]
+Mean returns per traj :  [0.9230769230769231, 1.2307692307692308, 1.0, -0.46153846153846156]
+
+  0%|                                               | 441/500000 [01:11<4:03:01, 34.26it/s]
+Discriminator Loss  1.1961339712142944
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|                                               | 503/500000 [01:24<5:56:18, 23.36it/s]
+Mean returns per traj :  [0.46153846153846156, 1.0, 1.3076923076923077, -0.6153846153846154]
+
+  0%|                                               | 517/500000 [01:25<3:59:10, 34.81it/s]
+Discriminator Loss  1.1951624155044556
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|                                               | 573/500000 [01:38<7:23:00, 18.79it/s]
+Mean returns per traj :  [1.2307692307692308, 0.8461538461538461, 0.5384615384615384, -0.38461538461538464]
+
+
+  0%|                                               | 586/500000 [01:50<4:47:36, 28.94it/s]
+Discriminator Loss  1.1920737028121948
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|                                               | 653/500000 [01:52<4:59:38, 27.77it/s]
+Mean returns per traj :  [0.7692307692307693, 0.8461538461538461, 0.7692307692307693, -0.7692307692307693]
+
+  0%|                                               | 665/500000 [01:52<3:43:46, 37.19it/s]
+Discriminator Loss  1.1927367448806763
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|                                               | 733/500000 [02:06<5:21:58, 25.84it/s]
+Mean returns per traj :  [0.9230769230769231, 0.9230769230769231, 0.7692307692307693, -0.3076923076923077]
+Std returns per traj :  [0.8284868934053083, 0.26646935501059654, 0.696568087549032, 0.6056929133855239]
+Discriminator Loss  1.191040277481079
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|                                               | 812/500000 [02:20<4:04:19, 34.05it/s]
+Mean returns per traj :  [1.3076923076923077, 0.7692307692307693, 1.0769230769230769, -0.46153846153846156]
+Std returns per traj :  [1.065877420042386, 0.890448992522325, 1.071414482860317, 0.4985185152621431]
+Discriminator Loss  1.188012719154358
+Fake Accuracy  0.0
+Real Accuracy  1.0
+mean discrim rew =  1890.143063545227
+Mean returns per traj :  [1.1538461538461537, 0.9230769230769231, 1.0769230769230769, -0.38461538461538464]
+
+  0%|                                               | 887/500000 [02:34<4:07:38, 33.59it/s]
+Discriminator Loss  1.1856833696365356
+Fake Accuracy  0.0
+Real Accuracy  1.0
+mean discrim rew =  1885.5913636684418
+Mean returns per traj :  [0.9230769230769231, 0.8461538461538461, 1.3846153846153846, -0.7692307692307693]
+
+  0%|                                               | 960/500000 [02:48<4:11:22, 33.09it/s]
+Discriminator Loss  1.1872355937957764
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|                                             | 962/500000 [03:01<113:48:11,  1.22it/s]
+Mean returns per traj :  [0.8461538461538461, 0.6923076923076923, 0.8461538461538461, -0.8461538461538461]
+
+
+  0%|                                             | 1051/500000 [03:15<42:51:28,  3.23it/s]
+Discriminator Loss  1.185234546661377
+Fake Accuracy  0.0
+Real Accuracy  1.0
+mean discrim rew =  1883.3802576065063
+Mean returns per traj :  [1.1538461538461537, 1.0769230769230769, 0.9230769230769231, -0.6153846153846154]
+
+
+  0%|                                             | 1137/500000 [03:29<23:02:59,  6.01it/s]
+Discriminator Loss  1.1850414276123047
+Fake Accuracy  0.0
+Real Accuracy  1.0
+mean discrim rew =  1882.9979107379913
+Mean returns per traj :  [1.0769230769230769, 0.5384615384615384, 0.8461538461538461, -0.8461538461538461]
+
+
+  0%|                                              | 1178/500000 [03:40<4:33:47, 30.37it/s]
+Discriminator Loss  1.182134747505188
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|                                              | 1239/500000 [03:45<6:17:31, 22.02it/s]
+Mean returns per traj :  [0.8461538461538461, 0.7692307692307693, 1.0, -0.6153846153846154]
+
+  0%|                                              | 1257/500000 [03:45<3:46:04, 36.77it/s]
+Discriminator Loss  1.1809711456298828
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|                                              | 1326/500000 [03:58<4:22:11, 31.70it/s]
+Mean returns per traj :  [0.9230769230769231, 0.8461538461538461, 0.8461538461538461, -0.6153846153846154]
+
+  0%|                                              | 1326/500000 [04:10<4:22:11, 31.70it/s]
+Discriminator Loss  1.179909586906433
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|▏                                             | 1403/500000 [04:12<4:15:46, 32.49it/s]
+Mean returns per traj :  [0.9230769230769231, 0.5384615384615384, 0.8461538461538461, -0.23076923076923078]
+Std returns per traj :  [0.9166442529086912, 0.6343239424027171, 0.6617173282340482, 0.4213250442347432]
+Discriminator Loss  1.1781742572784424
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|▏                                             | 1471/500000 [04:29<5:29:45, 25.20it/s]
+Mean returns per traj :  [1.1538461538461537, 1.0, 1.1538461538461537, -1.0]
+
+
+  0%|▏                                             | 1477/500000 [04:40<4:34:05, 30.31it/s]
+Discriminator Loss  1.176461935043335
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|▏                                            | 1505/500000 [04:43<25:09:30,  5.50it/s]
+Mean returns per traj :  [1.1538461538461537, 0.9230769230769231, 0.7692307692307693, -0.7692307692307693]
+
+  0%|▏                                             | 1553/500000 [04:44<4:00:57, 34.48it/s]
+Discriminator Loss  1.1761724948883057
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|▏                                            | 1572/500000 [04:57<43:30:03,  3.18it/s]
+Mean returns per traj :  [1.0, 0.7692307692307693, 0.7692307692307693, -0.6153846153846154]
+
+  0%|▏                                             | 1624/500000 [04:58<4:47:21, 28.91it/s]
+Discriminator Loss  1.1742724180221558
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|▏                                            | 1628/500000 [05:11<96:44:38,  1.43it/s]
+Mean returns per traj :  [1.3076923076923077, 1.0769230769230769, 0.8461538461538461, -0.38461538461538464]
+
+  0%|▏                                             | 1696/500000 [05:12<4:17:41, 32.23it/s]
+Discriminator Loss  1.172853708267212
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|▏                                            | 1728/500000 [05:25<21:37:24,  6.40it/s]
+Mean returns per traj :  [1.0769230769230769, 1.2307692307692308, 0.8461538461538461, -0.46153846153846156]
+
+  0%|▏                                             | 1771/500000 [05:26<4:05:10, 33.87it/s]
+Discriminator Loss  1.170806884765625
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|▏                                            | 1789/500000 [05:39<47:05:17,  2.94it/s]
+Mean returns per traj :  [1.1538461538461537, 0.8461538461538461, 0.7692307692307693, -0.6923076923076923]
+
+
+  0%|▏                                            | 1858/500000 [05:53<63:59:40,  2.16it/s]
+Discriminator Loss  1.1693001985549927
+Fake Accuracy  0.0
+Real Accuracy  1.0
+mean discrim rew =  1847.3672444820404
+Mean returns per traj :  [1.1538461538461537, 1.3076923076923077, 0.8461538461538461, -0.38461538461538464]
+
+  0%|▏                                             | 1918/500000 [05:54<4:36:23, 30.04it/s]
+Discriminator Loss  1.1676881313323975
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|▏                                             | 1997/500000 [06:09<3:45:22, 36.83it/s]
+Mean returns per traj :  [1.0, 0.6923076923076923, 1.3076923076923077, -0.46153846153846156]
+
+  0%|▏                                             | 1997/500000 [06:20<3:45:22, 36.83it/s]
+Discriminator Loss  1.164945125579834
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|▏                                             | 2061/500000 [06:23<5:02:58, 27.39it/s]
+Mean returns per traj :  [1.0, 0.38461538461538464, 0.8461538461538461, -0.6153846153846154]
+
+  0%|▏                                             | 2067/500000 [06:23<4:20:54, 31.81it/s]
+Discriminator Loss  1.1632637977600098
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|▏                                             | 2125/500000 [06:39<7:49:46, 17.66it/s]
+Mean returns per traj :  [1.0, 0.7692307692307693, 0.7692307692307693, -0.8461538461538461]
+
+
+  0%|▏                                             | 2140/500000 [06:50<4:49:01, 28.71it/s]
+Discriminator Loss  1.1621793508529663
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|▏                                            | 2165/500000 [06:53<31:42:39,  4.36it/s]
+Mean returns per traj :  [0.8461538461538461, 1.3076923076923077, 0.7692307692307693, -0.9230769230769231]
+
+  0%|▏                                             | 2213/500000 [06:54<4:16:19, 32.37it/s]
+Discriminator Loss  1.1605795621871948
+Fake Accuracy  0.0
+Real Accuracy  1.0
+mean discrim rew =  1828.6132490634918
+Mean returns per traj :  [0.6923076923076923, 0.9230769230769231, 1.0, -0.6923076923076923]
+
+
+  0%|▏                                             | 2293/500000 [07:20<3:48:02, 36.37it/s]
+Discriminator Loss  1.158064365386963
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|▏                                             | 2365/500000 [07:23<4:15:29, 32.46it/s]
+Mean returns per traj :  [1.5384615384615385, 0.7692307692307693, 0.6923076923076923, -0.9230769230769231]
+Std returns per traj :  [1.1512791959304438, 0.9730085108210399, 0.9101661204768638, 0.9970370305242863]
+Discriminator Loss  1.1578172445297241
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  0%|▏                                             | 2421/500000 [07:37<7:16:05, 19.02it/s]
+Mean returns per traj :  [1.1538461538461537, 1.9230769230769231, 1.2307692307692308, -0.38461538461538464]
+
+  0%|▏                                             | 2440/500000 [07:38<4:06:20, 33.66it/s]
+Discriminator Loss  1.1546279191970825
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▏                                             | 2505/500000 [07:51<4:49:40, 28.62it/s]
+Mean returns per traj :  [1.0, 0.6923076923076923, 0.9230769230769231, -0.7692307692307693]
+
+  1%|▏                                             | 2511/500000 [07:51<4:08:38, 33.35it/s]
+Discriminator Loss  1.154308557510376
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▏                                             | 2584/500000 [08:07<4:25:36, 31.21it/s]
+Mean returns per traj :  [0.46153846153846156, 0.7692307692307693, 0.7692307692307693, -0.6923076923076923]
+Std returns per traj :  [0.4985185152621431, 0.7994080650317895, 0.7994080650317895, 0.7216024245882199]
+Discriminator Loss  1.1520625352859497
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▏                                            | 2623/500000 [08:22<16:52:49,  8.18it/s]
+Mean returns per traj :  [1.0, 0.6923076923076923, 0.8461538461538461, -0.6153846153846154]
+
+
+  1%|▏                                            | 2668/500000 [08:36<92:47:50,  1.49it/s]
+Discriminator Loss  1.1494938135147095
+Fake Accuracy  0.0
+Real Accuracy  1.0
+mean discrim rew =  1803.3291397094727
+Mean returns per traj :  [0.7692307692307693, 0.8461538461538461, 0.6923076923076923, -0.6923076923076923]
+
+  1%|▎                                             | 2737/500000 [08:37<4:09:04, 33.27it/s]
+Discriminator Loss  1.1474741697311401
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▎                                             | 2810/500000 [08:51<4:11:26, 32.96it/s]
+Mean returns per traj :  [1.1538461538461537, 1.1538461538461537, 0.7692307692307693, -0.46153846153846156]
+Std returns per traj :  [1.0986812966989001, 0.9483713850721502, 0.42132504423474315, 0.634323942402717]
+Discriminator Loss  1.1450101137161255
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▎                                             | 2882/500000 [09:07<4:39:14, 29.67it/s]
+Mean returns per traj :  [1.0769230769230769, 1.0769230769230769, 0.6153846153846154, -0.3076923076923077]
+Std returns per traj :  [0.9166442529086912, 0.9166442529086911, 0.737820234355803, 0.46153846153846156]
+Discriminator Loss  1.144620656967163
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▎                                            | 2928/500000 [09:22<12:29:49, 11.05it/s]
+Mean returns per traj :  [1.6153846153846154, 0.8461538461538461, 0.9230769230769231, -0.6923076923076923]
+
+  1%|▎                                             | 2957/500000 [09:22<4:30:34, 30.62it/s]
+Discriminator Loss  1.1412060260772705
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▎                                             | 3018/500000 [09:36<6:45:12, 20.44it/s]
+Mean returns per traj :  [0.9230769230769231, 0.6153846153846154, 1.0769230769230769, -0.3076923076923077]
+
+  1%|▎                                             | 3032/500000 [09:36<4:29:48, 30.70it/s]
+Discriminator Loss  1.1392745971679688
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▎                                            | 3071/500000 [09:51<14:20:05,  9.63it/s]
+Mean returns per traj :  [1.1538461538461537, 1.0, 0.8461538461538461, -0.6923076923076923]
+
+  1%|▎                                             | 3107/500000 [09:52<3:59:24, 34.59it/s]
+Discriminator Loss  1.1372132301330566
+Fake Accuracy  0.0
+Real Accuracy  1.0
+mean discrim rew =  1775.6505208015442
+Mean returns per traj :  [1.2307692307692308, 0.6923076923076923, 0.6153846153846154, -0.38461538461538464]
+
+
+  1%|▎                                             | 3181/500000 [10:20<4:28:22, 30.85it/s]
+Discriminator Loss  1.1348259449005127
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▎                                            | 3212/500000 [10:24<19:48:04,  6.97it/s]
+Mean returns per traj :  [1.3846153846153846, 0.6923076923076923, 1.0769230769230769, -0.6153846153846154]
+
+  1%|▎                                             | 3251/500000 [10:24<4:10:25, 33.06it/s]
+Discriminator Loss  1.1326035261154175
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▎                                             | 3318/500000 [10:40<5:08:28, 26.84it/s]
+Mean returns per traj :  [0.9230769230769231, 0.9230769230769231, 1.5384615384615385, -0.7692307692307693]
+
+  1%|▎                                             | 3324/500000 [10:40<4:19:34, 31.89it/s]
+Discriminator Loss  1.1298255920410156
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▎                                            | 3372/500000 [10:54<10:03:24, 13.72it/s]
+Mean returns per traj :  [0.7692307692307693, 0.9230769230769231, 0.6923076923076923, -0.6923076923076923]
+
+  1%|▎                                             | 3398/500000 [10:54<3:59:17, 34.59it/s]
+Discriminator Loss  1.1291091442108154
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▎                                            | 3438/500000 [11:08<16:12:20,  8.51it/s]
+Mean returns per traj :  [1.4615384615384615, 0.6153846153846154, 1.1538461538461537, -0.7692307692307693]
+
+  1%|▎                                             | 3472/500000 [11:08<4:40:40, 29.48it/s]
+Discriminator Loss  1.1276848316192627
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▎                                            | 3490/500000 [11:21<44:40:05,  3.09it/s]
+Mean returns per traj :  [0.8461538461538461, 1.0769230769230769, 0.38461538461538464, -0.6153846153846154]
+
+  1%|▎                                             | 3545/500000 [11:22<4:10:52, 32.98it/s]
+Discriminator Loss  1.1224365234375
+Fake Accuracy  0.0
+Real Accuracy  1.0
+mean discrim rew =  1743.9575736522675
+Mean returns per traj :  [0.8461538461538461, 0.8461538461538461, 1.0769230769230769, -0.6923076923076923]
+
+  1%|▎                                             | 3622/500000 [11:37<4:13:21, 32.65it/s]
+Discriminator Loss  1.1212036609649658
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▎                                             | 3696/500000 [11:51<4:10:03, 33.08it/s]
+Mean returns per traj :  [1.5384615384615385, 0.6923076923076923, 1.1538461538461537, -0.46153846153846156]
+Std returns per traj :  [0.634323942402717, 0.8213137116947162, 0.8634593969478325, 0.634323942402717]
+Discriminator Loss  1.1182209253311157
+Fake Accuracy  0.0
+Real Accuracy  1.0
+mean discrim rew =  1732.030441403389
+Mean returns per traj :  [1.0, 0.7692307692307693, 1.0769230769230769, -0.7692307692307693]
+
+  1%|▎                                             | 3771/500000 [12:05<4:09:08, 33.20it/s]
+Discriminator Loss  1.1171562671661377
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▎                                             | 3827/500000 [12:20<7:37:14, 18.09it/s]
+Mean returns per traj :  [1.2307692307692308, 0.7692307692307693, 0.9230769230769231, -0.9230769230769231]
+
+  1%|▎                                             | 3846/500000 [12:20<4:02:44, 34.07it/s]
+Discriminator Loss  1.1145820617675781
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▎                                             | 3896/500000 [12:34<9:33:48, 14.41it/s]
+Mean returns per traj :  [1.2307692307692308, 0.9230769230769231, 0.6923076923076923, -0.8461538461538461]
+
+  1%|▎                                             | 3920/500000 [12:34<4:20:04, 31.79it/s]
+Discriminator Loss  1.1112971305847168
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▎                                            | 3953/500000 [12:48<22:16:09,  6.19it/s]
+Mean returns per traj :  [0.5384615384615384, 0.6923076923076923, 0.8461538461538461, -0.3076923076923077]
+
+  1%|▎                                             | 3991/500000 [12:49<4:46:11, 28.89it/s]
+Discriminator Loss  1.1081169843673706
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▎                                            | 4022/500000 [13:02<22:10:11,  6.21it/s]
+Mean returns per traj :  [0.9230769230769231, 0.9230769230769231, 0.6923076923076923, -0.6923076923076923]
+
+  1%|▎                                             | 4065/500000 [13:02<4:05:47, 33.63it/s]
+Discriminator Loss  1.1041429042816162
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▎                                            | 4071/500000 [13:16<93:19:47,  1.48it/s]
+Mean returns per traj :  [1.0769230769230769, 0.9230769230769231, 0.6153846153846154, -0.6153846153846154]
+
+  1%|▍                                             | 4140/500000 [13:17<4:12:57, 32.67it/s]
+Discriminator Loss  1.0997684001922607
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▎                                           | 4144/500000 [13:30<101:07:42,  1.36it/s]
+Mean returns per traj :  [1.3846153846153846, 1.3846153846153846, 0.8461538461538461, -0.6923076923076923]
+
+  1%|▍                                             | 4212/500000 [13:31<4:10:42, 32.96it/s]
+Discriminator Loss  1.0998125076293945
+Fake Accuracy  0.0
+Real Accuracy  1.0
+mean discrim rew =  1685.1947499513626
+Mean returns per traj :  [0.7692307692307693, 1.0769230769230769, 0.6923076923076923, -1.0]
+
+  1%|▍                                             | 4286/500000 [13:45<4:06:59, 33.45it/s]
+Discriminator Loss  1.0978690385818481
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▍                                             | 4359/500000 [14:00<4:32:59, 30.26it/s]
+Mean returns per traj :  [1.2307692307692308, 1.0, 0.6923076923076923, -0.6923076923076923]
+Std returns per traj :  [0.890448992522325, 0.7844645405527362, 0.8213137116947161, 0.6056929133855239]
+Discriminator Loss  1.094844937324524
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▍                                            | 4384/500000 [14:14<33:08:35,  4.15it/s]
+Mean returns per traj :  [0.6923076923076923, 0.5384615384615384, 0.6923076923076923, -0.46153846153846156]
+
+  1%|▍                                             | 4439/500000 [14:15<3:48:22, 36.16it/s]
+Discriminator Loss  1.0904263257980347
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▍                                            | 4452/500000 [14:28<58:50:17,  2.34it/s]
+Mean returns per traj :  [2.1538461538461537, 0.8461538461538461, 0.8461538461538461, -0.5384615384615384]
+
+
+  1%|▍                                             | 4510/500000 [14:40<4:38:10, 29.69it/s]
+Discriminator Loss  1.0896234512329102
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▍                                            | 4532/500000 [14:42<33:29:47,  4.11it/s]
+Mean returns per traj :  [0.7692307692307693, 0.6923076923076923, 0.6923076923076923, -0.46153846153846156]
+
+  1%|▍                                             | 4585/500000 [14:43<3:54:16, 35.25it/s]
+Discriminator Loss  1.0866550207138062
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▍                                             | 4634/500000 [14:56<9:23:29, 14.65it/s]
+Mean returns per traj :  [0.9230769230769231, 1.5384615384615385, 0.46153846153846156, -1.0]
+
+  1%|▍                                             | 4658/500000 [14:57<4:12:39, 32.67it/s]
+Discriminator Loss  1.0843127965927124
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▍                                            | 4694/500000 [15:10<17:44:38,  7.75it/s]
+Mean returns per traj :  [0.8461538461538461, 0.8461538461538461, 1.3076923076923077, -0.5384615384615384]
+
+  1%|▍                                             | 4732/500000 [15:11<4:18:29, 31.93it/s]
+Discriminator Loss  1.0800318717956543
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▍                                            | 4757/500000 [15:26<35:50:16,  3.84it/s]
+Mean returns per traj :  [0.9230769230769231, 0.8461538461538461, 1.3076923076923077, -1.0]
+
+  1%|▍                                             | 4806/500000 [15:27<4:25:01, 31.14it/s]
+Discriminator Loss  1.0782448053359985
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▍                                            | 4819/500000 [15:40<62:04:32,  2.22it/s]
+Mean returns per traj :  [0.6153846153846154, 0.6153846153846154, 1.0769230769230769, -0.7692307692307693]
+
+  1%|▍                                             | 4878/500000 [15:41<4:43:31, 29.10it/s]
+Discriminator Loss  1.0756072998046875
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▍                                            | 4909/500000 [15:54<22:49:39,  6.02it/s]
+Mean returns per traj :  [1.3846153846153846, 1.1538461538461537, 0.9230769230769231, -0.6923076923076923]
+
+  1%|▍                                             | 4955/500000 [15:55<3:55:53, 34.98it/s]
+Discriminator Loss  1.0724213123321533
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▍                                            | 4986/500000 [16:08<22:24:10,  6.14it/s]
+Mean returns per traj :  [1.1538461538461537, 1.2307692307692308, 1.3076923076923077, -1.0]
+
+
+  1%|▍                                             | 5026/500000 [16:20<4:30:47, 30.47it/s]
+Discriminator Loss  1.0662686824798584
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▍                                            | 5066/500000 [16:22<15:53:05,  8.65it/s]
+Mean returns per traj :  [0.9230769230769231, 1.0769230769230769, 0.9230769230769231, -0.8461538461538461]
+
+  1%|▍                                             | 5100/500000 [16:23<4:33:02, 30.21it/s]
+Discriminator Loss  1.0660911798477173
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▍                                             | 5162/500000 [16:36<5:55:29, 23.20it/s]
+Mean returns per traj :  [1.1538461538461537, 1.0769230769230769, 1.1538461538461537, -0.6153846153846154]
+
+  1%|▍                                             | 5175/500000 [16:36<4:02:45, 33.97it/s]
+Discriminator Loss  1.0613691806793213
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▍                                             | 5235/500000 [16:50<6:38:51, 20.67it/s]
+Mean returns per traj :  [1.2307692307692308, 1.1538461538461537, 1.0, -1.0769230769230769]
+
+  1%|▍                                             | 5248/500000 [16:50<4:36:53, 29.78it/s]
+Discriminator Loss  1.0585132837295532
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▍                                             | 5296/500000 [17:04<9:49:04, 14.00it/s]
+Mean returns per traj :  [1.0, 0.9230769230769231, 1.3076923076923077, -0.5384615384615384]
+
+  1%|▍                                             | 5327/500000 [17:05<3:41:39, 37.19it/s]
+Discriminator Loss  1.0554484128952026
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▍                                            | 5333/500000 [17:18<93:54:35,  1.46it/s]
+Mean returns per traj :  [0.9230769230769231, 1.4615384615384615, 0.6923076923076923, -0.15384615384615385]
+
+  1%|▍                                             | 5401/500000 [17:19<4:08:07, 33.22it/s]
+Discriminator Loss  1.0519400835037231
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▍                                             | 5401/500000 [17:30<4:08:07, 33.22it/s]
+Mean returns per traj :  [1.4615384615384615, 0.7692307692307693, 1.6153846153846154, -0.46153846153846156]
+
+  1%|▌                                             | 5469/500000 [17:34<4:33:35, 30.13it/s]
+Discriminator Loss  1.0490124225616455
+Fake Accuracy  0.0
+Real Accuracy  1.0
+mean discrim rew =  1566.6463114023209
+Mean returns per traj :  [1.3846153846153846, 0.6153846153846154, 0.6153846153846154, -1.2307692307692308]
+
+
+  1%|▌                                             | 5545/500000 [17:48<4:04:56, 33.64it/s]
+Discriminator Loss  1.0453855991363525
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▌                                             | 5545/500000 [18:00<4:04:56, 33.64it/s]
+Mean returns per traj :  [0.7692307692307693, 0.8461538461538461, 0.6923076923076923, -0.6923076923076923]
+
+  1%|▌                                             | 5617/500000 [18:02<4:31:31, 30.35it/s]
+Discriminator Loss  1.0420705080032349
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▌                                             | 5681/500000 [18:16<5:46:29, 23.78it/s]
+Mean returns per traj :  [0.9230769230769231, 1.0769230769230769, 1.1538461538461537, -0.5384615384615384]
+
+  1%|▌                                             | 5693/500000 [18:16<4:10:19, 32.91it/s]
+Discriminator Loss  1.0388938188552856
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▌                                            | 5730/500000 [18:30<17:26:43,  7.87it/s]
+Mean returns per traj :  [1.3076923076923077, 1.0, 0.9230769230769231, -0.38461538461538464]
+
+  1%|▌                                             | 5770/500000 [18:31<3:53:36, 35.26it/s]
+Discriminator Loss  1.0354812145233154
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▌                                            | 5818/500000 [18:44<11:21:52, 12.08it/s]
+Mean returns per traj :  [0.9230769230769231, 1.2307692307692308, 0.9230769230769231, -0.23076923076923078]
+
+  1%|▌                                             | 5843/500000 [18:45<4:43:17, 29.07it/s]
+Discriminator Loss  1.0276329517364502
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▌                                             | 5911/500000 [18:58<4:47:36, 28.63it/s]
+Mean returns per traj :  [1.0, 0.9230769230769231, 1.6153846153846154, -0.3076923076923077]
+
+
+  1%|▌                                             | 5917/500000 [19:10<4:05:48, 33.50it/s]
+Discriminator Loss  1.0261352062225342
+Fake Accuracy  0.0
+Real Accuracy  1.0
+mean discrim rew =  1513.0085238218307
+Mean returns per traj :  [1.0, 0.8461538461538461, 1.1538461538461537, -0.7692307692307693]
+
+  1%|▌                                             | 5992/500000 [19:12<3:57:35, 34.65it/s]
+Discriminator Loss  1.023190975189209
+Fake Accuracy  0.0
+Real Accuracy  1.0
+mean discrim rew =  1503.8526604175568
+Mean returns per traj :  [1.0, 0.5384615384615384, 1.0769230769230769, -0.46153846153846156]
+
+  1%|▌                                             | 6063/500000 [19:26<4:34:51, 29.95it/s]
+Discriminator Loss  1.0190727710723877
+Fake Accuracy  0.0
+Real Accuracy  1.0
+mean discrim rew =  1495.4357780218124
+Mean returns per traj :  [1.0, 0.8461538461538461, 1.2307692307692308, -0.5384615384615384]
+
+
+  1%|▌                                             | 6137/500000 [19:50<4:01:10, 34.13it/s]
+Discriminator Loss  1.016010046005249
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▌                                            | 6142/500000 [19:52<90:56:53,  1.51it/s]
+Mean returns per traj :  [0.8461538461538461, 1.0769230769230769, 0.8461538461538461, -0.5384615384615384]
+
+  1%|▌                                             | 6209/500000 [19:54<4:22:55, 31.30it/s]
+Discriminator Loss  1.0129868984222412
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▌                                            | 6230/500000 [20:06<39:33:15,  3.47it/s]
+Mean returns per traj :  [1.3846153846153846, 0.6153846153846154, 1.2307692307692308, -0.46153846153846156]
+
+  1%|▌                                             | 6287/500000 [20:08<3:58:38, 34.48it/s]
+Discriminator Loss  1.008594036102295
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▌                                            | 6323/500000 [20:21<16:31:23,  8.30it/s]
+Mean returns per traj :  [1.1538461538461537, 1.3076923076923077, 0.7692307692307693, -0.6923076923076923]
+
+  1%|▌                                             | 6362/500000 [20:21<3:53:54, 35.17it/s]
+Discriminator Loss  1.0040987730026245
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▌                                             | 6416/500000 [20:35<8:19:28, 16.47it/s]
+Mean returns per traj :  [1.2307692307692308, 0.6923076923076923, 0.8461538461538461, -0.9230769230769231]
+
+  1%|▌                                             | 6437/500000 [20:35<4:20:29, 31.58it/s]
+Discriminator Loss  1.0004682540893555
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▌                                             | 6506/500000 [20:49<5:32:00, 24.77it/s]
+Mean returns per traj :  [0.7692307692307693, 1.3076923076923077, 1.0769230769230769, -0.7692307692307693]
+
+  1%|▌                                             | 6506/500000 [21:00<5:32:00, 24.77it/s]
+Discriminator Loss  0.9976118803024292
+Fake Accuracy  0.0
+Real Accuracy  1.0
+
+  1%|▌                                             | 6579/500000 [21:03<4:10:48, 32.79it/s]
+Mean returns per traj :  [1.0769230769230769, 1.0769230769230769, 1.3076923076923077, -0.5384615384615384]
+Std returns per traj :  [0.9166442529086912, 1.071414482860317, 1.2015768732164083, 0.6343239424027171]
+Discriminator Loss  0.9937493801116943
+Fake Accuracy  0.0
+Real Accuracy  1.0
+mean discrim rew =  1428.3084690570831
+Mean returns per traj :  [0.9230769230769231, 1.0, 0.7692307692307693, -0.46153846153846156]
+
+  1%|▌                                             | 6657/500000 [21:17<3:50:35, 35.66it/s]Process ForkServerProcess-13:
+Process ForkServerProcess-8:
+Process ForkServerProcess-7:
+Process ForkServerProcess-10:
+Process ForkServerProcess-6:
+Process ForkServerProcess-12:
+Process ForkServerProcess-9:
+Process ForkServerProcess-3:
+Process ForkServerProcess-2:
+Process ForkServerProcess-5:
+Process ForkServerProcess-11:
+Process ForkServerProcess-4:
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/stable_baselines3/common/vec_env/subproc_vec_env.py", line 27, in _worker
+    cmd, data = remote.recv()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt
+  1%|▌                                            | 6659/500000 [21:19<26:19:39,  5.21it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/airl_train.py", line 64, in <module>
+    airl_train_1_expert(envi, env_steps, demos_filename, generator_filename, discriminator_filename, prints=True)
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/airl_train_not_main.py", line 108, in airl_train_1_expert
+    update_policy(ppo, dataset, optimizer, config.gamma, config.epsilon, config.ppo_epochs,
+  File "/home/lechapelier/Documents/Stage M2/Internship-Ethical-MORL/moral_rl/moral/ppo.py", line 146, in update_policy
+    overall_loss.backward()
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/torch/_tensor.py", line 363, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/home/lechapelier/.local/lib/python3.9/site-packages/torch/autograd/__init__.py", line 173, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt

@@ -195,6 +195,16 @@ class Discriminator(nn.Module):
 
         return advantage - torch.log(action_probability)
 
+    def predict_reward_2(self, state, next_state, gamma, action_probability, latent=None):
+        if latent is not None:
+            advantage = self.forward(state, next_state, gamma, latent)
+        else:
+            advantage = self.forward(state, next_state, gamma)
+
+        advantage = advantage.squeeze(1)
+
+        return advantage, advantage - torch.log(action_probability)
+
     def estimate_utopia(self, imitation_policy, config, steps=10000):
         env = GymWrapper(config.env_id)
         states = env.reset()

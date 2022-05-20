@@ -1,0 +1,11 @@
+  0%|                                                           | 0/500000 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/lechapelier/Documents/StageM2/Internship-Ethical-MORL/moral_rl/moral/airl_train.py", line 64, in <module>
+    airl_train_1_expert(envi, env_steps, demos_filename, generator_filename, discriminator_filename, prints=True)
+  File "/home/lechapelier/Documents/StageM2/Internship-Ethical-MORL/moral_rl/moral/airl_train_not_main.py", line 92, in airl_train_1_expert
+    airl_advantages = list(airl_advantage.detach().cpu().numpy() * [0 if i else 1 for i in done])
+NameError: name 'airl_advantage' is not defined

@@ -62,11 +62,14 @@ class TrajectoryDataset:
         self.batch_size = batch_size
         self.n_workers = n_workers
         self.trajectories = []
-        self.buffer = [{'states': [], 'actions': [], 'rewards': [], 'log_probs': [], 'latents': None, 'logs': []}
+        # self.buffer = [{'states': [], 'actions': [], 'rewards': [], 'log_probs': [], 'latents': None, 'logs': []}
+        #                for i in range(n_workers)]
+        self.buffer = [{'states': [], 'actions': [], 'rewards': [], 'advantages': [], 'log_probs': [], 'latents': None, 'logs': []}
                        for i in range(n_workers)]
 
     def reset_buffer(self, i):
-        self.buffer[i] = {'states': [], 'actions': [], 'rewards': [], 'log_probs': [], 'latents': None, 'logs': []}
+        # self.buffer[i] = {'states': [], 'actions': [], 'rewards': [], 'log_probs': [], 'latents': None, 'logs': []}
+        self.buffer[i] = {'states': [], 'actions': [], 'rewards': [], 'advantages':[], 'log_probs': [], 'latents': None, 'logs': []}
 
     def reset_trajectories(self):
         self.trajectories = []
@@ -93,11 +96,41 @@ class TrajectoryDataset:
         else:
             return False
 
+    def write_tuple_2(self, states, actions, rewards, advantages, done, log_probs, logs=None):
+        # Takes states of shape (n_workers, state_shape[0], state_shape[1])
+        for i in range(self.n_workers):
+            self.buffer[i]['states'].append(states[i])
+            self.buffer[i]['actions'].append(actions[i])
+            self.buffer[i]['rewards'].append(rewards[i])
+            self.buffer[i]['advantages'].append(advantages[i])
+            self.buffer[i]['log_probs'].append(log_probs[i])
+
+            if logs is not None:
+                self.buffer[i]['logs'].append(logs[i])
+
+            if done[i]:
+                self.trajectories.append(self.buffer[i].copy())
+                self.reset_buffer(i)
+
+        # print("nb traj = ",len(self.trajectories))
+        # print("batch_size = ", self.batch_size)
+        if len(self.trajectories) >= self.batch_size:
+            return True
+        else:
+            return False
+
     def log_returns(self):
         # Calculates (undiscounted) returns in self.trajectories
         returns = [0 for i in range(len(self.trajectories))]
         for i, tau in enumerate(self.trajectories):
             returns[i] = sum(tau['rewards'])
+        return returns
+
+    def log_advantages(self):
+        # Calculates (undiscounted) returns in self.trajectories
+        returns = [0 for i in range(len(self.trajectories))]
+        for i, tau in enumerate(self.trajectories):
+            returns[i] = sum(tau['advantages'])
         return returns
 
     def log_objectives(self):
