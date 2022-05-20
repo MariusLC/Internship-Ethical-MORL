@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/lechapelier/Documents/StageM2/Internship-Ethical-MORL/moral_rl/moral/evaluate_ppo_and_discrim.py", line 175, in <module>
+    rand_filename = data_path+gene_path+vanilla_path+model_name+rand+env+"_"+str(lambd_list[i])+model_ext
+NameError: name 'rand' is not defined

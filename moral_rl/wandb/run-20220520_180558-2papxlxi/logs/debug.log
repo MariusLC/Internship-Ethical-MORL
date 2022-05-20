@@ -1,0 +1,124 @@
+2022-05-20 18:05:58,369 INFO    MainThread:48719 [wandb_setup.py:_flush():75] Loading settings from /home/lechapelier/.config/wandb/settings
+2022-05-20 18:05:58,369 INFO    MainThread:48719 [wandb_setup.py:_flush():75] Loading settings from /home/lechapelier/Documents/StageM2/Internship-Ethical-MORL/moral_rl/wandb/settings
+2022-05-20 18:05:58,369 INFO    MainThread:48719 [wandb_setup.py:_flush():75] Loading settings from environment variables: {}
+2022-05-20 18:05:58,369 WARNING MainThread:48719 [wandb_setup.py:_flush():75] Could not find program at -m moral.evaluate_ppo_and_discrim
+2022-05-20 18:05:58,369 INFO    MainThread:48719 [wandb_setup.py:_flush():75] Inferring run settings from compute environment: {'program_relpath': None, 'program': '-m moral.evaluate_ppo_and_discrim'}
+2022-05-20 18:05:58,370 INFO    MainThread:48719 [wandb_init.py:_log_setup():438] Logging user logs to /home/lechapelier/Documents/StageM2/Internship-Ethical-MORL/moral_rl/wandb/run-20220520_180558-2papxlxi/logs/debug.log
+2022-05-20 18:05:58,370 INFO    MainThread:48719 [wandb_init.py:_log_setup():439] Logging internal logs to /home/lechapelier/Documents/StageM2/Internship-Ethical-MORL/moral_rl/wandb/run-20220520_180558-2papxlxi/logs/debug-internal.log
+2022-05-20 18:05:58,370 INFO    MainThread:48719 [wandb_init.py:init():472] calling init triggers
+2022-05-20 18:05:58,370 INFO    MainThread:48719 [wandb_init.py:init():475] wandb.init called with sweep_config: {}
+config: {'env_id': 'randomized_v3', 'gamma': 0.999, 'batchsize_discriminator': 512}
+2022-05-20 18:05:58,371 INFO    MainThread:48719 [wandb_init.py:init():525] starting backend
+2022-05-20 18:05:58,371 INFO    MainThread:48719 [backend.py:_multiprocessing_setup():99] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2022-05-20 18:05:58,387 INFO    MainThread:48719 [backend.py:ensure_launched():219] starting backend process...
+2022-05-20 18:05:58,393 INFO    MainThread:48719 [backend.py:ensure_launched():224] started backend process with pid: 48738
+2022-05-20 18:05:58,396 INFO    MainThread:48719 [wandb_init.py:init():534] backend started and connected
+2022-05-20 18:05:58,399 INFO    MainThread:48719 [wandb_init.py:init():598] updated telemetry
+2022-05-20 18:05:58,418 INFO    MainThread:48719 [wandb_init.py:init():629] communicating run to backend with 30 second timeout
+2022-05-20 18:06:01,024 INFO    MainThread:48719 [wandb_run.py:_on_init():1922] communicating current version
+2022-05-20 18:06:01,053 INFO    MainThread:48719 [wandb_run.py:_on_init():1926] got version response upgrade_message: "wandb version 0.12.16 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2022-05-20 18:06:01,053 INFO    MainThread:48719 [wandb_init.py:init():660] starting run threads in backend
+2022-05-20 18:06:01,101 INFO    MainThread:48719 [wandb_run.py:_console_start():1896] atexit reg
+2022-05-20 18:06:01,102 INFO    MainThread:48719 [wandb_run.py:_redirect():1769] redirect: SettingsConsole.REDIRECT
+2022-05-20 18:06:01,102 INFO    MainThread:48719 [wandb_run.py:_redirect():1774] Redirecting console.
+2022-05-20 18:06:01,103 INFO    MainThread:48719 [wandb_run.py:_redirect():1830] Redirects installed.
+2022-05-20 18:06:01,104 INFO    MainThread:48719 [wandb_init.py:init():685] run started, returning control to user process
+2022-05-20 18:06:01,146 INFO    MainThread:48719 [wandb_run.py:_atexit_cleanup():1865] got exitcode: 1
+2022-05-20 18:06:01,147 INFO    MainThread:48719 [wandb_run.py:_restore():1837] restore
+2022-05-20 18:06:03,618 INFO    MainThread:48719 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 775
+  total_bytes: 775
+}
+
+2022-05-20 18:06:03,873 INFO    MainThread:48719 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 775
+  total_bytes: 775
+}
+
+2022-05-20 18:06:04,051 INFO    MainThread:48719 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 4
+}
+pusher_stats {
+  uploaded_bytes: 775
+  total_bytes: 7076
+}
+
+2022-05-20 18:06:04,153 INFO    MainThread:48719 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 775
+  total_bytes: 7545
+}
+
+2022-05-20 18:06:04,256 INFO    MainThread:48719 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 7545
+  total_bytes: 7545
+}
+
+2022-05-20 18:06:04,359 INFO    MainThread:48719 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 7545
+  total_bytes: 7545
+}
+
+2022-05-20 18:06:04,462 INFO    MainThread:48719 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 7545
+  total_bytes: 7545
+}
+
+2022-05-20 18:06:04,564 INFO    MainThread:48719 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 7545
+  total_bytes: 7545
+}
+
+2022-05-20 18:06:04,666 INFO    MainThread:48719 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 7545
+  total_bytes: 7545
+}
+
+2022-05-20 18:06:05,243 INFO    MainThread:48719 [wandb_run.py:_on_finish():1995] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 7545
+  total_bytes: 7545
+}
+
+2022-05-20 18:06:05,641 INFO    MainThread:48719 [wandb_run.py:_on_finish():1995] got exit ret: done: true
+exit_result {
+}
+file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 7545
+  total_bytes: 7545
+}
+local_info {
+}
+
+2022-05-20 18:06:07,018 INFO    MainThread:48719 [wandb_run.py:_footer_history_summary_info():3087] rendering history
+2022-05-20 18:06:07,018 INFO    MainThread:48719 [wandb_run.py:_footer_history_summary_info():3116] rendering summary
+2022-05-20 18:06:07,022 INFO    MainThread:48719 [wandb_run.py:_footer_sync_info():3044] logging synced files

@@ -1,0 +1,14 @@
+
+[W NNPACK.cpp:51] Could not initialize NNPACK! Reason: Unsupported hardware.
+([0.46153846153846156, 8.461538461538462, 0.7692307692307693, -0.46153846153846156], [0.6343239424027171, 1.78089798504465, 0.7994080650317896, 0.4985185152621431])
+([0.8461538461538461, 0.8461538461538461, 1.0769230769230769, -0.15384615384615385], [0.9483713850721502, 0.8634593969478327, 0.9970370305242863, 0.36080121229410994])
+Discriminator Loss  1.1892443895339966
+Fake Accuracy  0.0
+Real Accuracy  1.0
+/home/lechapelier/Documents/StageM2/Internship-Ethical-MORL/moral_rl/moral/evaluate_ppo_and_discrim.py:80: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at  ../torch/csrc/utils/tensor_new.cpp:210.)
+  return torch.tensor(states).float().to(device), torch.tensor(next_states).float().to(device), \
+([0.8461538461538461, 0.46153846153846156, 9.23076923076923, -0.8461538461538461], [0.8634593969478327, 0.7457969011409737, 1.8040060614705502, 0.6617173282340483])
+([0.8461538461538461, 1.0, 1.2307692307692308, -0.46153846153846156], [0.9483713850721502, 0.6793662204867574, 0.7994080650317895, 0.6343239424027171])
+Discriminator Loss  1.2001380920410156
+Fake Accuracy  0.0
+Real Accuracy  1.0

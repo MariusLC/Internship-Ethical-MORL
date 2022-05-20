@@ -24,8 +24,8 @@ from utils.generate_demos_not_main import *
 
 
 # folder to load config file
-CONFIG_PATH = "moral/"
-CONFIG_FILENAME = "config.yaml"
+CONFIG_PATH = "configs/"
+CONFIG_FILENAME = "config_EVALUATE.yaml"
 
 # Function to load yaml configuration file
 def load_config(config_name):
@@ -107,19 +107,25 @@ if __name__ == '__main__':
 
 	#PARAMS CONFIG
 	nb_experts = config_yaml["nb_experts"]
-	ratio = config_yaml["ratio"]
-	lambd_list = config_yaml["experts_weights"]
 	nb_demos = config_yaml["nb_demos"]
+	lambd_list = config_yaml["experts_weights"]
 
     # PATHS & NAMES
+	vanilla = config_yaml["vanilla"]
 	data_path = config_yaml["data_path"]
+	model_name = config_yaml["model_name"]
 	env_rad = config_yaml["env_rad"]
 	env = config_yaml["env"]
-	discrim = config_yaml["discriminator_filenames"]
-	ppo = config_yaml["ppo_filenames"]
-	model_ext = config_yaml["data_ext"]
+	disc_path = config_yaml["disc_path"]
+	expe_path = config_yaml["expe_path"]
+	gene_path = config_yaml["gene_path"]
+	demo_path = config_yaml["demo_path"]
+	model_ext = config_yaml["model_ext"]
+	demo_ext = config_yaml["demo_ext"]
+	env_steps = config_yaml["env_steps"]
+	rand = config_yaml["rand"]
 
-	generate_demos = False
+	
 
 
 
@@ -151,6 +157,10 @@ if __name__ == '__main__':
 	state_shape = obs_shape[:-1]
 	in_channels = obs_shape[-1]
 
+	vanilla_path = ""
+	if vanilla:
+		vanilla_path += "Peschl/"
+
 	experts_filenames = []
 	demos_filenames = []
 	# generators_filenames = []
@@ -160,47 +170,46 @@ if __name__ == '__main__':
 	rand_list = []
 	discrim_list = []
 	for i in range(nb_experts):
-	    experts_filenames.append(data_path+ppo+env+lambd_list[i]+model_ext)
-	    demos_filenames.append("saved_models/demonstrations_"+env+lambd_list[i]+model_ext)
-	    rand_filenames.append("saved_models/demonstrations_rand_"+env+lambd_list[i]+model_ext)
-	    discriminators_filenames.append(data_path+discrim+env+lambd_list[i]+model_ext)
+		expert_filename = data_path+expe_path+vanilla_path+model_name+env+"_"+str(lambd_list[i])+model_ext
+		demos_filename = data_path+demo_path+vanilla_path+model_name+env+"_"+str(lambd_list[i])+demo_ext
+		rand_filename = data_path+demo_path+vanilla_path+model_name+rand+env+"_"+str(lambd_list[i])+demo_ext
+		generator_filename = data_path+gene_path+vanilla_path+model_name+env+"_"+str(lambd_list[i])+model_ext
+		discriminator_filename = data_path+disc_path+vanilla_path+model_name+env+"_"+str(lambd_list[i])+model_ext
 
-	    # discriminator
-	    discrim_list.append(Discriminator(state_shape=state_shape, in_channels=in_channels).to(device))
-	    print(discriminators_filenames[-1])
-	    discrim_list[-1].load_state_dict(torch.load(discriminators_filenames[-1], map_location=torch.device('cpu')))
-	    optimizer_discriminator = torch.optim.Adam(discrim_list[-1].parameters(), lr=5e-5)
+		# discriminator
+		discrim_list = Discriminator(state_shape=state_shape, in_channels=in_channels).to(device)
+		discrim_list.load_state_dict(torch.load(discriminator_filename, map_location=torch.device('cpu')))
+		optimizer_discriminator = torch.optim.Adam(discrim_list.parameters(), lr=5e-5)
 
-	    # experts
-	    ppo_list.append(PPO(state_shape=state_shape, in_channels=in_channels, n_actions=n_actions).to(device))
-	    ppo_list[-1].load_state_dict(torch.load(experts_filenames[-1], map_location=torch.device('cpu')))
-	
-	    # rand agents
-	    rand_list.append(PPO(state_shape=state_shape, in_channels=in_channels, n_actions=n_actions).to(device))
-	    
-	    if generate_demos : 
-	    	generate_demos_1_expert(nb_demos, env_rad+env, experts_filenames[-1], demos_filenames[-1])
-	    	generate_demos_1_expert(nb_demos, env_rad+env, experts_filenames[-1], rand_filenames[-1])
+		# experts
+		ppo_list = PPO(state_shape=state_shape, in_channels=in_channels, n_actions=n_actions).to(device)
+		ppo_list.load_state_dict(torch.load(expert_filename, map_location=torch.device('cpu')))
 
-	    # Load demonstrations & evaluate ppo
-	    expert_trajectories = pickle.load(open(demos_filenames[-1], 'rb'))
-	    print(evaluate_ppo(ppo_list[-1], config))
-	    rand_trajectories = pickle.load(open(rand_filenames[-1], 'rb'))
-	    print(evaluate_ppo(rand_list[-1], config))
+		# rand agents
+		rand_list = PPO(state_shape=state_shape, in_channels=in_channels, n_actions=n_actions).to(device)
 
+		if config_yaml["generate_demos"] :
+			generate_demos_1_expert(nb_demos, env_rad+env, expert_filename, demos_filename)
+			generate_demos_1_expert(nb_demos, env_rad+env, expert_filename, rand_filename)
 
-	    d_loss, fake_acc, real_acc = evaluate_discriminator(discriminator=discrim_list[-1],
+		# Load demonstrations & evaluate ppo
+		expert_trajectories = pickle.load(open(demos_filename, 'rb'))
+		print(evaluate_ppo(ppo_list, config))
+		rand_trajectories = pickle.load(open(rand_filename, 'rb'))
+		print(evaluate_ppo(rand_list, config))
+		d_loss, fake_acc, real_acc = evaluate_discriminator(discriminator=discrim_list,
 															optimizer=optimizer_discriminator,
 															gamma=config.gamma,
 															expert_trajectories=expert_trajectories,
 															policy_trajectories=rand_trajectories,
-															ppo=rand_list[-1],
+															ppo=rand_list,
 															batch_size=config.batchsize_discriminator)
 
-	    print('Discriminator Loss ', d_loss)
-	    print('Fake Accuracy ', fake_acc)
-	    print('Real Accuracy ', real_acc)
-	
+		print('Discriminator Loss ', d_loss)
+		print('Fake Accuracy ', fake_acc)
+		print('Real Accuracy ', real_acc)
 
-
-	# moral_train_n_experts(ratio, env_rad+env, experts_filenames, discriminators_filenames, moral_filename)
+	    # experts_filenames.append(data_path+ppo+env+lambd_list[i]+model_ext)
+	    # demos_filenames.append("saved_models/demonstrations_"+env+lambd_list[i]+model_ext)
+	    # rand_filenames.append("saved_models/demonstrations_rand_"+env+lambd_list[i]+model_ext)
+	    # discriminators_filenames.append(data_path+discrim+env+lambd_list[i]+model_ext)

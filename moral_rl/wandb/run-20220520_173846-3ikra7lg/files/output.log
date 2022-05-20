@@ -1,0 +1,10 @@
+
+saved_models/Peschl_res/discriminator_v3_[0, 1, 0, 1].pt
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/lechapelier/Documents/StageM2/Internship-Ethical-MORL/moral_rl/moral/evaluate_ppo_and_discrim.py", line 186, in <module>
+    expert_trajectories = pickle.load(open(demos_filenames[-1], 'rb'))
+FileNotFoundError: [Errno 2] No such file or directory: 'saved_models/demonstrations_v3_[0, 1, 0, 1].pt'
